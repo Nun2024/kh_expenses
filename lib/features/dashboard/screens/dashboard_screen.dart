@@ -7,6 +7,7 @@ import '../widgets/category_breakdown.dart';
 import '../widgets/recent_transactions.dart';
 import '../../expenses/screens/add_expense_screen.dart';
 import '../../statistics/screens/statistics_screen.dart';
+import '../../settings/screens/settings_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -263,7 +264,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
           }),
           const SizedBox(width: 48), // Space for FAB
           _buildNavItem(Icons.account_balance_wallet, 'Wallets', false, () {}),
-          _buildNavItem(Icons.settings, 'Settings', false, () {}),
+          _buildNavItem(Icons.settings, 'Settings', false, () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const SettingsScreen()),
+            );
+          }),
         ],
       ),
     );

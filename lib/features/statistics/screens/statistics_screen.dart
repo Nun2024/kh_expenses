@@ -9,6 +9,7 @@ import '../widgets/category_breakdown_chart.dart';
 import '../widgets/spending_trend_chart.dart';
 import '../widgets/top_category_spotlight.dart';
 import '../widgets/budget_health_card.dart';
+import '../../settings/screens/settings_screen.dart';
 
 class StatisticsScreen extends StatefulWidget {
   const StatisticsScreen({super.key});
@@ -146,7 +147,12 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
           _buildNavItem(context, Icons.query_stats, 'Analytics', true, () {}),
           const SizedBox(width: 48), // Space for FAB
           _buildNavItem(context, Icons.account_balance_wallet, 'Wallets', false, () {}),
-          _buildNavItem(context, Icons.settings, 'Settings', false, () {}),
+          _buildNavItem(context, Icons.settings, 'Settings', false, () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const SettingsScreen()),
+            );
+          }),
         ],
       ),
     );
