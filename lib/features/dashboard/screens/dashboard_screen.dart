@@ -6,7 +6,7 @@ import '../widgets/quick_stats_grid.dart';
 import '../widgets/category_breakdown.dart';
 import '../widgets/recent_transactions.dart';
 import '../../expenses/screens/add_expense_screen.dart';
-import '../../transactions/screens/transactions_screen.dart';
+import '../../statistics/screens/statistics_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -258,7 +258,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           _buildNavItem(Icons.query_stats, 'Analytics', false, () {
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (context) => const TransactionsScreen()),
+              MaterialPageRoute(builder: (context) => const StatisticsScreen()),
             );
           }),
           const SizedBox(width: 48), // Space for FAB

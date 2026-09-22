@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_theme.dart';
+import '../../transactions/screens/transactions_screen.dart';
 
 class RecentTransactions extends StatelessWidget {
   const RecentTransactions({super.key});
@@ -28,7 +29,12 @@ class RecentTransactions extends StatelessWidget {
               ],
             ),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const TransactionsScreen()),
+                );
+              },
               child: Row(
                 children: [
                   Text('View All', style: AppTheme.labelMd.copyWith(color: AppColors.primary)),
