@@ -2,25 +2,17 @@ import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../dashboard/screens/dashboard_screen.dart';
-import '../../expenses/screens/add_expense_screen.dart';
-import '../widgets/statistics_header.dart';
-import '../widgets/total_spending_summary.dart';
-import '../widgets/category_breakdown_chart.dart';
-import '../widgets/spending_trend_chart.dart';
-import '../widgets/top_category_spotlight.dart';
-import '../widgets/budget_health_card.dart';
+import '../../statistics/screens/statistics_screen.dart';
 import '../../settings/screens/settings_screen.dart';
-import '../../wallets/screens/wallets_screen.dart';
+import '../../expenses/screens/add_expense_screen.dart';
+import '../widgets/nbc_rate_banner.dart';
+import '../widgets/net_worth_hero_card.dart';
+import '../widgets/info_tooltip_banner.dart';
+import '../widgets/wallet_list_item.dart';
+import '../widgets/wallet_activity_sheet.dart';
 
-class StatisticsScreen extends StatefulWidget {
-  const StatisticsScreen({super.key});
-
-  @override
-  State<StatisticsScreen> createState() => _StatisticsScreenState();
-}
-
-class _StatisticsScreenState extends State<StatisticsScreen> {
-  String _activePeriod = 'Month';
+class WalletsScreen extends StatelessWidget {
+  const WalletsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -50,11 +42,11 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  'KH Expense',
+                  'Wallets',
                   style: AppTheme.headlineMd.copyWith(color: AppColors.onSurface),
                 ),
                 Text(
-                  'Smart Ledger',
+                  'NBC: \$1 = ៛4,085',
                   style: AppTheme.labelSm.copyWith(color: AppColors.outline),
                 ),
               ],
@@ -91,28 +83,118 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
       ),
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const NbcRateBanner(),
+          const SizedBox(height: 16),
+          const NetWorthHeroCard(),
+          const SizedBox(height: 16),
+          const InfoTooltipBanner(
+            message: 'Transfer between wallets (e.g., ABA → Cash \$100) keeps your accounts balanced without inflating your monthly expense reports.',
+            boldText: 'ABA → Cash \$100',
+          ),
+          const SizedBox(height: 24),
+          
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              StatisticsHeader(
-                activePeriod: _activePeriod,
-                onPeriodChanged: (period) => setState(() => _activePeriod = period),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Accounts & Wallets', style: AppTheme.headlineMd.copyWith(color: AppColors.onSurface, fontWeight: FontWeight.bold)),
+                  Text('Primary banking & local cash reserves', style: AppTheme.bodySm.copyWith(color: AppColors.onSurfaceVariant)),
+                ],
               ),
-              const SizedBox(height: 16),
-              const TotalSpendingSummary(),
-              const SizedBox(height: 16),
-              const CategoryBreakdownChart(),
-              const SizedBox(height: 16),
-              const SpendingTrendChart(),
-              const SizedBox(height: 16),
-              const TopCategorySpotlight(),
-              const SizedBox(height: 16),
-              const BudgetHealthCard(),
-              const SizedBox(height: 40),
+              Row(
+                children: [
+                  Text('Manage', style: AppTheme.labelMd.copyWith(color: AppColors.primary, fontWeight: FontWeight.bold)),
+                  const SizedBox(width: 4),
+                  const Icon(Icons.tune, size: 16, color: AppColors.primary),
+                ],
+              ),
             ],
           ),
-        ),
+          const SizedBox(height: 16),
+          
+          WalletListItem(
+            name: 'ABA Bank',
+            subtitle: '**** 4821 • Savings Account',
+            tagText: 'Primary',
+            tagColor: AppColors.primary,
+            tagBgColor: const Color(0xFF00685F).withOpacity(0.1),
+            initials: 'ABA',
+            smallText: 'BANK',
+            avatarColor: const Color(0xFF003755),
+            avatarTextColor: Colors.white,
+            usdBalance: '\$850.00',
+            khrBalance: '៛3,472,250',
+            transactionCount: '24 transactions this month',
+            isSelected: true,
+            isKhqr: true,
+          ),
+          
+          const WalletActivitySheet(),
+          const SizedBox(height: 12),
+          
+          const WalletListItem(
+            name: 'ACLEDA Bank',
+            subtitle: '**** 2190 • Bank Account',
+            tagText: 'ToanChet',
+            icon: Icons.shield,
+            initials: 'ACLEDA',
+            avatarColor: Color(0xFF004785),
+            avatarTextColor: Colors.amber,
+            usdBalance: '\$430.00',
+            khrBalance: '៛1,756,550',
+            transactionCount: '8 transactions',
+          ),
+          
+          const WalletListItem(
+            name: 'Wing Bank / E-Wallet',
+            subtitle: '**** 9012 • Mobile Wallet',
+            tagText: '',
+            tagBgColor: Colors.transparent,
+            icon: Icons.phone_android,
+            initials: 'WING',
+            avatarColor: Color(0xFF71B02F),
+            avatarTextColor: Colors.white,
+            usdBalance: '\$250.00',
+            khrBalance: '៛1,021,250',
+            transactionCount: '6 transactions',
+          ),
+          
+          WalletListItem(
+            name: 'Cash Wallet',
+            subtitle: 'USD & Cambodian Riel in Hand',
+            tagText: 'Physical Cash',
+            tagColor: AppColors.tertiary,
+            tagBgColor: const Color(0xFFFFDCC3).withOpacity(0.6),
+            icon: Icons.payments,
+            avatarColor: AppColors.tertiary,
+            avatarTextColor: AppColors.onTertiary,
+            usdBalance: '\$120.00',
+            khrBalance: '៛490,200',
+            transactionCount: '12 entries logged',
+          ),
+          
+          const WalletListItem(
+            name: 'Emergency Reserve',
+            subtitle: 'Savings • Fixed Deposit',
+            tagText: 'Locked Vault',
+            icon: Icons.lock,
+            avatarColor: AppColors.surfaceContainerHigh,
+            avatarTextColor: AppColors.primary,
+            usdBalance: '\$200.00',
+            khrBalance: '៛817,000',
+            transactionCount: 'Untouched this month',
+          ),
+          
+          const SizedBox(height: 80),
+        ],
+      ),
+      ),
       ),
       bottomNavigationBar: _buildBottomNav(context),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -145,14 +227,11 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
           _buildNavItem(context, Icons.dashboard, 'Home', false, () {
             Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const DashboardScreen()));
           }),
-          _buildNavItem(context, Icons.query_stats, 'Analytics', true, () {}),
-          const SizedBox(width: 48), // Space for FAB
-          _buildNavItem(context, Icons.account_balance_wallet, 'Wallets', false, () {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => const WalletsScreen()),
-            );
+          _buildNavItem(context, Icons.query_stats, 'Analytics', false, () {
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const StatisticsScreen()));
           }),
+          const SizedBox(width: 48), // Space for FAB
+          _buildNavItem(context, Icons.account_balance_wallet, 'Wallets', true, () {}),
           _buildNavItem(context, Icons.settings, 'Settings', false, () {
             Navigator.pushReplacement(
               context,

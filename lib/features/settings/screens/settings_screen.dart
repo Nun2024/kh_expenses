@@ -10,6 +10,7 @@ import '../widgets/preferences_section.dart';
 import '../widgets/budget_section.dart';
 import '../widgets/data_storage_section.dart';
 import '../widgets/about_section.dart';
+import '../../wallets/screens/wallets_screen.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -74,7 +75,12 @@ class SettingsScreen extends StatelessWidget {
             Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const StatisticsScreen()));
           }),
           const SizedBox(width: 48), // Space for FAB
-          _buildNavItem(context, Icons.account_balance_wallet, 'Wallets', false, () {}),
+          _buildNavItem(context, Icons.account_balance_wallet, 'Wallets', false, () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const WalletsScreen()),
+            );
+          }),
           _buildNavItem(context, Icons.settings, 'Settings', true, () {}),
         ],
       ),

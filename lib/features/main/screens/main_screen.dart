@@ -4,6 +4,7 @@ import '../../../core/theme/app_theme.dart';
 import '../../dashboard/screens/dashboard_screen.dart';
 import '../../statistics/screens/statistics_screen.dart';
 import '../../settings/screens/settings_screen.dart';
+import '../../wallets/screens/wallets_screen.dart';
 import '../../expenses/screens/add_expense_screen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -19,7 +20,7 @@ class _MainScreenState extends State<MainScreen> {
   final List<Widget> _screens = const [
     DashboardScreen(),
     StatisticsScreen(),
-    Center(child: Text('Wallets Screen')), // Placeholder for Wallets
+    WalletsScreen(),
     SettingsScreen(),
   ];
 
@@ -65,6 +66,10 @@ class _MainScreenState extends State<MainScreen> {
       title = 'Analytics';
       subtitle = 'Spending Insights';
       showAvatar = false;
+    } else if (_currentIndex == 2) {
+      title = 'Wallets';
+      subtitle = 'NBC: \$1 = ៛4,085';
+      showAvatar = true;
     }
 
     return AppBar(
