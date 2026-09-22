@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_theme.dart';
+import '../../premium/widgets/pricing_modal.dart';
 import '../widgets/amount_input_card.dart';
 import '../widgets/category_picker_grid.dart';
 import '../widgets/payment_method_list.dart';
@@ -166,13 +167,7 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
           children: [
             ElevatedButton(
               onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text('\$_currentAmountStr saved to \$_activeCategory'),
-                    backgroundColor: AppColors.primary,
-                  ),
-                );
-                Navigator.pop(context);
+                PricingModal.show(context);
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.primary,
