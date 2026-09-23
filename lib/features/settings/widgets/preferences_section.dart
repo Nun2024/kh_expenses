@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:kh_expense/l10n/app_localizations.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_theme.dart';
+import '../../../core/localization/locale_provider.dart';
 
 class PreferencesSection extends StatelessWidget {
   const PreferencesSection({super.key});
@@ -36,8 +39,11 @@ class PreferencesSection extends StatelessWidget {
             children: [
               _buildPreferenceItem(
                 icon: Icons.language,
-                title: 'Language',
+                title: AppLocalizations.of(context)?.settingsLanguage ?? 'Language',
                 subtitle: 'Interface display and numerals',
+                onTap: () {
+                  Provider.of<LocaleProvider>(context, listen: false).toggleLocale();
+                },
                 trailing: Row(
                   children: [
                     Container(
@@ -48,11 +54,15 @@ class PreferencesSection extends StatelessWidget {
                       ),
                       child: Text.rich(
                         TextSpan(
-                          text: 'English ',
+                          text: Provider.of<LocaleProvider>(context).locale.languageCode == 'en' 
+                              ? (AppLocalizations.of(context)?.settingsLanguageEn ?? 'English') + ' '
+                              : (AppLocalizations.of(context)?.settingsLanguageKm ?? 'Khmer') + ' ',
                           style: AppTheme.labelMd.copyWith(color: AppColors.onSurface),
                           children: [
                             TextSpan(
-                              text: '/ ខ្មែរ',
+                              text: Provider.of<LocaleProvider>(context).locale.languageCode == 'en' 
+                                  ? '/ ខ្មែរ'
+                                  : '/ English',
                               style: TextStyle(color: AppColors.outline, fontWeight: FontWeight.normal),
                             ),
                           ],
@@ -125,10 +135,11 @@ class PreferencesSection extends StatelessWidget {
     required String title,
     String? subtitle,
     TextSpan? subtitleRich,
+    VoidCallback? onTap,
     required Widget trailing,
   }) {
     return InkWell(
-      onTap: () {},
+      onTap: onTap ?? () {},
       child: Padding(
         padding: const EdgeInsets.all(14),
         child: Row(

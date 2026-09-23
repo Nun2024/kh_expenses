@@ -1,0 +1,14 @@
+{
+  "@@locale": "km",
+  "appTitle": "កត់ត្រាចំណាយ",
+  "smartLedger": "បញ្ជីឆ្លាតវៃ",
+  "navHome": "ទំព័រដើម",
+  "navAnalytics": "របាយការណ៍",
+  "navWallets": "កាបូបលុយ",
+  "navSettings": "ការកំណត់",
+  "settingsLanguage": "ភាសា",
+  "settingsLanguageEn": "អង់គ្លេស",
+  "settingsLanguageKm": "ខ្មែរ",
+  "goodEvening": "សាយ័ណ្ហសួស្ដី ណុន 👋",
+  "trackSpending": "តាមដានការចំណាយជាក់ស្តែង"
+}

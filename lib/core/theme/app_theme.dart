@@ -41,46 +41,51 @@ class AppTheme {
         elevation: 0,
         scrolledUnderElevation: 1,
       ),
-      // Set default font family for now, can be overridden with TextStyles
       fontFamily: 'Inter',
+      fontFamilyFallback: const <String>['Noto Sans Khmer'],
       useMaterial3: true,
     );
   }
 
   // Text Styles mapped from Tailwind typography
   static const TextStyle displayHeroMobile = TextStyle(
-    fontFamily: 'Plus Jakarta Sans',
+    fontFamily: 'Inter',
+    fontFamilyFallback: <String>['Noto Sans Khmer'],
     fontSize: 28,
     height: 36 / 28,
-    letterSpacing: -0.28, // -0.01em
+    letterSpacing: -0.28,
     fontWeight: FontWeight.w700,
   );
 
   static const TextStyle displayHero = TextStyle(
-    fontFamily: 'Plus Jakarta Sans',
+    fontFamily: 'Inter',
+    fontFamilyFallback: <String>['Noto Sans Khmer'],
     fontSize: 36,
     height: 44 / 36,
-    letterSpacing: -0.72, // -0.02em
+    letterSpacing: -0.72,
     fontWeight: FontWeight.w700,
   );
 
   static const TextStyle headlineLg = TextStyle(
-    fontFamily: 'Plus Jakarta Sans',
+    fontFamily: 'Inter',
+    fontFamilyFallback: <String>['Noto Sans Khmer'],
     fontSize: 24,
     height: 32 / 24,
-    letterSpacing: -0.24, // -0.01em
+    letterSpacing: -0.24,
     fontWeight: FontWeight.w600,
   );
 
   static const TextStyle headlineMd = TextStyle(
-    fontFamily: 'Plus Jakarta Sans',
+    fontFamily: 'Inter',
+    fontFamilyFallback: <String>['Noto Sans Khmer'],
     fontSize: 20,
     height: 28 / 20,
     fontWeight: FontWeight.w600,
   );
 
   static const TextStyle headlineSm = TextStyle(
-    fontFamily: 'Plus Jakarta Sans',
+    fontFamily: 'Inter',
+    fontFamilyFallback: <String>['Noto Sans Khmer'],
     fontSize: 16,
     height: 24 / 16,
     fontWeight: FontWeight.w600,
@@ -88,6 +93,7 @@ class AppTheme {
 
   static const TextStyle bodyLg = TextStyle(
     fontFamily: 'Inter',
+    fontFamilyFallback: <String>['Noto Sans Khmer'],
     fontSize: 16,
     height: 24 / 16,
     fontWeight: FontWeight.w400,
@@ -95,6 +101,7 @@ class AppTheme {
 
   static const TextStyle bodyMd = TextStyle(
     fontFamily: 'Inter',
+    fontFamilyFallback: <String>['Noto Sans Khmer'],
     fontSize: 14,
     height: 20 / 14,
     fontWeight: FontWeight.w400,
@@ -102,6 +109,7 @@ class AppTheme {
 
   static const TextStyle bodySm = TextStyle(
     fontFamily: 'Inter',
+    fontFamilyFallback: <String>['Noto Sans Khmer'],
     fontSize: 12,
     height: 16 / 12,
     fontWeight: FontWeight.w400,
@@ -109,30 +117,34 @@ class AppTheme {
 
   static const TextStyle labelMd = TextStyle(
     fontFamily: 'Inter',
+    fontFamilyFallback: <String>['Noto Sans Khmer'],
     fontSize: 12,
     height: 16 / 12,
-    letterSpacing: 0.24, // 0.02em
+    letterSpacing: 0.24,
     fontWeight: FontWeight.w600,
   );
 
   static const TextStyle labelSm = TextStyle(
     fontFamily: 'Inter',
+    fontFamilyFallback: <String>['Noto Sans Khmer'],
     fontSize: 10,
     height: 14 / 10,
-    letterSpacing: 0.4, // 0.04em
+    letterSpacing: 0.4,
     fontWeight: FontWeight.w700,
   );
 
   static const TextStyle currencyPrimary = TextStyle(
-    fontFamily: 'Plus Jakarta Sans',
+    fontFamily: 'Inter',
+    fontFamilyFallback: <String>['Noto Sans Khmer'],
     fontSize: 22,
     height: 28 / 22,
-    letterSpacing: -0.44, // -0.02em
+    letterSpacing: -0.44,
     fontWeight: FontWeight.w700,
   );
 
   static const TextStyle currencySecondary = TextStyle(
     fontFamily: 'Inter',
+    fontFamilyFallback: <String>['Noto Sans Khmer'],
     fontSize: 14,
     height: 20 / 14,
     fontWeight: FontWeight.w500,

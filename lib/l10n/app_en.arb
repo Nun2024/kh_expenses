@@ -1,0 +1,17 @@
+{
+  "@@locale": "en",
+  "appTitle": "KH Expense",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
+  "smartLedger": "Smart Ledger",
+  "navHome": "Home",
+  "navAnalytics": "Analytics",
+  "navWallets": "Wallets",
+  "navSettings": "Settings",
+  "settingsLanguage": "Language",
+  "settingsLanguageEn": "English",
+  "settingsLanguageKm": "Khmer",
+  "goodEvening": "Good evening, Nun 👋",
+  "trackSpending": "Track dual spending in real time"
+}

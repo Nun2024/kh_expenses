@@ -9,6 +9,7 @@ import '../widgets/recent_transactions.dart';
 import '../../expenses/screens/add_expense_screen.dart';
 import '../../statistics/screens/statistics_screen.dart';
 import '../../settings/screens/settings_screen.dart';
+import 'package:kh_expense/l10n/app_localizations.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -53,7 +54,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  'KH Expense',
+                  AppLocalizations.of(context)?.appTitle ?? 'KH Expense',
                   style: AppTheme.headlineMd.copyWith(color: AppColors.primary),
                 ),
                 Row(
@@ -120,12 +121,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Good evening, Nun 👋',
+                        AppLocalizations.of(context)?.goodEvening ?? 'Good evening, Nun 👋',
                         style: AppTheme.headlineMd.copyWith(color: AppColors.onSurface),
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        'Track dual spending in real time',
+                        AppLocalizations.of(context)?.trackSpending ?? 'Track dual spending in real time',
                         style: AppTheme.bodySm.copyWith(color: AppColors.onSurfaceVariant),
                       ),
                     ],
@@ -256,21 +257,21 @@ class _DashboardScreenState extends State<DashboardScreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _buildNavItem(Icons.dashboard, 'Home', true, () {}),
-          _buildNavItem(Icons.query_stats, 'Analytics', false, () {
+          _buildNavItem(Icons.dashboard, AppLocalizations.of(context)?.navHome ?? 'Home', true, () {}),
+          _buildNavItem(Icons.query_stats, AppLocalizations.of(context)?.navAnalytics ?? 'Analytics', false, () {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => const StatisticsScreen()),
             );
           }),
           const SizedBox(width: 48), // Space for FAB
-          _buildNavItem(Icons.account_balance_wallet, 'Wallets', false, () {
+          _buildNavItem(Icons.account_balance_wallet, AppLocalizations.of(context)?.navWallets ?? 'Wallets', false, () {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => const WalletsScreen()),
             );
           }),
-          _buildNavItem(Icons.settings, 'Settings', false, () {
+          _buildNavItem(Icons.settings, AppLocalizations.of(context)?.navSettings ?? 'Settings', false, () {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => const SettingsScreen()),
