@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_theme.dart';
+import 'package:kh_expense/l10n/app_localizations.dart';
 
 class ExpenseDetailsCard extends StatelessWidget {
   const ExpenseDetailsCard({super.key});
@@ -36,7 +38,7 @@ class ExpenseDetailsCard extends StatelessWidget {
                 Expanded(
                   child: TextField(
                     decoration: InputDecoration(
-                      hintText: 'Lunch with friends (optional)',
+                      hintText: AppLocalizations.of(context)?.expenseNotesHint ?? 'Lunch with friends (optional)',
                       hintStyle: AppTheme.bodyMd.copyWith(color: AppColors.outline),
                       border: InputBorder.none,
                       isDense: true,
@@ -55,7 +57,7 @@ class ExpenseDetailsCard extends StatelessWidget {
                 children: [
                   const Icon(Icons.calendar_today, size: 20, color: AppColors.primary),
                   const SizedBox(width: 8),
-                  Text('Date:', style: AppTheme.bodyMd.copyWith(fontWeight: FontWeight.w500)),
+                  Text(AppLocalizations.of(context)?.dateLabel ?? 'Date:', style: AppTheme.bodyMd.copyWith(fontWeight: FontWeight.w500)),
                   const SizedBox(width: 8),
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
@@ -64,15 +66,15 @@ class ExpenseDetailsCard extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8),
                       border: Border.all(color: AppColors.outlineVariant.withOpacity(0.2)),
                     ),
-                    child: Text('Today, Sep 21', style: AppTheme.labelMd.copyWith(color: AppColors.onSurface)),
+                    child: Text(AppLocalizations.of(context)?.mockDate ?? 'Today, Sep 21', style: AppTheme.labelMd.copyWith(color: AppColors.onSurface)),
                   ),
                 ],
               ),
               Row(
                 children: [
-                  _buildDateQuickPick('Today', true),
+                  _buildDateQuickPick(AppLocalizations.of(context)?.today ?? 'Today', true),
                   const SizedBox(width: 6),
-                  _buildDateQuickPick('Yesterday', false),
+                  _buildDateQuickPick(AppLocalizations.of(context)?.yesterday ?? 'Yesterday', false),
                 ],
               ),
             ],

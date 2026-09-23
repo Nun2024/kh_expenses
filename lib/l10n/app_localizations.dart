@@ -163,6 +163,396 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Track dual spending in real time'**
   String get trackSpending;
+
+  /// No description provided for @spendingByCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Spending by Category'**
+  String get spendingByCategory;
+
+  /// No description provided for @seeBreakdown.
+  ///
+  /// In en, this message translates to:
+  /// **'See Breakdown'**
+  String get seeBreakdown;
+
+  /// No description provided for @categoryFoodDining.
+  ///
+  /// In en, this message translates to:
+  /// **'Food & Dining'**
+  String get categoryFoodDining;
+
+  /// No description provided for @categoryShopping.
+  ///
+  /// In en, this message translates to:
+  /// **'Shopping'**
+  String get categoryShopping;
+
+  /// No description provided for @categoryTransport.
+  ///
+  /// In en, this message translates to:
+  /// **'Transport (PassApp/Grab)'**
+  String get categoryTransport;
+
+  /// No description provided for @categoryUtilities.
+  ///
+  /// In en, this message translates to:
+  /// **'Utilities (EDC/Water)'**
+  String get categoryUtilities;
+
+  /// No description provided for @todaysSpend.
+  ///
+  /// In en, this message translates to:
+  /// **'Today\'s Spend'**
+  String get todaysSpend;
+
+  /// No description provided for @transactionsTodayMock.
+  ///
+  /// In en, this message translates to:
+  /// **'3 transactions today'**
+  String get transactionsTodayMock;
+
+  /// No description provided for @monthlyBudget.
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly Budget'**
+  String get monthlyBudget;
+
+  /// No description provided for @budgetUsedPercentMock.
+  ///
+  /// In en, this message translates to:
+  /// **'65% used'**
+  String get budgetUsedPercentMock;
+
+  /// No description provided for @budgetLeftAmountMock.
+  ///
+  /// In en, this message translates to:
+  /// **'Left: \$172.50'**
+  String get budgetLeftAmountMock;
+
+  /// No description provided for @recentTransactions.
+  ///
+  /// In en, this message translates to:
+  /// **'Recent Transactions'**
+  String get recentTransactions;
+
+  /// No description provided for @viewAll.
+  ///
+  /// In en, this message translates to:
+  /// **'View All'**
+  String get viewAll;
+
+  /// No description provided for @paymentCash.
+  ///
+  /// In en, this message translates to:
+  /// **'Cash'**
+  String get paymentCash;
+
+  /// No description provided for @paymentABAPay.
+  ///
+  /// In en, this message translates to:
+  /// **'ABA Pay'**
+  String get paymentABAPay;
+
+  /// No description provided for @paymentBakong.
+  ///
+  /// In en, this message translates to:
+  /// **'Bakong KHQR'**
+  String get paymentBakong;
+
+  /// No description provided for @paymentWing.
+  ///
+  /// In en, this message translates to:
+  /// **'Wing'**
+  String get paymentWing;
+
+  /// No description provided for @yesterday.
+  ///
+  /// In en, this message translates to:
+  /// **'Yesterday'**
+  String get yesterday;
+
+  /// No description provided for @mockTx1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Khmer Noodle Soup (Nom Banh Chok)'**
+  String get mockTx1Title;
+
+  /// No description provided for @mockTx1Time.
+  ///
+  /// In en, this message translates to:
+  /// **'12:45 PM'**
+  String get mockTx1Time;
+
+  /// No description provided for @mockTx2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'PassApp Rickshaw'**
+  String get mockTx2Title;
+
+  /// No description provided for @mockTx2Time.
+  ///
+  /// In en, this message translates to:
+  /// **'9:15 AM'**
+  String get mockTx2Time;
+
+  /// No description provided for @mockTx3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Brown Coffee / Iced Latte'**
+  String get mockTx3Title;
+
+  /// No description provided for @mockTx3Time.
+  ///
+  /// In en, this message translates to:
+  /// **'8:30 AM'**
+  String get mockTx3Time;
+
+  /// No description provided for @mockTx4Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Aeon Mart Groceries'**
+  String get mockTx4Title;
+
+  /// No description provided for @totalSpendingMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'TOTAL SPENDING (SEPTEMBER 2026)'**
+  String get totalSpendingMonth;
+
+  /// No description provided for @usdAndKhr.
+  ///
+  /// In en, this message translates to:
+  /// **'USD & KHR'**
+  String get usdAndKhr;
+
+  /// No description provided for @exchangeRateMock.
+  ///
+  /// In en, this message translates to:
+  /// **'Rate: \$1 = ៛4,085'**
+  String get exchangeRateMock;
+
+  /// No description provided for @vsLastMonthMock.
+  ///
+  /// In en, this message translates to:
+  /// **'-12% vs last mo'**
+  String get vsLastMonthMock;
+
+  /// No description provided for @filterToday.
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get filterToday;
+
+  /// No description provided for @filterThisWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'This Week'**
+  String get filterThisWeek;
+
+  /// No description provided for @filterThisMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'This Month'**
+  String get filterThisMonth;
+
+  /// No description provided for @fastLog.
+  ///
+  /// In en, this message translates to:
+  /// **'Fast Log'**
+  String get fastLog;
+
+  /// No description provided for @nbcRateSyncedToday.
+  ///
+  /// In en, this message translates to:
+  /// **'NBC Rate Synced Today'**
+  String get nbcRateSyncedToday;
+
+  /// No description provided for @spendingInsights.
+  ///
+  /// In en, this message translates to:
+  /// **'Spending Insights'**
+  String get spendingInsights;
+
+  /// No description provided for @nbcRateMock.
+  ///
+  /// In en, this message translates to:
+  /// **'NBC: \$1 = ៛4,085'**
+  String get nbcRateMock;
+
+  /// No description provided for @saveExpensePrefix.
+  ///
+  /// In en, this message translates to:
+  /// **'Save Expense •'**
+  String get saveExpensePrefix;
+
+  /// No description provided for @addExpense.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Expense'**
+  String get addExpense;
+
+  /// No description provided for @clearBtn.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear'**
+  String get clearBtn;
+
+  /// No description provided for @offlineFirstSync.
+  ///
+  /// In en, this message translates to:
+  /// **'Offline-first • Instant sync to Bakong & Local Wallet'**
+  String get offlineFirstSync;
+
+  /// No description provided for @currencyUsd.
+  ///
+  /// In en, this message translates to:
+  /// **'USD \$'**
+  String get currencyUsd;
+
+  /// No description provided for @currencyKhr.
+  ///
+  /// In en, this message translates to:
+  /// **'KHR ៛'**
+  String get currencyKhr;
+
+  /// No description provided for @category.
+  ///
+  /// In en, this message translates to:
+  /// **'Category'**
+  String get category;
+
+  /// No description provided for @tapToSelect.
+  ///
+  /// In en, this message translates to:
+  /// **'• Tap to select'**
+  String get tapToSelect;
+
+  /// No description provided for @presetsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'8 presets'**
+  String get presetsCount;
+
+  /// No description provided for @categoryFood.
+  ///
+  /// In en, this message translates to:
+  /// **'Food'**
+  String get categoryFood;
+
+  /// No description provided for @categoryTransportShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Transport'**
+  String get categoryTransportShort;
+
+  /// No description provided for @categoryHousing.
+  ///
+  /// In en, this message translates to:
+  /// **'Housing'**
+  String get categoryHousing;
+
+  /// No description provided for @categoryShoppingShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Shopping'**
+  String get categoryShoppingShort;
+
+  /// No description provided for @categoryUtilitiesShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Utilities'**
+  String get categoryUtilitiesShort;
+
+  /// No description provided for @categoryPhoneNet.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone & Net'**
+  String get categoryPhoneNet;
+
+  /// No description provided for @categoryEducation.
+  ///
+  /// In en, this message translates to:
+  /// **'Education'**
+  String get categoryEducation;
+
+  /// No description provided for @categoryOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Other'**
+  String get categoryOther;
+
+  /// No description provided for @expenseNotesHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Lunch with friends (optional)'**
+  String get expenseNotesHint;
+
+  /// No description provided for @dateLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Date:'**
+  String get dateLabel;
+
+  /// No description provided for @mockDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Today, Sep 21'**
+  String get mockDate;
+
+  /// No description provided for @today.
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get today;
+
+  /// No description provided for @paymentMethod.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment Method'**
+  String get paymentMethod;
+
+  /// No description provided for @khqrReady.
+  ///
+  /// In en, this message translates to:
+  /// **'KHQR Ready'**
+  String get khqrReady;
+
+  /// No description provided for @paymentCashKhr.
+  ///
+  /// In en, this message translates to:
+  /// **'Cash (US\$ / ៛)'**
+  String get paymentCashKhr;
+
+  /// No description provided for @paymentAcleda.
+  ///
+  /// In en, this message translates to:
+  /// **'ACLEDA'**
+  String get paymentAcleda;
+
+  /// No description provided for @paymentWingBank.
+  ///
+  /// In en, this message translates to:
+  /// **'Wing Bank'**
+  String get paymentWingBank;
+
+  /// No description provided for @paymentBankTransfer.
+  ///
+  /// In en, this message translates to:
+  /// **'Bank Transfer'**
+  String get paymentBankTransfer;
+
+  /// No description provided for @paymentOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Other'**
+  String get paymentOther;
+
+  /// No description provided for @fastLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'FAST'**
+  String get fastLabel;
 }
 
 class _AppLocalizationsDelegate

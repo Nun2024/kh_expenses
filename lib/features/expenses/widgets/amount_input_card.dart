@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_theme.dart';
+import 'package:kh_expense/l10n/app_localizations.dart';
 
 class AmountInputCard extends StatelessWidget {
   final String currentCurrency;
@@ -67,7 +68,7 @@ class AmountInputCard extends StatelessWidget {
                   children: [
                     Container(width: 6, height: 6, decoration: const BoxDecoration(color: AppColors.secondary, shape: BoxShape.circle)),
                     const SizedBox(width: 4),
-                    Text('NBC Rate: \$1 = ៛4,085', style: AppTheme.labelSm.copyWith(color: AppColors.onSurfaceVariant, fontSize: 11)),
+                    Text(AppLocalizations.of(context)?.nbcRateMock ?? 'NBC Rate: \$1 = ៛4,085', style: AppTheme.labelSm.copyWith(color: AppColors.onSurfaceVariant, fontSize: 11)),
                   ],
                 ),
               ),
@@ -80,8 +81,8 @@ class AmountInputCard extends StatelessWidget {
                 ),
                 child: Row(
                   children: [
-                    _buildCurrencyToggle('USD \$', currentCurrency == 'USD', () => onCurrencyChanged('USD')),
-                    _buildCurrencyToggle('KHR ៛', currentCurrency == 'KHR', () => onCurrencyChanged('KHR')),
+                    _buildCurrencyToggle(AppLocalizations.of(context)?.currencyUsd ?? 'USD \$', currentCurrency == 'USD', () => onCurrencyChanged('USD')),
+                    _buildCurrencyToggle(AppLocalizations.of(context)?.currencyKhr ?? 'KHR ៛', currentCurrency == 'KHR', () => onCurrencyChanged('KHR')),
                   ],
                 ),
               ),

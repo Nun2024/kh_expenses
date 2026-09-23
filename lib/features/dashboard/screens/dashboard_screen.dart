@@ -143,8 +143,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         const Icon(Icons.bolt, size: 14, color: AppColors.primary),
                         const SizedBox(width: 4),
                         Text(
-                          'Fast Log',
-                          style: AppTheme.labelSm.copyWith(color: AppColors.primary),
+                          AppLocalizations.of(context)?.fastLog ?? 'Fast Log',
+                          style: AppTheme.labelSm.copyWith(
+                            color: AppColors.primary,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ],
                     ),
@@ -163,21 +166,21 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   children: [
                     Expanded(
                       child: _buildSegmentButton(
-                        'Today', 
+                        AppLocalizations.of(context)?.filterToday ?? 'Today', 
                         _selectedPeriod == 'Today',
                         () => setState(() => _selectedPeriod = 'Today'),
                       ),
                     ),
                     Expanded(
                       child: _buildSegmentButton(
-                        'This Week', 
+                        AppLocalizations.of(context)?.filterThisWeek ?? 'This Week', 
                         _selectedPeriod == 'This Week',
                         () => setState(() => _selectedPeriod = 'This Week'),
                       ),
                     ),
                     Expanded(
                       child: _buildSegmentButton(
-                        'This Month', 
+                        AppLocalizations.of(context)?.filterThisMonth ?? 'This Month', 
                         _selectedPeriod == 'This Month',
                         () => setState(() => _selectedPeriod = 'This Month'),
                       ),

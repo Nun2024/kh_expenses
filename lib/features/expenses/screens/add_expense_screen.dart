@@ -7,6 +7,7 @@ import '../widgets/category_picker_grid.dart';
 import '../widgets/payment_method_list.dart';
 import '../widgets/expense_details_card.dart';
 import '../widgets/numeric_keypad.dart';
+import 'package:kh_expense/l10n/app_localizations.dart';
 
 class AddExpenseScreen extends StatefulWidget {
   const AddExpenseScreen({super.key});
@@ -88,10 +89,11 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
   Widget build(BuildContext context) {
     final double num = double.tryParse(_currentAmountStr) ?? 0;
     String ctaLabel;
+    final prefix = AppLocalizations.of(context)?.saveExpensePrefix ?? 'Save Expense •';
     if (_currentCurrency == 'USD') {
-      ctaLabel = 'Save Expense • \$$_currentAmountStr';
+      ctaLabel = '$prefix \$$_currentAmountStr';
     } else {
-      ctaLabel = 'Save Expense • ៛${num.round().toString().replaceAllMapped(RegExp(r"(\\d{1,3})(?=(\\d{3})+(?!\\d))"), (Match m) => "${m[1]},")}';
+      ctaLabel = '$prefix ៛${num.round().toString().replaceAllMapped(RegExp(r"(\\d{1,3})(?=(\\d{3})+(?!\\d))"), (Match m) => "${m[1]},")}';
     }
 
     return Scaffold(
@@ -103,7 +105,7 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
           icon: const Icon(Icons.arrow_back, color: AppColors.onSurface),
           onPressed: () => Navigator.pop(context),
         ),
-        title: Text('Add Expense', style: AppTheme.headlineMd.copyWith(color: AppColors.onSurface)),
+        title: Text(AppLocalizations.of(context)?.addExpense ?? 'Add Expense', style: AppTheme.headlineMd.copyWith(color: AppColors.onSurface)),
         actions: [
           TextButton(
             onPressed: _onClear,
@@ -111,7 +113,7 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
               foregroundColor: AppColors.error,
               padding: const EdgeInsets.symmetric(horizontal: 12),
             ),
-            child: Text('Clear', style: AppTheme.labelMd),
+            child: Text(AppLocalizations.of(context)?.clearBtn ?? 'Clear', style: AppTheme.labelMd),
           ),
           IconButton(
             icon: const Icon(Icons.close, color: AppColors.onSurfaceVariant, size: 20),
@@ -192,7 +194,7 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
                 const Icon(Icons.offline_pin, size: 14, color: AppColors.secondary),
                 const SizedBox(width: 6),
                 Text(
-                  'Offline-first • Instant sync to Bakong & Local Wallet',
+                  AppLocalizations.of(context)?.offlineFirstSync ?? 'Offline-first • Instant sync to Bakong & Local Wallet',
                   style: AppTheme.bodySm.copyWith(color: AppColors.onSurfaceVariant, fontSize: 11),
                 ),
               ],

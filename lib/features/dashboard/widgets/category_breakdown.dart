@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_theme.dart';
+import 'package:kh_expense/l10n/app_localizations.dart';
 
 class CategoryBreakdown extends StatelessWidget {
   const CategoryBreakdown({super.key});
@@ -37,14 +38,14 @@ class CategoryBreakdown extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 8),
-                  Text('Spending by Category', style: AppTheme.headlineSm.copyWith(color: AppColors.onSurface)),
+                  Text(AppLocalizations.of(context)?.spendingByCategory ?? 'Spending by Category', style: AppTheme.headlineSm.copyWith(color: AppColors.onSurface)),
                 ],
               ),
               InkWell(
                 onTap: () {},
                 child: Row(
                   children: [
-                    Text('See Breakdown', style: AppTheme.labelMd.copyWith(color: AppColors.primary)),
+                    Text(AppLocalizations.of(context)?.seeBreakdown ?? 'See Breakdown', style: AppTheme.labelMd.copyWith(color: AppColors.primary)),
                     const Icon(Icons.chevron_right, size: 16, color: AppColors.primary),
                   ],
                 ),
@@ -55,7 +56,7 @@ class CategoryBreakdown extends StatelessWidget {
           _buildCategoryItem(
             emoji: '🍜',
             bgColor: AppColors.tertiaryFixed.withOpacity(0.6),
-            title: 'Food & Dining',
+            title: AppLocalizations.of(context)?.categoryFoodDining ?? 'Food & Dining',
             amount: '\$120.00',
             percentage: '37%',
             progressValue: 0.37,
@@ -65,7 +66,7 @@ class CategoryBreakdown extends StatelessWidget {
           _buildCategoryItem(
             emoji: '🛍',
             bgColor: AppColors.secondaryFixed.withOpacity(0.6),
-            title: 'Shopping',
+            title: AppLocalizations.of(context)?.categoryShopping ?? 'Shopping',
             amount: '\$82.00',
             percentage: '25%',
             progressValue: 0.25,
@@ -75,7 +76,7 @@ class CategoryBreakdown extends StatelessWidget {
           _buildCategoryItem(
             emoji: '🚕',
             bgColor: AppColors.primaryFixed.withOpacity(0.5),
-            title: 'Transport (PassApp/Grab)',
+            title: AppLocalizations.of(context)?.categoryTransport ?? 'Transport (PassApp/Grab)',
             amount: '\$65.00',
             percentage: '20%',
             progressValue: 0.20,
@@ -85,7 +86,7 @@ class CategoryBreakdown extends StatelessWidget {
           _buildCategoryItem(
             emoji: '💡',
             bgColor: AppColors.surfaceContainerHighest,
-            title: 'Utilities (EDC/Water)',
+            title: AppLocalizations.of(context)?.categoryUtilities ?? 'Utilities (EDC/Water)',
             amount: '\$60.00',
             percentage: '18%',
             progressValue: 0.18,

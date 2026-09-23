@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_theme.dart';
+import 'package:kh_expense/l10n/app_localizations.dart';
 
 class SpendingCard extends StatelessWidget {
   const SpendingCard({super.key});
@@ -52,7 +53,7 @@ class SpendingCard extends StatelessWidget {
                         Icon(Icons.calendar_month, color: AppColors.onPrimary.withOpacity(0.9), size: 16),
                         const SizedBox(width: 6),
                         Text(
-                          'TOTAL SPENDING (SEPTEMBER 2026)',
+                          AppLocalizations.of(context)?.totalSpendingMonth ?? 'TOTAL SPENDING (SEPTEMBER 2026)',
                           style: AppTheme.labelMd.copyWith(
                             color: AppColors.onPrimary.withOpacity(0.9),
                             fontWeight: FontWeight.w600,
@@ -67,7 +68,7 @@ class SpendingCard extends StatelessWidget {
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Text(
-                        'USD & KHR',
+                        AppLocalizations.of(context)?.usdAndKhr ?? 'USD & KHR',
                         style: AppTheme.labelSm.copyWith(color: AppColors.onPrimary),
                       ),
                     ),
@@ -120,7 +121,7 @@ class SpendingCard extends StatelessWidget {
                           Icon(Icons.swap_horiz, color: AppColors.onPrimary.withOpacity(0.8), size: 14),
                           const SizedBox(width: 4),
                           Text(
-                            'Rate: \$1 = ៛4,085',
+                            AppLocalizations.of(context)?.exchangeRateMock ?? 'Rate: \$1 = ៛4,085',
                             style: AppTheme.bodySm.copyWith(
                               color: AppColors.onPrimary.withOpacity(0.8),
                             ),
@@ -132,7 +133,7 @@ class SpendingCard extends StatelessWidget {
                           const Icon(Icons.trending_down, color: AppColors.secondaryFixed, size: 14),
                           const SizedBox(width: 4),
                           Text(
-                            '-12% vs last mo',
+                            AppLocalizations.of(context)?.vsLastMonthMock ?? '-12% vs last mo',
                             style: AppTheme.labelMd.copyWith(
                               color: AppColors.secondaryFixed,
                             ),

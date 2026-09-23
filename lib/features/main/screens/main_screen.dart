@@ -6,6 +6,7 @@ import '../../statistics/screens/statistics_screen.dart';
 import '../../settings/screens/settings_screen.dart';
 import '../../wallets/screens/wallets_screen.dart';
 import '../../expenses/screens/add_expense_screen.dart';
+import 'package:kh_expense/l10n/app_localizations.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -54,21 +55,22 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   PreferredSizeWidget _buildSharedAppBar() {
-    String title = 'KH Expense';
-    String subtitle = 'Smart Ledger';
+    final l10n = AppLocalizations.of(context);
+    String title = l10n?.appTitle ?? 'KH Expense';
+    String subtitle = l10n?.smartLedger ?? 'Smart Ledger';
     bool showAvatar = true;
 
     if (_currentIndex == 3) {
-      title = 'Settings';
-      subtitle = 'NBC Rate Synced Today';
+      title = l10n?.navSettings ?? 'Settings';
+      subtitle = l10n?.nbcRateSyncedToday ?? 'NBC Rate Synced Today';
       showAvatar = false;
     } else if (_currentIndex == 1) {
-      title = 'Analytics';
-      subtitle = 'Spending Insights';
+      title = l10n?.navAnalytics ?? 'Analytics';
+      subtitle = l10n?.spendingInsights ?? 'Spending Insights';
       showAvatar = false;
     } else if (_currentIndex == 2) {
-      title = 'Wallets';
-      subtitle = 'NBC: \$1 = ៛4,085';
+      title = l10n?.navWallets ?? 'Wallets';
+      subtitle = l10n?.nbcRateMock ?? 'NBC: $1 = ៛4,085';
       showAvatar = true;
     }
 
@@ -192,11 +194,11 @@ class _MainScreenState extends State<MainScreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _buildNavItem(0, Icons.dashboard, 'Home'),
-          _buildNavItem(1, Icons.query_stats, 'Analytics'),
+          _buildNavItem(0, Icons.dashboard, AppLocalizations.of(context)?.navHome ?? 'Home'),
+          _buildNavItem(1, Icons.query_stats, AppLocalizations.of(context)?.navAnalytics ?? 'Analytics'),
           const SizedBox(width: 48), // Space for FAB
-          _buildNavItem(2, Icons.account_balance_wallet, 'Wallets'),
-          _buildNavItem(3, Icons.settings, 'Settings'),
+          _buildNavItem(2, Icons.account_balance_wallet, AppLocalizations.of(context)?.navWallets ?? 'Wallets'),
+          _buildNavItem(3, Icons.settings, AppLocalizations.of(context)?.navSettings ?? 'Settings'),
         ],
       ),
     );

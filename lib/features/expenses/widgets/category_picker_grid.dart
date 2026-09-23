@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_theme.dart';
+import 'package:kh_expense/l10n/app_localizations.dart';
 
 class CategoryPickerGrid extends StatelessWidget {
   final String activeCategory;
@@ -22,12 +23,12 @@ class CategoryPickerGrid extends StatelessWidget {
           children: [
             Row(
               children: [
-                Text('Category', style: AppTheme.headlineSm.copyWith(color: AppColors.onSurface)),
+                Text(AppLocalizations.of(context)?.category ?? 'Category', style: AppTheme.headlineSm.copyWith(color: AppColors.onSurface)),
                 const SizedBox(width: 6),
-                Text('• Tap to select', style: AppTheme.bodySm.copyWith(color: AppColors.primary, fontWeight: FontWeight.w500)),
+                Text(AppLocalizations.of(context)?.tapToSelect ?? '• Tap to select', style: AppTheme.bodySm.copyWith(color: AppColors.primary, fontWeight: FontWeight.w500)),
               ],
             ),
-            Text('8 presets', style: AppTheme.labelSm.copyWith(color: AppColors.onSurfaceVariant)),
+            Text(AppLocalizations.of(context)?.presetsCount ?? '8 presets', style: AppTheme.labelSm.copyWith(color: AppColors.onSurfaceVariant)),
           ],
         ),
         const SizedBox(height: 8),
@@ -40,23 +41,23 @@ class CategoryPickerGrid extends StatelessWidget {
           childAspectRatio: 0.85,
           padding: EdgeInsets.zero,
           children: [
-            _buildCategoryItem('Food', '🍜', activeCategory == 'Food'),
-            _buildCategoryItem('Transport', '🚕', activeCategory == 'Transport'),
-            _buildCategoryItem('Housing', '🏠', activeCategory == 'Housing'),
-            _buildCategoryItem('Shopping', '🛍', activeCategory == 'Shopping'),
-            _buildCategoryItem('Utilities', '💡', activeCategory == 'Utilities'),
-            _buildCategoryItem('Phone & Net', '📱', activeCategory == 'Phone & Net'),
-            _buildCategoryItem('Education', '🎓', activeCategory == 'Education'),
-            _buildCategoryItem('Other', '📦', activeCategory == 'Other'),
+            _buildCategoryItem(AppLocalizations.of(context)?.categoryFood ?? 'Food', '🍜', activeCategory == 'Food', () => onCategorySelected('Food')),
+            _buildCategoryItem(AppLocalizations.of(context)?.categoryTransportShort ?? 'Transport', '🚕', activeCategory == 'Transport', () => onCategorySelected('Transport')),
+            _buildCategoryItem(AppLocalizations.of(context)?.categoryHousing ?? 'Housing', '🏠', activeCategory == 'Housing', () => onCategorySelected('Housing')),
+            _buildCategoryItem(AppLocalizations.of(context)?.categoryShoppingShort ?? 'Shopping', '🛍', activeCategory == 'Shopping', () => onCategorySelected('Shopping')),
+            _buildCategoryItem(AppLocalizations.of(context)?.categoryUtilitiesShort ?? 'Utilities', '💡', activeCategory == 'Utilities', () => onCategorySelected('Utilities')),
+            _buildCategoryItem(AppLocalizations.of(context)?.categoryPhoneNet ?? 'Phone & Net', '📱', activeCategory == 'Phone & Net', () => onCategorySelected('Phone & Net')),
+            _buildCategoryItem(AppLocalizations.of(context)?.categoryEducation ?? 'Education', '🎓', activeCategory == 'Education', () => onCategorySelected('Education')),
+            _buildCategoryItem(AppLocalizations.of(context)?.categoryOther ?? 'Other', '📦', activeCategory == 'Other', () => onCategorySelected('Other')),
           ],
         ),
       ],
     );
   }
 
-  Widget _buildCategoryItem(String name, String emoji, bool isSelected) {
+  Widget _buildCategoryItem(String name, String emoji, bool isSelected, VoidCallback onTap) {
     return GestureDetector(
-      onTap: () => onCategorySelected(name),
+      onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
           color: AppColors.surfaceContainerLowest,

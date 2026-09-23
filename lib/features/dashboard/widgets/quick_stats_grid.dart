@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_theme.dart';
+import 'package:kh_expense/l10n/app_localizations.dart';
 
 class QuickStatsGrid extends StatelessWidget {
   const QuickStatsGrid({super.key});
@@ -12,13 +13,13 @@ class QuickStatsGrid extends StatelessWidget {
         Expanded(
           child: _buildStatCard(
             context,
-            title: "Today's Spend",
+            title: AppLocalizations.of(context)?.todaysSpend ?? "Today's Spend",
             icon: Icons.receipt_long,
             iconBgColor: AppColors.surfaceContainer,
             iconColor: AppColors.primary,
             mainValue: '\$12.50',
             subValue: '៛51,000 KHR',
-            footerText: '3 transactions today',
+            footerText: AppLocalizations.of(context)?.transactionsTodayMock ?? '3 transactions today',
             footerIcon: Icons.schedule,
             footerBgColor: AppColors.secondaryFixed.withOpacity(0.3),
             footerColor: AppColors.secondary,
@@ -119,7 +120,7 @@ class QuickStatsGrid extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Monthly Budget', style: AppTheme.labelMd.copyWith(color: AppColors.onSurfaceVariant)),
+              Text(AppLocalizations.of(context)?.monthlyBudget ?? 'Monthly Budget', style: AppTheme.labelMd.copyWith(color: AppColors.onSurfaceVariant)),
               Container(
                 padding: const EdgeInsets.all(6),
                 decoration: BoxDecoration(
@@ -154,8 +155,8 @@ class QuickStatsGrid extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('65% used', style: AppTheme.labelSm.copyWith(color: AppColors.outline)),
-              Text('Left: \$172.50', style: AppTheme.labelSm.copyWith(color: AppColors.primary, fontWeight: FontWeight.w700)),
+              Text(AppLocalizations.of(context)?.budgetUsedPercentMock ?? '65% used', style: AppTheme.labelSm.copyWith(color: AppColors.outline)),
+              Text(AppLocalizations.of(context)?.budgetLeftAmountMock ?? 'Left: \$172.50', style: AppTheme.labelSm.copyWith(color: AppColors.primary, fontWeight: FontWeight.w700)),
             ],
           ),
         ],

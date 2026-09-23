@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_theme.dart';
+import 'package:kh_expense/l10n/app_localizations.dart';
 
 class PaymentMethodList extends StatelessWidget {
   final String activePayment;
@@ -20,12 +21,12 @@ class PaymentMethodList extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('Payment Method', style: AppTheme.headlineSm.copyWith(color: AppColors.onSurface)),
+            Text(AppLocalizations.of(context)?.paymentMethod ?? 'Payment Method', style: AppTheme.headlineSm.copyWith(color: AppColors.onSurface)),
             Row(
               children: [
                 const Icon(Icons.verified, size: 14, color: AppColors.secondary),
                 const SizedBox(width: 4),
-                Text('KHQR Ready', style: AppTheme.bodySm.copyWith(color: AppColors.onSurfaceVariant)),
+                Text(AppLocalizations.of(context)?.khqrReady ?? 'KHQR Ready', style: AppTheme.bodySm.copyWith(color: AppColors.onSurfaceVariant)),
               ],
             ),
           ],
@@ -37,45 +38,46 @@ class PaymentMethodList extends StatelessWidget {
           child: Row(
             children: [
               _buildPaymentPill(
-                'Bakong KHQR',
+                AppLocalizations.of(context)?.paymentBakong ?? 'Bakong KHQR',
                 Icons.qr_code_scanner,
                 activePayment == 'Bakong KHQR',
                 isFast: true,
+                fastLabel: AppLocalizations.of(context)?.fastLabel ?? 'FAST',
               ),
               const SizedBox(width: 8),
               _buildPaymentPill(
-                'Cash (US\$ / ៛)',
+                AppLocalizations.of(context)?.paymentCashKhr ?? 'Cash (US\$ / ៛)',
                 Icons.payments,
                 activePayment == 'Cash (US\$ / ៛)',
               ),
               const SizedBox(width: 8),
               _buildPaymentPill(
-                'ABA Pay',
+                AppLocalizations.of(context)?.paymentABAPay ?? 'ABA Pay',
                 null, // Text icon for ABA
                 activePayment == 'ABA Pay',
                 customIconText: 'ABA',
               ),
               const SizedBox(width: 8),
               _buildPaymentPill(
-                'ACLEDA',
+                AppLocalizations.of(context)?.paymentAcleda ?? 'ACLEDA',
                 Icons.account_balance,
                 activePayment == 'ACLEDA',
               ),
               const SizedBox(width: 8),
               _buildPaymentPill(
-                'Wing Bank',
+                AppLocalizations.of(context)?.paymentWingBank ?? 'Wing Bank',
                 Icons.bolt,
                 activePayment == 'Wing Bank',
               ),
               const SizedBox(width: 8),
               _buildPaymentPill(
-                'Bank Transfer',
+                AppLocalizations.of(context)?.paymentBankTransfer ?? 'Bank Transfer',
                 Icons.sync_alt,
                 activePayment == 'Bank Transfer',
               ),
               const SizedBox(width: 8),
               _buildPaymentPill(
-                'Other',
+                AppLocalizations.of(context)?.paymentOther ?? 'Other',
                 Icons.more_horiz,
                 activePayment == 'Other',
               ),
@@ -86,7 +88,7 @@ class PaymentMethodList extends StatelessWidget {
     );
   }
 
-  Widget _buildPaymentPill(String name, IconData? icon, bool isSelected, {bool isFast = false, String? customIconText}) {
+  Widget _buildPaymentPill(String name, IconData? icon, bool isSelected, {bool isFast = false, String? customIconText, String fastLabel = 'FAST'}) {
     return GestureDetector(
       onTap: () => onPaymentSelected(name),
       child: Container(
@@ -158,9 +160,9 @@ class PaymentMethodList extends StatelessWidget {
                   color: Colors.white.withOpacity(0.2),
                   borderRadius: BorderRadius.circular(4),
                 ),
-                child: const Text(
-                  'FAST',
-                  style: TextStyle(fontSize: 9, fontWeight: FontWeight.bold, letterSpacing: 0.5, color: Colors.white),
+                child: Text(
+                  fastLabel,
+                  style: const TextStyle(fontSize: 9, fontWeight: FontWeight.bold, letterSpacing: 0.5, color: Colors.white),
                 ),
               ),
           ],

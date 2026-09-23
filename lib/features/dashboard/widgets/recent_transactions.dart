@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../transactions/screens/transactions_screen.dart';
+import 'package:kh_expense/l10n/app_localizations.dart';
 
 class RecentTransactions extends StatelessWidget {
   const RecentTransactions({super.key});
@@ -25,7 +26,7 @@ class RecentTransactions extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 8),
-                Text('Recent Transactions', style: AppTheme.headlineSm.copyWith(color: AppColors.onSurface)),
+                Text(AppLocalizations.of(context)?.recentTransactions ?? 'Recent Transactions', style: AppTheme.headlineSm.copyWith(color: AppColors.onSurface)),
               ],
             ),
             InkWell(
@@ -37,7 +38,7 @@ class RecentTransactions extends StatelessWidget {
               },
               child: Row(
                 children: [
-                  Text('View All', style: AppTheme.labelMd.copyWith(color: AppColors.primary)),
+                  Text(AppLocalizations.of(context)?.viewAll ?? 'View All', style: AppTheme.labelMd.copyWith(color: AppColors.primary)),
                   const Icon(Icons.arrow_forward, size: 16, color: AppColors.primary),
                 ],
               ),
@@ -48,9 +49,9 @@ class RecentTransactions extends StatelessWidget {
         _buildTransactionItem(
           emoji: '🍜',
           bgColor: AppColors.tertiaryFixed.withOpacity(0.4),
-          title: 'Khmer Noodle Soup (Nom Banh Chok)',
-          time: '12:45 PM',
-          method: 'Cash',
+          title: AppLocalizations.of(context)?.mockTx1Title ?? 'Khmer Noodle Soup (Nom Banh Chok)',
+          time: AppLocalizations.of(context)?.mockTx1Time ?? '12:45 PM',
+          method: AppLocalizations.of(context)?.paymentCash ?? 'Cash',
           methodBgColor: AppColors.surfaceContainer,
           methodColor: AppColors.onSurfaceVariant,
           usdAmount: '-\$4.50',
@@ -60,9 +61,9 @@ class RecentTransactions extends StatelessWidget {
         _buildTransactionItem(
           emoji: '🚕',
           bgColor: AppColors.primaryFixed.withOpacity(0.4),
-          title: 'PassApp Rickshaw',
-          time: '9:15 AM',
-          method: 'ABA Pay',
+          title: AppLocalizations.of(context)?.mockTx2Title ?? 'PassApp Rickshaw',
+          time: AppLocalizations.of(context)?.mockTx2Time ?? '9:15 AM',
+          method: AppLocalizations.of(context)?.paymentABAPay ?? 'ABA Pay',
           methodBgColor: AppColors.primaryFixed.withOpacity(0.3),
           methodColor: AppColors.primary,
           usdAmount: '-\$2.00',
@@ -72,9 +73,9 @@ class RecentTransactions extends StatelessWidget {
         _buildTransactionItem(
           emoji: '☕',
           bgColor: AppColors.tertiaryContainer.withOpacity(0.2),
-          title: 'Brown Coffee / Iced Latte',
-          time: '8:30 AM',
-          method: 'Bakong KHQR',
+          title: AppLocalizations.of(context)?.mockTx3Title ?? 'Brown Coffee / Iced Latte',
+          time: AppLocalizations.of(context)?.mockTx3Time ?? '8:30 AM',
+          method: AppLocalizations.of(context)?.paymentBakong ?? 'Bakong KHQR',
           methodBgColor: AppColors.errorContainer.withOpacity(0.4),
           methodColor: AppColors.error,
           usdAmount: '-\$2.50',
@@ -84,9 +85,9 @@ class RecentTransactions extends StatelessWidget {
         _buildTransactionItem(
           emoji: '🛒',
           bgColor: AppColors.secondaryFixed.withOpacity(0.4),
-          title: 'Aeon Mart Groceries',
-          time: 'Yesterday',
-          method: 'Wing',
+          title: AppLocalizations.of(context)?.mockTx4Title ?? 'Aeon Mart Groceries',
+          time: AppLocalizations.of(context)?.yesterday ?? 'Yesterday',
+          method: AppLocalizations.of(context)?.paymentWing ?? 'Wing',
           methodBgColor: AppColors.secondaryContainer.withOpacity(0.6),
           methodColor: AppColors.onSecondaryContainer,
           usdAmount: '-\$18.20',
