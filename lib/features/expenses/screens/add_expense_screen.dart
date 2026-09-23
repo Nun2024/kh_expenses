@@ -8,6 +8,9 @@ import '../widgets/payment_method_list.dart';
 import '../widgets/expense_details_card.dart';
 import '../widgets/numeric_keypad.dart';
 import 'package:kh_expense/l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
+import '../providers/expense_provider.dart';
+import '../models/expense.dart';
 
 class AddExpenseScreen extends StatefulWidget {
   const AddExpenseScreen({super.key});
@@ -22,6 +25,13 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
   String _activeCategory = 'Food';
   String _activePayment = 'Bakong KHQR';
   final double _fxRate = 4085;
+  final TextEditingController _notesController = TextEditingController();
+
+  @override
+  void dispose() {
+    _notesController.dispose();
+    super.dispose();
+  }
 
   void _onCurrencyChanged(String currency) {
     if (_currentCurrency == currency) return;
@@ -147,7 +157,7 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
                       onPaymentSelected: _onPaymentSelected,
                     ),
                     const SizedBox(height: 16),
-                    const ExpenseDetailsCard(),
+                    ExpenseDetailsCard(notesController: _notesController),
                     const SizedBox(height: 16),
                     NumericKeypad(
                       onKeyPress: _onKeyPress,
@@ -169,7 +179,20 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
           children: [
             ElevatedButton(
               onPressed: () {
-                PricingModal.show(context);
+                final double amount = double.tryParse(_currentAmountStr) ?? 0;
+                final expense = Expense(
+                  id: DateTime.now().millisecondsSinceEpoch.toString(),
+                  amount: amount,
+                  currency: _currentCurrency,
+                  usdAmount: _currentCurrency == 'USD' ? amount : amount / _fxRate,
+                  khrAmount: _currentCurrency == 'KHR' ? amount : amount * _fxRate,
+                  category: _activeCategory,
+                  paymentMethod: _activePayment,
+                  date: DateTime.now(),
+                  notes: _notesController.text.trim().isEmpty ? null : _notesController.text.trim(),
+                );
+                context.read<ExpenseProvider>().addExpense(expense);
+                Navigator.pop(context);
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.primary,

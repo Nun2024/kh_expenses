@@ -5,7 +5,9 @@ import '../../../core/theme/app_theme.dart';
 import 'package:kh_expense/l10n/app_localizations.dart';
 
 class ExpenseDetailsCard extends StatelessWidget {
-  const ExpenseDetailsCard({super.key});
+  final TextEditingController notesController;
+
+  const ExpenseDetailsCard({super.key, required this.notesController});
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +39,7 @@ class ExpenseDetailsCard extends StatelessWidget {
                 const SizedBox(width: 10),
                 Expanded(
                   child: TextField(
+                    controller: notesController,
                     decoration: InputDecoration(
                       hintText: AppLocalizations.of(context)?.expenseNotesHint ?? 'Lunch with friends (optional)',
                       hintStyle: AppTheme.bodyMd.copyWith(color: AppColors.outline),

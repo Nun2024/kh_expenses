@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_theme.dart';
 import 'transaction_list_item.dart';
+import 'package:provider/provider.dart';
+import '../../expenses/providers/expense_provider.dart';
+import 'package:intl/intl.dart';
 
 class TransactionGroupList extends StatelessWidget {
   final VoidCallback onTransactionTap;
@@ -10,81 +13,95 @@ class TransactionGroupList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final provider = context.watch<ExpenseProvider>();
+    final expenses = provider.recentExpenses;
+
+    if (expenses.isEmpty) {
+      return Padding(
+        padding: const EdgeInsets.symmetric(vertical: 40),
+        child: Center(
+          child: Text('No transactions yet.', style: AppTheme.bodyMd.copyWith(color: AppColors.outline)),
+        ),
+      );
+    }
+
+    // Group expenses by date string
+    final Map<String, List<dynamic>> grouped = {};
+    for (var exp in expenses) {
+      final dateStr = DateFormat('MMMM d, yyyy').format(exp.date);
+      if (!grouped.containsKey(dateStr)) {
+        grouped[dateStr] = [];
+      }
+      grouped[dateStr]!.add(exp);
+    }
+
+    final todayStr = DateFormat('MMMM d, yyyy').format(DateTime.now());
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _buildDateGroup(
-          'Today, September 21, 2026',
-          '-\$7.50 • ៛30,600',
-          true,
-          [
-            TransactionListItem(
-              title: 'Khmer Noodle Lunch (Nom Banh Chok)',
-              subtitle: 'Lunch with friends',
-              time: '12:30 PM',
-              amountStr: '-\$5.50',
-              amountKhr: '៛22,500',
-              emoji: '🍜',
-              iconBgColor: AppColors.primary.withOpacity(0.1),
-              paymentMethod: 'Bakong KHQR',
-              paymentIcon: Icons.qr_code_2,
-              paymentBgColor: AppColors.primaryFixed.withOpacity(0.3),
-              paymentTextColor: AppColors.onPrimaryFixedVariant,
-              onTap: onTransactionTap,
-            ),
-            const SizedBox(height: 8),
-            TransactionListItem(
-              title: 'PassApp Rickshaw to BKK1',
-              time: '10:20 AM',
-              amountStr: '-\$2.00',
-              amountKhr: '៛8,200',
-              emoji: '🚕',
-              iconBgColor: AppColors.tertiary.withOpacity(0.1),
-              paymentMethod: 'Bakong KHQR',
-              paymentIcon: Icons.qr_code_2,
-              paymentBgColor: AppColors.primaryFixed.withOpacity(0.3),
-              paymentTextColor: AppColors.onPrimaryFixedVariant,
-              onTap: onTransactionTap,
-            ),
-          ],
-        ),
-        const SizedBox(height: 16),
-        _buildDateGroup(
-          'Yesterday, September 20, 2026',
-          '-\$22.70 • ៛92,700',
-          false,
-          [
-            TransactionListItem(
-              title: 'Cotton T-Shirt (Russian Market)',
-              subtitle: 'Weekend market',
-              time: '4:20 PM',
-              amountStr: '-\$15.00',
-              amountKhr: '៛61,300',
-              emoji: '🛍',
-              iconBgColor: AppColors.surfaceContainer,
-              paymentMethod: 'Cash (US\$)',
-              paymentIcon: Icons.payments,
-              paymentBgColor: AppColors.surfaceContainer,
-              paymentTextColor: AppColors.onSurfaceVariant,
-              onTap: onTransactionTap,
-            ),
-            const SizedBox(height: 8),
-            TransactionListItem(
-              title: 'Family Dinner at Sovanna BBQ',
-              time: '7:30 PM',
-              amountStr: '-\$4.50',
-              amountKhr: '៛18,400',
-              emoji: '🍜',
-              iconBgColor: AppColors.primary.withOpacity(0.1),
-              paymentMethod: 'ABA Pay',
-              paymentIcon: Icons.account_balance,
-              paymentBgColor: const Color(0xFFE0F2FE),
-              paymentTextColor: const Color(0xFF0369A1),
-              onTap: onTransactionTap,
-            ),
-          ],
-        ),
-      ],
+      children: grouped.entries.map((entry) {
+        final dateLabel = entry.key == todayStr ? 'Today, ${entry.key}' : entry.key;
+        
+        double totalUsd = 0;
+        double totalKhr = 0;
+        for (var e in entry.value) {
+          totalUsd += e.usdAmount;
+          totalKhr += e.khrAmount;
+        }
+        
+        final totalStr = '-\$${totalUsd.toStringAsFixed(2)} • ៛${NumberFormat('#,###').format(totalKhr.round())}';
+        
+        return _buildDateGroup(
+          dateLabel,
+          totalStr,
+          entry.key == todayStr,
+          entry.value.map((expense) {
+            String emoji = '📦';
+            Color iconBgColor = AppColors.surfaceContainer;
+            if (expense.category == 'Food') {
+              emoji = '🍜';
+              iconBgColor = AppColors.tertiaryFixed.withOpacity(0.2);
+            } else if (expense.category == 'Transport') {
+              emoji = '🚕';
+              iconBgColor = AppColors.primaryFixed.withOpacity(0.2);
+            } else if (expense.category == 'Shopping') {
+              emoji = '🛍';
+              iconBgColor = AppColors.secondaryFixed.withOpacity(0.2);
+            }
+
+            Color mBgColor = AppColors.surfaceContainer;
+            Color mColor = AppColors.onSurfaceVariant;
+            if (expense.paymentMethod.contains('ABA')) {
+              mBgColor = AppColors.primaryFixed.withOpacity(0.3);
+              mColor = AppColors.primary;
+            } else if (expense.paymentMethod.contains('Bakong')) {
+              mBgColor = AppColors.errorContainer.withOpacity(0.4);
+              mColor = AppColors.error;
+            } else if (expense.paymentMethod.contains('Wing')) {
+              mBgColor = AppColors.secondaryContainer.withOpacity(0.6);
+              mColor = AppColors.onSecondaryContainer;
+            }
+
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 8.0),
+              child: TransactionListItem(
+                title: expense.notes ?? expense.category,
+                subtitle: expense.category,
+                time: DateFormat('h:mm a').format(expense.date),
+                amountStr: '-\$${expense.usdAmount.toStringAsFixed(2)}',
+                amountKhr: '៛${NumberFormat('#,###').format(expense.khrAmount.round())}',
+                emoji: emoji,
+                iconBgColor: iconBgColor,
+                paymentMethod: expense.paymentMethod,
+                paymentIcon: Icons.payment,
+                paymentBgColor: mBgColor,
+                paymentTextColor: mColor,
+                onTap: onTransactionTap,
+              ),
+            );
+          }).toList(),
+        );
+      }).toList(),
     );
   }
 

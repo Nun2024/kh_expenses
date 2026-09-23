@@ -1,0 +1,74 @@
+import 'package:flutter/foundation.dart';
+import '../models/expense.dart';
+
+class ExpenseProvider extends ChangeNotifier {
+  final List<Expense> _expenses = [];
+
+  ExpenseProvider() {
+    // Seed with initial mock data so it doesn't look empty
+    _expenses.addAll([
+      Expense(
+        id: '1',
+        amount: 4.50,
+        currency: 'USD',
+        usdAmount: 4.50,
+        khrAmount: 18500,
+        category: 'Food',
+        paymentMethod: 'Cash',
+        date: DateTime.now().subtract(const Duration(minutes: 45)),
+        notes: 'Khmer Noodle Soup (Nom Banh Chok)',
+      ),
+      Expense(
+        id: '2',
+        amount: 2.00,
+        currency: 'USD',
+        usdAmount: 2.00,
+        khrAmount: 8200,
+        category: 'Transport',
+        paymentMethod: 'ABA Pay',
+        date: DateTime.now().subtract(const Duration(hours: 3)),
+        notes: 'PassApp Rickshaw',
+      ),
+      Expense(
+        id: '3',
+        amount: 2.50,
+        currency: 'USD',
+        usdAmount: 2.50,
+        khrAmount: 10200,
+        category: 'Food',
+        paymentMethod: 'Bakong KHQR',
+        date: DateTime.now().subtract(const Duration(hours: 5)),
+        notes: 'Brown Coffee / Iced Latte',
+      ),
+      Expense(
+        id: '4',
+        amount: 18.20,
+        currency: 'USD',
+        usdAmount: 18.20,
+        khrAmount: 74500,
+        category: 'Shopping',
+        paymentMethod: 'Wing Bank',
+        date: DateTime.now().subtract(const Duration(days: 1)),
+        notes: 'Aeon Mart Groceries',
+      ),
+    ]);
+  }
+
+  List<Expense> get expenses => _expenses;
+
+  // Recent expenses sorted by date
+  List<Expense> get recentExpenses {
+    final sorted = List<Expense>.from(_expenses)
+      ..sort((a, b) => b.date.compareTo(a.date));
+    return sorted;
+  }
+
+  double get totalUSDSpending {
+    return _expenses.fold(0.0, (sum, item) => sum + item.usdAmount);
+  }
+
+  void addExpense(Expense expense) {
+    _expenses.add(expense);
+    notifyListeners();
+  }
+}

@@ -70,7 +70,7 @@ class _MainScreenState extends State<MainScreen> {
       showAvatar = false;
     } else if (_currentIndex == 2) {
       title = l10n?.navWallets ?? 'Wallets';
-      subtitle = l10n?.nbcRateMock ?? 'NBC: $1 = ៛4,085';
+      subtitle = l10n?.nbcRateMock ?? 'NBC: 1 = ៛4,085';
       showAvatar = true;
     }
 

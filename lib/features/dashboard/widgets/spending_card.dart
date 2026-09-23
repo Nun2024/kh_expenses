@@ -2,12 +2,19 @@ import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_theme.dart';
 import 'package:kh_expense/l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
+import '../../expenses/providers/expense_provider.dart';
+import 'package:intl/intl.dart';
 
 class SpendingCard extends StatelessWidget {
   const SpendingCard({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final provider = context.watch<ExpenseProvider>();
+    final totalUSD = provider.totalUSDSpending;
+    final totalKHR = (totalUSD * 4085).round();
+
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
@@ -80,7 +87,7 @@ class SpendingCard extends StatelessWidget {
                   textBaseline: TextBaseline.alphabetic,
                   children: [
                     Text(
-                      '\$327.50',
+                      '\$${totalUSD.toStringAsFixed(2)}',
                       style: AppTheme.displayHeroMobile.copyWith(
                         color: AppColors.onPrimary,
                       ),
@@ -100,7 +107,7 @@ class SpendingCard extends StatelessWidget {
                     Icon(Icons.currency_exchange, color: AppColors.tertiaryFixedDim, size: 16),
                     const SizedBox(width: 6),
                     Text(
-                      '≈ ៛1,338,000 KHR',
+                      '≈ ៛${NumberFormat('#,###').format(totalKHR)} KHR',
                       style: AppTheme.currencySecondary.copyWith(
                         color: AppColors.onPrimary.withOpacity(0.9),
                       ),

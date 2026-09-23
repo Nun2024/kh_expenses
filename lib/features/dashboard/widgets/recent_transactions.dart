@@ -3,12 +3,18 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../transactions/screens/transactions_screen.dart';
 import 'package:kh_expense/l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
+import '../../expenses/providers/expense_provider.dart';
+import 'package:intl/intl.dart';
 
 class RecentTransactions extends StatelessWidget {
   const RecentTransactions({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final provider = context.watch<ExpenseProvider>();
+    final recent = provider.recentExpenses.take(4).toList();
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -46,53 +52,65 @@ class RecentTransactions extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 12),
-        _buildTransactionItem(
-          emoji: '🍜',
-          bgColor: AppColors.tertiaryFixed.withOpacity(0.4),
-          title: AppLocalizations.of(context)?.mockTx1Title ?? 'Khmer Noodle Soup (Nom Banh Chok)',
-          time: AppLocalizations.of(context)?.mockTx1Time ?? '12:45 PM',
-          method: AppLocalizations.of(context)?.paymentCash ?? 'Cash',
-          methodBgColor: AppColors.surfaceContainer,
-          methodColor: AppColors.onSurfaceVariant,
-          usdAmount: '-\$4.50',
-          khrAmount: '៛18,500',
-        ),
-        const SizedBox(height: 10),
-        _buildTransactionItem(
-          emoji: '🚕',
-          bgColor: AppColors.primaryFixed.withOpacity(0.4),
-          title: AppLocalizations.of(context)?.mockTx2Title ?? 'PassApp Rickshaw',
-          time: AppLocalizations.of(context)?.mockTx2Time ?? '9:15 AM',
-          method: AppLocalizations.of(context)?.paymentABAPay ?? 'ABA Pay',
-          methodBgColor: AppColors.primaryFixed.withOpacity(0.3),
-          methodColor: AppColors.primary,
-          usdAmount: '-\$2.00',
-          khrAmount: '៛8,200',
-        ),
-        const SizedBox(height: 10),
-        _buildTransactionItem(
-          emoji: '☕',
-          bgColor: AppColors.tertiaryContainer.withOpacity(0.2),
-          title: AppLocalizations.of(context)?.mockTx3Title ?? 'Brown Coffee / Iced Latte',
-          time: AppLocalizations.of(context)?.mockTx3Time ?? '8:30 AM',
-          method: AppLocalizations.of(context)?.paymentBakong ?? 'Bakong KHQR',
-          methodBgColor: AppColors.errorContainer.withOpacity(0.4),
-          methodColor: AppColors.error,
-          usdAmount: '-\$2.50',
-          khrAmount: '៛10,200',
-        ),
-        const SizedBox(height: 10),
-        _buildTransactionItem(
-          emoji: '🛒',
-          bgColor: AppColors.secondaryFixed.withOpacity(0.4),
-          title: AppLocalizations.of(context)?.mockTx4Title ?? 'Aeon Mart Groceries',
-          time: AppLocalizations.of(context)?.yesterday ?? 'Yesterday',
-          method: AppLocalizations.of(context)?.paymentWing ?? 'Wing',
-          methodBgColor: AppColors.secondaryContainer.withOpacity(0.6),
-          methodColor: AppColors.onSecondaryContainer,
-          usdAmount: '-\$18.20',
-          khrAmount: '៛74,500',
-        ),
+        if (recent.isEmpty)
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 24),
+              child: Text(
+                'No transactions yet.',
+                style: AppTheme.bodyMd.copyWith(color: AppColors.outline),
+              ),
+            ),
+          )
+        else
+          ...recent.map((expense) {
+            final khrFormatted = NumberFormat('#,###').format(expense.khrAmount.round());
+            final usdFormatted = expense.usdAmount.toStringAsFixed(2);
+            final timeFormatted = DateFormat('h:mm a').format(expense.date);
+            
+            // Map category to emoji/color for demo
+            String emoji = '📦';
+            Color bgColor = AppColors.surfaceContainerHigh;
+            if (expense.category == 'Food') {
+              emoji = '🍜';
+              bgColor = AppColors.tertiaryFixed.withOpacity(0.4);
+            } else if (expense.category == 'Transport') {
+              emoji = '🚕';
+              bgColor = AppColors.primaryFixed.withOpacity(0.4);
+            } else if (expense.category == 'Shopping') {
+              emoji = '🛒';
+              bgColor = AppColors.secondaryFixed.withOpacity(0.4);
+            }
+            
+            // Map payment method to color
+            Color mBgColor = AppColors.surfaceContainer;
+            Color mColor = AppColors.onSurfaceVariant;
+            if (expense.paymentMethod.contains('ABA')) {
+              mBgColor = AppColors.primaryFixed.withOpacity(0.3);
+              mColor = AppColors.primary;
+            } else if (expense.paymentMethod.contains('Bakong')) {
+              mBgColor = AppColors.errorContainer.withOpacity(0.4);
+              mColor = AppColors.error;
+            } else if (expense.paymentMethod.contains('Wing')) {
+              mBgColor = AppColors.secondaryContainer.withOpacity(0.6);
+              mColor = AppColors.onSecondaryContainer;
+            }
+
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: _buildTransactionItem(
+                emoji: emoji,
+                bgColor: bgColor,
+                title: expense.notes ?? expense.category,
+                time: timeFormatted,
+                method: expense.paymentMethod,
+                methodBgColor: mBgColor,
+                methodColor: mColor,
+                usdAmount: '-\$$usdFormatted',
+                khrAmount: '៛$khrFormatted',
+              ),
+            );
+          }),
       ],
     );
   }

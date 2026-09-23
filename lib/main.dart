@@ -4,6 +4,7 @@ import 'package:kh_expense/l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'core/theme/app_theme.dart';
 import 'core/localization/locale_provider.dart';
+import 'features/expenses/providers/expense_provider.dart';
 import 'features/dashboard/screens/dashboard_screen.dart';
 
 void main() {
@@ -11,6 +12,7 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => LocaleProvider()),
+        ChangeNotifierProvider(create: (_) => ExpenseProvider()),
       ],
       child: const MyApp(),
     ),
