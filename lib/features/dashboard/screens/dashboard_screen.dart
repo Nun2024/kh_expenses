@@ -20,6 +20,7 @@ class DashboardScreen extends StatefulWidget {
 
 class _DashboardScreenState extends State<DashboardScreen> {
   String _selectedPeriod = 'This Month';
+  bool _isKhrFirst = false;
 
   @override
   Widget build(BuildContext context) {
@@ -43,8 +44,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
               ),
               child: const CircleAvatar(
                 radius: 18,
-                backgroundImage: NetworkImage(
-                  'https://lh3.googleusercontent.com/aida-public/AB6AXuDp3OqCQJDTL7_wrMQv9HL-S_uH3l1FuolNdjySqiInRThHZ5QrWsGBF4bDyCJgz_bwdBTv3nePOsgGdOpRKzEkaQ4JOI60I4W4cLZE2MCErh-yD80LPrK7g-QZNnV6zVlTK4w7_2N3kwevQHyLGJ3OAb8ivsHT_NLCd73lRqMfaHPLhfsZWge_KFiv2zfJuJzgTq4dDPofJGBqt_C0pXrpyZfwZrmiVLsbRAsOKMM',
+                backgroundImage: AssetImage(
+                  'assets/profiles/profiles.webp',
                 ),
               ),
             ),
@@ -74,34 +75,51 @@ class _DashboardScreenState extends State<DashboardScreen> {
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 16.0),
-            child: Container(
-              height: 32,
-              decoration: BoxDecoration(
-                color: AppColors.surfaceContainer,
-                borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: AppColors.outlineVariant.withOpacity(0.3)),
-              ),
-              child: Row(
-                children: [
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                    decoration: BoxDecoration(
-                      color: AppColors.surfaceContainerLowest,
-                      borderRadius: BorderRadius.circular(16),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.05),
-                          blurRadius: 2,
-                        ),
-                      ],
+            child: GestureDetector(
+              onTap: () {
+                setState(() {
+                  _isKhrFirst = !_isKhrFirst;
+                });
+              },
+              child: Container(
+                height: 32,
+                decoration: BoxDecoration(
+                  color: AppColors.surfaceContainer,
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(color: AppColors.outlineVariant.withOpacity(0.3)),
+                ),
+                child: Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                      decoration: !_isKhrFirst ? BoxDecoration(
+                        color: AppColors.surfaceContainerLowest,
+                        borderRadius: BorderRadius.circular(16),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.05),
+                            blurRadius: 2,
+                          ),
+                        ],
+                      ) : null,
+                      child: Text('USD \$', style: AppTheme.labelMd.copyWith(color: !_isKhrFirst ? AppColors.primary : AppColors.onSurfaceVariant)),
                     ),
-                    child: Text('USD \$', style: AppTheme.labelMd.copyWith(color: AppColors.primary)),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                    child: Text('KHR ៛', style: AppTheme.labelMd.copyWith(color: AppColors.onSurfaceVariant)),
-                  ),
-                ],
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                      decoration: _isKhrFirst ? BoxDecoration(
+                        color: AppColors.surfaceContainerLowest,
+                        borderRadius: BorderRadius.circular(16),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.05),
+                            blurRadius: 2,
+                          ),
+                        ],
+                      ) : null,
+                      child: Text('KHR ៛', style: AppTheme.labelMd.copyWith(color: _isKhrFirst ? AppColors.primary : AppColors.onSurfaceVariant)),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -191,16 +209,16 @@ class _DashboardScreenState extends State<DashboardScreen> {
               const SizedBox(height: 20),
               
               // Hero Card
-              const SpendingCard(),
+              SpendingCard(isKhrFirst: _isKhrFirst, selectedPeriod: _selectedPeriod),
               const SizedBox(height: 12),
 
-              const QuickStatsGrid(),
+              QuickStatsGrid(isKhrFirst: _isKhrFirst),
               const SizedBox(height: 12),
 
-              const CategoryBreakdown(),
+              CategoryBreakdown(isKhrFirst: _isKhrFirst),
               const SizedBox(height: 12),
 
-              const RecentTransactions(),
+              RecentTransactions(isKhrFirst: _isKhrFirst),
             ],
           ),
         ),

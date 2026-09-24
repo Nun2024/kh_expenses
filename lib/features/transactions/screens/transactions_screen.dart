@@ -28,8 +28,8 @@ class TransactionsScreen extends StatelessWidget {
               ),
               child: const CircleAvatar(
                 radius: 18,
-                backgroundImage: NetworkImage(
-                  'https://lh3.googleusercontent.com/aida-public/AB6AXuB1_Z4PpBqbk9Gvjxl_fZ56k_zU0CBTKjp9770Jd-_66BFdhGxUg1BN3nun5BQtGc42wTgEYJTbujopNJNvrw-MiLH-O3D6A80CHRDvCAfaVDVsjBEEvdrrfc8xFUcWnlCX6pmeAk3yWOopenbwaWNnmoyLzm0qyranccOpGb1N_ghyGvY0U_Sr6nDCqlkya9zpNyM1wdciZQYPinc4vNDq2nmvRk55BCp9SUdgzp6NaACtv8uQR-GN',
+                backgroundImage: AssetImage(
+                  'assets/profiles/profiles.webp',
                 ),
               ),
             ),

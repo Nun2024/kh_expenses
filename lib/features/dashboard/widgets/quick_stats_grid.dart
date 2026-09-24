@@ -4,7 +4,8 @@ import '../../../core/theme/app_theme.dart';
 import 'package:kh_expense/l10n/app_localizations.dart';
 
 class QuickStatsGrid extends StatelessWidget {
-  const QuickStatsGrid({super.key});
+  final bool isKhrFirst;
+  const QuickStatsGrid({super.key, this.isKhrFirst = false});
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +18,8 @@ class QuickStatsGrid extends StatelessWidget {
             icon: Icons.receipt_long,
             iconBgColor: AppColors.surfaceContainer,
             iconColor: AppColors.primary,
-            mainValue: '\$12.50',
-            subValue: '៛51,000 KHR',
+            mainValue: isKhrFirst ? '៛51,000' : '\$12.50',
+            subValue: isKhrFirst ? '\$12.50 USD' : '៛51,000 KHR',
             footerText: AppLocalizations.of(context)?.transactionsTodayMock ?? '3 transactions today',
             footerIcon: Icons.schedule,
             footerBgColor: AppColors.secondaryFixed.withOpacity(0.3),
@@ -27,7 +28,7 @@ class QuickStatsGrid extends StatelessWidget {
         ),
         const SizedBox(width: 12),
         Expanded(
-          child: _buildBudgetCard(context),
+          child: _buildBudgetCard(context, isKhrFirst: isKhrFirst),
         ),
       ],
     );
@@ -100,7 +101,7 @@ class QuickStatsGrid extends StatelessWidget {
     );
   }
 
-  Widget _buildBudgetCard(BuildContext context) {
+  Widget _buildBudgetCard(BuildContext context, {required bool isKhrFirst}) {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -136,9 +137,9 @@ class QuickStatsGrid extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.baseline,
             textBaseline: TextBaseline.alphabetic,
             children: [
-              Text('\$327.50', style: AppTheme.headlineMd.copyWith(color: AppColors.onSurface)),
+              Text(isKhrFirst ? '៛1.33M' : '\$327.50', style: AppTheme.headlineMd.copyWith(color: AppColors.onSurface)),
               const SizedBox(width: 4),
-              Text('/ \$500', style: AppTheme.bodySm.copyWith(color: AppColors.outline)),
+              Text(isKhrFirst ? '/ ៛2M' : '/ \$500', style: AppTheme.bodySm.copyWith(color: AppColors.outline)),
             ],
           ),
           const SizedBox(height: 8),
@@ -156,7 +157,7 @@ class QuickStatsGrid extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(AppLocalizations.of(context)?.budgetUsedPercentMock ?? '65% used', style: AppTheme.labelSm.copyWith(color: AppColors.outline)),
-              Text(AppLocalizations.of(context)?.budgetLeftAmountMock ?? 'Left: \$172.50', style: AppTheme.labelSm.copyWith(color: AppColors.primary, fontWeight: FontWeight.w700)),
+              Text(isKhrFirst ? 'Left: ៛704K' : (AppLocalizations.of(context)?.budgetLeftAmountMock ?? 'Left: \$172.50'), style: AppTheme.labelSm.copyWith(color: AppColors.primary, fontWeight: FontWeight.w700)),
             ],
           ),
         ],

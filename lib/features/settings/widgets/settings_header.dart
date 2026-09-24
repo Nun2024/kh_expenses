@@ -21,8 +21,8 @@ class SettingsHeader extends StatelessWidget implements PreferredSizeWidget {
             child: const CircleAvatar(
               radius: 18,
               backgroundColor: AppColors.secondaryContainer,
-              backgroundImage: NetworkImage(
-                'https://lh3.googleusercontent.com/aida-public/AB6AXuB5B_pX4g1UF5oLHHEE63-sMmkiA5qLef1lkI8yMQ9cIYVWw95vyStJoQ_tkz6vK4TxzUPnQ0yVQtVr-lx3UchyyG1xCCVKg_W7V2tBTsdX7Dy8iOuTt90lma_uof0eXT70oHbbvsh_TbpI4e9ryQbG2PBrdU1Hw5DuCemtv3TLQdB_7EiyCX4LwqQ7Q3e28I9Y-A1Jv-G07J04qHp551_K07wHL7vODTw57NDJbNxN788ZK6qbiDmA',
+              backgroundImage: AssetImage(
+                'assets/profiles/profiles.webp',
               ),
             ),
           ),

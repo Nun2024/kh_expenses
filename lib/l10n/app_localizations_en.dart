@@ -36,7 +36,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settingsLanguageKm => 'Khmer';
 
   @override
-  String get goodEvening => 'Good evening, Nun 👋';
+  String get goodEvening => 'Good evening, Xumu 👋';
 
   @override
   String get trackSpending => 'Track dual spending in real time';

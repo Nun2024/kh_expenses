@@ -7,13 +7,22 @@ import '../../expenses/providers/expense_provider.dart';
 import 'package:intl/intl.dart';
 
 class SpendingCard extends StatelessWidget {
-  const SpendingCard({super.key});
+  final bool isKhrFirst;
+  final String selectedPeriod;
+  const SpendingCard({super.key, this.isKhrFirst = false, this.selectedPeriod = 'This Month'});
 
   @override
   Widget build(BuildContext context) {
     final provider = context.watch<ExpenseProvider>();
-    final totalUSD = provider.totalUSDSpending;
+    final totalUSD = provider.totalUSDSpendingForPeriod(selectedPeriod);
     final totalKHR = (totalUSD * 4085).round();
+
+    String titleLabel = 'TOTAL SPENDING (PER MONTH)';
+    if (selectedPeriod == 'Today') {
+      titleLabel = 'TOTAL SPENDING (PER DAY)';
+    } else if (selectedPeriod == 'This Week') {
+      titleLabel = 'TOTAL SPENDING (PER WEEK)';
+    }
 
     return Container(
       decoration: BoxDecoration(
@@ -60,7 +69,7 @@ class SpendingCard extends StatelessWidget {
                         Icon(Icons.calendar_month, color: AppColors.onPrimary.withOpacity(0.9), size: 16),
                         const SizedBox(width: 6),
                         Text(
-                          AppLocalizations.of(context)?.totalSpendingMonth ?? 'TOTAL SPENDING (SEPTEMBER 2026)',
+                          titleLabel,
                           style: AppTheme.labelMd.copyWith(
                             color: AppColors.onPrimary.withOpacity(0.9),
                             fontWeight: FontWeight.w600,
@@ -87,14 +96,14 @@ class SpendingCard extends StatelessWidget {
                   textBaseline: TextBaseline.alphabetic,
                   children: [
                     Text(
-                      '\$${totalUSD.toStringAsFixed(2)}',
+                      isKhrFirst ? '៛${NumberFormat('#,###').format(totalKHR)}' : '\$${totalUSD.toStringAsFixed(2)}',
                       style: AppTheme.displayHeroMobile.copyWith(
                         color: AppColors.onPrimary,
                       ),
                     ),
                     const SizedBox(width: 8),
                     Text(
-                      'USD',
+                      isKhrFirst ? 'KHR' : 'USD',
                       style: AppTheme.headlineSm.copyWith(
                         color: AppColors.secondaryFixed,
                       ),
@@ -107,7 +116,7 @@ class SpendingCard extends StatelessWidget {
                     Icon(Icons.currency_exchange, color: AppColors.tertiaryFixedDim, size: 16),
                     const SizedBox(width: 6),
                     Text(
-                      '≈ ៛${NumberFormat('#,###').format(totalKHR)} KHR',
+                      isKhrFirst ? '≈ \$${totalUSD.toStringAsFixed(2)} USD' : '≈ ៛${NumberFormat('#,###').format(totalKHR)} KHR',
                       style: AppTheme.currencySecondary.copyWith(
                         color: AppColors.onPrimary.withOpacity(0.9),
                       ),

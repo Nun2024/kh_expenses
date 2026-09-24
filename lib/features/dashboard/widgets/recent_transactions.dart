@@ -8,7 +8,8 @@ import '../../expenses/providers/expense_provider.dart';
 import 'package:intl/intl.dart';
 
 class RecentTransactions extends StatelessWidget {
-  const RecentTransactions({super.key});
+  final bool isKhrFirst;
+  const RecentTransactions({super.key, this.isKhrFirst = false});
 
   @override
   Widget build(BuildContext context) {
@@ -106,8 +107,8 @@ class RecentTransactions extends StatelessWidget {
                 method: expense.paymentMethod,
                 methodBgColor: mBgColor,
                 methodColor: mColor,
-                usdAmount: '-\$$usdFormatted',
-                khrAmount: '៛$khrFormatted',
+                primaryAmount: isKhrFirst ? '៛$khrFormatted' : '-\$$usdFormatted',
+                secondaryAmount: isKhrFirst ? '-\$$usdFormatted' : '៛$khrFormatted',
               ),
             );
           }),
@@ -123,8 +124,8 @@ class RecentTransactions extends StatelessWidget {
     required String method,
     required Color methodBgColor,
     required Color methodColor,
-    required String usdAmount,
-    required String khrAmount,
+    required String primaryAmount,
+    required String secondaryAmount,
   }) {
     return Container(
       padding: const EdgeInsets.all(14),
@@ -194,8 +195,8 @@ class RecentTransactions extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Text(usdAmount, style: AppTheme.headlineSm.copyWith(color: AppColors.onSurface, fontWeight: FontWeight.w700)),
-              Text(khrAmount, style: AppTheme.currencySecondary.copyWith(color: AppColors.outline)),
+              Text(primaryAmount, style: AppTheme.headlineSm.copyWith(color: AppColors.onSurface, fontWeight: FontWeight.w700)),
+              Text(secondaryAmount, style: AppTheme.currencySecondary.copyWith(color: AppColors.outline)),
             ],
           ),
         ],

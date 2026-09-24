@@ -4,7 +4,8 @@ import '../../../core/theme/app_theme.dart';
 import 'package:kh_expense/l10n/app_localizations.dart';
 
 class CategoryBreakdown extends StatelessWidget {
-  const CategoryBreakdown({super.key});
+  final bool isKhrFirst;
+  const CategoryBreakdown({super.key, this.isKhrFirst = false});
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +58,7 @@ class CategoryBreakdown extends StatelessWidget {
             emoji: '🍜',
             bgColor: AppColors.tertiaryFixed.withOpacity(0.6),
             title: AppLocalizations.of(context)?.categoryFoodDining ?? 'Food & Dining',
-            amount: '\$120.00',
+            amount: isKhrFirst ? '៛490,200' : '\$120.00',
             percentage: '37%',
             progressValue: 0.37,
             progressColor: AppColors.tertiary,
@@ -67,7 +68,7 @@ class CategoryBreakdown extends StatelessWidget {
             emoji: '🛍',
             bgColor: AppColors.secondaryFixed.withOpacity(0.6),
             title: AppLocalizations.of(context)?.categoryShopping ?? 'Shopping',
-            amount: '\$82.00',
+            amount: isKhrFirst ? '៛334,970' : '\$82.00',
             percentage: '25%',
             progressValue: 0.25,
             progressColor: AppColors.secondary,
@@ -77,7 +78,7 @@ class CategoryBreakdown extends StatelessWidget {
             emoji: '🚕',
             bgColor: AppColors.primaryFixed.withOpacity(0.5),
             title: AppLocalizations.of(context)?.categoryTransport ?? 'Transport (PassApp/Grab)',
-            amount: '\$65.00',
+            amount: isKhrFirst ? '៛265,525' : '\$65.00',
             percentage: '20%',
             progressValue: 0.20,
             progressColor: AppColors.primary,
@@ -87,7 +88,7 @@ class CategoryBreakdown extends StatelessWidget {
             emoji: '💡',
             bgColor: AppColors.surfaceContainerHighest,
             title: AppLocalizations.of(context)?.categoryUtilities ?? 'Utilities (EDC/Water)',
-            amount: '\$60.00',
+            amount: isKhrFirst ? '៛245,100' : '\$60.00',
             percentage: '18%',
             progressValue: 0.18,
             progressColor: AppColors.outline,

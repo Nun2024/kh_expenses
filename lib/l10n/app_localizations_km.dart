@@ -36,7 +36,7 @@ class AppLocalizationsKm extends AppLocalizations {
   String get settingsLanguageKm => 'ខ្មែរ';
 
   @override
-  String get goodEvening => 'សាយ័ណ្ហសួស្ដី ណុន 👋';
+  String get goodEvening => 'សាយ័ណ្ហសួស្ដី Xumu 👋';
 
   @override
   String get trackSpending => 'តាមដានការចំណាយជាក់ស្តែង';

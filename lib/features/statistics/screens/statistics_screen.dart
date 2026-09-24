@@ -39,8 +39,8 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
               ),
               child: const CircleAvatar(
                 radius: 18,
-                backgroundImage: NetworkImage(
-                  'https://lh3.googleusercontent.com/aida-public/AB6AXuB6ZzaGfdcxOMYpy1K8prr5TLf4YVyJ4zs9YMLaf3MJaBDobFlR-dhGUJyIwj8DocLDxKfgWNzooCd1Gi67w6mEYpgPT5hzJOFp0R9xMj9PwDZt0OoA87xZsGWQ2u7ZVpDjWG5AoHNB-Jgv7kdDlAfwurvpKs2ftqD3RjwdWXEzOUYMT-RrjmUAuOmSZjmRic-dOe9WdUZWVR_pvWwzVx48rs4wddajd9AnaZ_V7jgNct0Q6P8RC-OZ',
+                backgroundImage: AssetImage(
+                  'assets/profiles/profiles.webp',
                 ),
               ),
             ),

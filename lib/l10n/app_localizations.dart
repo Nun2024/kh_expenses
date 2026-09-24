@@ -155,7 +155,7 @@ abstract class AppLocalizations {
   /// No description provided for @goodEvening.
   ///
   /// In en, this message translates to:
-  /// **'Good evening, Nun 👋'**
+  /// **'Good evening, Xumu 👋'**
   String get goodEvening;
 
   /// No description provided for @trackSpending.

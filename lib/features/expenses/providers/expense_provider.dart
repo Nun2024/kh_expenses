@@ -63,6 +63,25 @@ class ExpenseProvider extends ChangeNotifier {
     return sorted;
   }
 
+  List<Expense> getExpensesForPeriod(String period) {
+    final now = DateTime.now();
+    return _expenses.where((e) {
+      if (period == 'Today') {
+        return e.date.year == now.year && e.date.month == now.month && e.date.day == now.day;
+      } else if (period == 'This Week') {
+        final startOfWeek = now.subtract(Duration(days: now.weekday - 1));
+        final startDate = DateTime(startOfWeek.year, startOfWeek.month, startOfWeek.day);
+        return e.date.isAfter(startDate.subtract(const Duration(milliseconds: 1)));
+      } else {
+        return e.date.year == now.year && e.date.month == now.month;
+      }
+    }).toList();
+  }
+
+  double totalUSDSpendingForPeriod(String period) {
+    return getExpensesForPeriod(period).fold(0.0, (sum, item) => sum + item.usdAmount);
+  }
+
   double get totalUSDSpending {
     return _expenses.fold(0.0, (sum, item) => sum + item.usdAmount);
   }
