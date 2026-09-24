@@ -418,4 +418,107 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get proStarterFreeDesc => 'Basic offline logs (up to 40 txns/mo)';
+
+  @override
+  String get settingsTitle => 'Settings';
+
+  @override
+  String get localStorage => 'Local Storage';
+
+  @override
+  String get instantSync => 'Instant';
+
+  @override
+  String get offlineEngine => 'Offline-first engine • Zero lag';
+
+  @override
+  String get settingsPreferencesTitle => 'PREFERENCES';
+
+  @override
+  String get settingsSystemCore => 'System Core';
+
+  @override
+  String get settingsLanguageSub => 'Interface display and numerals';
+
+  @override
+  String get settingsDefaultCurrency => 'Default Currency';
+
+  @override
+  String get settingsNbcLiveRate => 'NBC Live Rate: ';
+
+  @override
+  String get settingsPrimary => 'Primary';
+
+  @override
+  String get settingsAppearance => 'Appearance';
+
+  @override
+  String get settingsAppearanceSub => 'Display theme & contrast';
+
+  @override
+  String get settingsSystemTheme => 'System';
+
+  @override
+  String get settingsMonthlyBudget => 'MONTHLY BUDGET';
+
+  @override
+  String get settingsActiveCycle => 'Active Cycle';
+
+  @override
+  String get settingsMonthlyBudgetLimit => 'Monthly Budget Limit';
+
+  @override
+  String get settingsSmartAlerts => 'Smart alerts at 80% threshold';
+
+  @override
+  String get settingsEdit => 'Edit';
+
+  @override
+  String get settingsBudgetLeftDesc => '\$450 left for 14 days';
+
+  @override
+  String get settingsBudgetUsed => '62% Used';
+
+  @override
+  String get settingsDataStorageTitle => 'DATA & STORAGE';
+
+  @override
+  String get settingsLocalSqlite => 'Local SQLite Cache';
+
+  @override
+  String get settingsEncryptedDb => 'Encrypted Local Database';
+
+  @override
+  String get settingsDataUsed => '48 Transactions • 2.4 MB Used';
+
+  @override
+  String get settingsAutoBacked => 'Auto-backed';
+
+  @override
+  String get settingsClearAllData => 'Clear All Data';
+
+  @override
+  String get settingsResetDataDesc =>
+      'Reset transactions, custom limits, and cache';
+
+  @override
+  String get settingsDanger => 'DANGER';
+
+  @override
+  String get settingsVersion => 'Version 1.0.0 (Build 2026.1)';
+
+  @override
+  String get settingsMadeWithFlutter => 'Made with Flutter';
+
+  @override
+  String get settingsBuiltForCambodia => '• Built for Cambodia';
+
+  @override
+  String get settingsPrivacyOffline => 'Privacy & Offline Guarantee';
+
+  @override
+  String get settingsBudgetRenews => 'Renews automatically on 1st of month';
+
+  @override
+  String get settingsSafeMargin => 'Safe Margin';
 }

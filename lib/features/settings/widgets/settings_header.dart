@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_theme.dart';
+import 'package:kh_expense/l10n/app_localizations.dart';
 
 class SettingsHeader extends StatelessWidget implements PreferredSizeWidget {
   const SettingsHeader({super.key});
@@ -32,7 +33,7 @@ class SettingsHeader extends StatelessWidget implements PreferredSizeWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                'Settings',
+                AppLocalizations.of(context)?.settingsTitle ?? 'Settings',
                 style: AppTheme.headlineMd.copyWith(color: AppColors.primary),
               ),
               Row(
@@ -44,7 +45,7 @@ class SettingsHeader extends StatelessWidget implements PreferredSizeWidget {
                   ),
                   const SizedBox(width: 6),
                   Text(
-                    'NBC Rate Synced Today',
+                    AppLocalizations.of(context)?.nbcRateSyncedToday ?? 'NBC Rate Synced Today',
                     style: AppTheme.labelSm.copyWith(color: AppColors.outline),
                   ),
                 ],
@@ -64,12 +65,7 @@ class SettingsHeader extends StatelessWidget implements PreferredSizeWidget {
           ),
           child: Row(
             children: [
-              Text('USD \$', style: AppTheme.labelMd.copyWith(color: AppColors.primary)),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 4),
-                child: Text('/', style: TextStyle(color: AppColors.outline, fontSize: 12)),
-              ),
-              Text('៛', style: AppTheme.labelMd.copyWith(color: AppColors.tertiary)),
+              Text(AppLocalizations.of(context)?.usdAndKhr ?? 'USD \$ / ៛', style: AppTheme.labelMd.copyWith(color: AppColors.primary)),
             ],
           ),
         ),

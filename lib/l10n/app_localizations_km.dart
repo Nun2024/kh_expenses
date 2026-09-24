@@ -141,7 +141,8 @@ class AppLocalizationsKm extends AppLocalizations {
   String get fastLog => 'កត់ត្រារហ័ស';
 
   @override
-  String get nbcRateSyncedToday => 'អត្រា NBC បានធ្វើបច្ចុប្បន្នភាពថ្ងៃនេះ';
+  String get nbcRateSyncedToday =>
+      'អត្រាប្តូរប្រាក់ NBC ធ្វើបច្ចុប្បន្នភាពថ្ងៃនេះ';
 
   @override
   String get spendingInsights => 'ទិដ្ឋភាពទូទៅនៃការចំណាយ';
@@ -419,4 +420,108 @@ class AppLocalizationsKm extends AppLocalizations {
   @override
   String get proStarterFreeDesc =>
       'កត់ត្រាដោយគ្មានអ៊ីនធឺណិត (រហូតដល់ 40 ប្រតិបត្តិការ/ខែ)';
+
+  @override
+  String get settingsTitle => 'ការកំណត់';
+
+  @override
+  String get localStorage => 'ទិន្នន័យក្នុងម៉ាស៊ីន';
+
+  @override
+  String get instantSync => 'ភ្លាមៗ';
+
+  @override
+  String get offlineEngine => 'គ្មានអ៊ីនធឺណិតក៏ដំណើរការ • មិនយឺត';
+
+  @override
+  String get settingsPreferencesTitle => 'ចំណូលចិត្ត';
+
+  @override
+  String get settingsSystemCore => 'ប្រព័ន្ធចម្បង';
+
+  @override
+  String get settingsLanguageSub => 'ភាសានៃកម្មវិធី និងលេខ';
+
+  @override
+  String get settingsDefaultCurrency => 'រូបិយប័ណ្ណគោល';
+
+  @override
+  String get settingsNbcLiveRate => 'អត្រា NBC ផ្ទាល់៖ ';
+
+  @override
+  String get settingsPrimary => 'ចម្បង';
+
+  @override
+  String get settingsAppearance => 'រូបរាង';
+
+  @override
+  String get settingsAppearanceSub => 'ពណ៌ និងស្បែកកម្មវិធី';
+
+  @override
+  String get settingsSystemTheme => 'តាមប្រព័ន្ធ';
+
+  @override
+  String get settingsMonthlyBudget => 'កញ្ចប់ថវិកាប្រចាំខែ';
+
+  @override
+  String get settingsActiveCycle => 'វដ្តសកម្ម';
+
+  @override
+  String get settingsMonthlyBudgetLimit => 'កំណត់កញ្ចប់ថវិកាប្រចាំខែ';
+
+  @override
+  String get settingsSmartAlerts => 'ការជូនដំណឹងឆ្លាតវៃនៅពេលដល់ 80%';
+
+  @override
+  String get settingsEdit => 'កែប្រែ';
+
+  @override
+  String get settingsBudgetLeftDesc => 'សល់ \$450 សម្រាប់ 14 ថ្ងៃទៀត';
+
+  @override
+  String get settingsBudgetUsed => 'បានប្រើ 62%';
+
+  @override
+  String get settingsDataStorageTitle => 'ទិន្នន័យ និងការផ្ទុក';
+
+  @override
+  String get settingsLocalSqlite => 'ឃ្លាំងសម្ងាត់ SQLite ក្នុងម៉ាស៊ីន';
+
+  @override
+  String get settingsEncryptedDb => 'មូលដ្ឋានទិន្នន័យបានអ៊ិនគ្រីប';
+
+  @override
+  String get settingsDataUsed => 'ប្រតិបត្តិការ 48 • ប្រើប្រាស់ 2.4 MB';
+
+  @override
+  String get settingsAutoBacked => 'បម្រុងទុកដោយស្វ័យប្រវត្តិ';
+
+  @override
+  String get settingsClearAllData => 'លុបទិន្នន័យទាំងអស់';
+
+  @override
+  String get settingsResetDataDesc =>
+      'លុបប្រតិបត្តិការ ដែនកំណត់ និងឃ្លាំងសម្ងាត់ចោល';
+
+  @override
+  String get settingsDanger => 'គ្រោះថ្នាក់';
+
+  @override
+  String get settingsVersion => 'កំណែ 1.0.0 (Build 2026.1)';
+
+  @override
+  String get settingsMadeWithFlutter => 'បង្កើតឡើងដោយ Flutter';
+
+  @override
+  String get settingsBuiltForCambodia => '• សម្រាប់កម្ពុជា';
+
+  @override
+  String get settingsPrivacyOffline =>
+      'ការធានាភាពឯកជន និងប្រើពេលគ្មានអ៊ីនធឺណិត';
+
+  @override
+  String get settingsBudgetRenews => 'បន្តដោយស្វ័យប្រវត្តិនៅថ្ងៃទី១';
+
+  @override
+  String get settingsSafeMargin => 'សុវត្ថិភាព';
 }

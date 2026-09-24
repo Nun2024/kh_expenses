@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_theme.dart';
+import 'package:kh_expense/l10n/app_localizations.dart';
 
 class SyncStatusCard extends StatelessWidget {
   const SyncStatusCard({super.key});
@@ -40,7 +41,7 @@ class SyncStatusCard extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Text('Local Storage', style: AppTheme.headlineSm.copyWith(color: AppColors.onSurface)),
+                      Text(AppLocalizations.of(context)?.localStorage ?? 'Local Storage', style: AppTheme.headlineSm.copyWith(color: AppColors.onSurface)),
                       const SizedBox(width: 6),
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
@@ -49,13 +50,13 @@ class SyncStatusCard extends StatelessWidget {
                           borderRadius: BorderRadius.circular(4),
                         ),
                         child: Text(
-                          'Instant',
+                          AppLocalizations.of(context)?.instantSync ?? 'Instant',
                           style: AppTheme.labelSm.copyWith(color: AppColors.onSecondaryContainer),
                         ),
                       ),
                     ],
                   ),
-                  Text('Offline-first engine • Zero lag', style: AppTheme.bodySm.copyWith(color: AppColors.outline)),
+                  Text(AppLocalizations.of(context)?.offlineEngine ?? 'Offline-first engine • Zero lag', style: AppTheme.bodySm.copyWith(color: AppColors.outline)),
                 ],
               ),
             ],

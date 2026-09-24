@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_theme.dart';
+import 'package:kh_expense/l10n/app_localizations.dart';
 
 class AboutSection extends StatelessWidget {
   const AboutSection({super.key});
@@ -51,7 +52,7 @@ class AboutSection extends StatelessWidget {
           ),
           const SizedBox(height: 12),
           Text('KH Expense', style: AppTheme.headlineMd.copyWith(fontWeight: FontWeight.w800, color: AppColors.onBackground)),
-          Text('Version 1.0.0 (Build 2026.1)', style: AppTheme.bodySm.copyWith(color: AppColors.outline, fontWeight: FontWeight.w500)),
+          Text(AppLocalizations.of(context)?.settingsVersion ?? 'Version 1.0.0 (Build 2026.1)', style: AppTheme.bodySm.copyWith(color: AppColors.outline, fontWeight: FontWeight.w500)),
           const SizedBox(height: 10),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
@@ -62,11 +63,11 @@ class AboutSection extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text('Made with Flutter', style: AppTheme.labelSm.copyWith(color: AppColors.onSurfaceVariant)),
+                Text(AppLocalizations.of(context)?.settingsMadeWithFlutter ?? 'Made with Flutter', style: AppTheme.labelSm.copyWith(color: AppColors.onSurfaceVariant)),
                 const SizedBox(width: 6),
                 const Text('🇰🇭', style: TextStyle(fontSize: 14)),
                 const SizedBox(width: 6),
-                Text('• Built for Cambodia', style: AppTheme.labelSm.copyWith(color: AppColors.onSurfaceVariant)),
+                Text(AppLocalizations.of(context)?.settingsBuiltForCambodia ?? '• Built for Cambodia', style: AppTheme.labelSm.copyWith(color: AppColors.onSurfaceVariant)),
               ],
             ),
           ),
@@ -83,7 +84,7 @@ class AboutSection extends StatelessWidget {
                 children: [
                   const Icon(Icons.verified_user, size: 15, color: AppColors.primary),
                   const SizedBox(width: 4),
-                  Text('Privacy & Offline Guarantee', style: AppTheme.labelMd.copyWith(color: AppColors.primary, fontWeight: FontWeight.w600)),
+                  Text(AppLocalizations.of(context)?.settingsPrivacyOffline ?? 'Privacy & Offline Guarantee', style: AppTheme.labelMd.copyWith(color: AppColors.primary, fontWeight: FontWeight.w600)),
                 ],
               ),
             ),

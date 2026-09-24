@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_theme.dart';
+import 'package:kh_expense/l10n/app_localizations.dart';
 
 class BudgetSection extends StatelessWidget {
   const BudgetSection({super.key});
@@ -15,8 +16,8 @@ class BudgetSection extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('MONTHLY BUDGET', style: AppTheme.labelMd.copyWith(color: AppColors.outline, fontWeight: FontWeight.bold)),
-              Text('Active Cycle', style: AppTheme.labelSm.copyWith(color: AppColors.secondary, fontWeight: FontWeight.w600)),
+              Text(AppLocalizations.of(context)?.settingsMonthlyBudget ?? 'MONTHLY BUDGET', style: AppTheme.labelMd.copyWith(color: AppColors.outline, fontWeight: FontWeight.bold)),
+              Text(AppLocalizations.of(context)?.settingsActiveCycle ?? 'Active Cycle', style: AppTheme.labelSm.copyWith(color: AppColors.secondary, fontWeight: FontWeight.w600)),
             ],
           ),
         ),
@@ -70,8 +71,8 @@ class BudgetSection extends StatelessWidget {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Monthly Budget Limit', style: AppTheme.headlineSm.copyWith(color: AppColors.onSurface, fontWeight: FontWeight.bold)),
-                              Text('Smart alerts at 80% threshold', style: AppTheme.bodySm.copyWith(color: AppColors.outline)),
+                              Text(AppLocalizations.of(context)?.settingsMonthlyBudgetLimit ?? 'Monthly Budget Limit', style: AppTheme.headlineSm.copyWith(color: AppColors.onSurface, fontWeight: FontWeight.bold)),
+                              Text(AppLocalizations.of(context)?.settingsSmartAlerts ?? 'Smart alerts at 80% threshold', style: AppTheme.bodySm.copyWith(color: AppColors.outline)),
                             ],
                           ),
                         ],
@@ -87,7 +88,7 @@ class BudgetSection extends StatelessWidget {
                           ),
                           child: Row(
                             children: [
-                              Text('Edit', style: AppTheme.labelMd.copyWith(color: AppColors.primary, fontWeight: FontWeight.bold)),
+                              Text(AppLocalizations.of(context)?.settingsEdit ?? 'Edit', style: AppTheme.labelMd.copyWith(color: AppColors.primary, fontWeight: FontWeight.bold)),
                               const SizedBox(width: 4),
                               const Icon(Icons.edit, size: 14, color: AppColors.primary),
                             ],
@@ -119,7 +120,7 @@ class BudgetSection extends StatelessWidget {
                               ],
                             ),
                             const SizedBox(height: 2),
-                            Text('Renews automatically on 1st of month', style: AppTheme.labelSm.copyWith(color: AppColors.outline)),
+                            Text(AppLocalizations.of(context)?.settingsBudgetRenews ?? 'Renews automatically on 1st of month', style: AppTheme.labelSm.copyWith(color: AppColors.outline)),
                           ],
                         ),
                         Container(
@@ -129,7 +130,7 @@ class BudgetSection extends StatelessWidget {
                             borderRadius: BorderRadius.circular(16),
                           ),
                           child: Text(
-                            'Safe Margin',
+                            AppLocalizations.of(context)?.settingsSafeMargin ?? 'Safe Margin',
                             style: AppTheme.labelSm.copyWith(color: AppColors.onSecondaryContainer, fontWeight: FontWeight.bold, fontSize: 11),
                           ),
                         ),

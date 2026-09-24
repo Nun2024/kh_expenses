@@ -913,6 +913,210 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Basic offline logs (up to 40 txns/mo)'**
   String get proStarterFreeDesc;
+
+  /// No description provided for @settingsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get settingsTitle;
+
+  /// No description provided for @localStorage.
+  ///
+  /// In en, this message translates to:
+  /// **'Local Storage'**
+  String get localStorage;
+
+  /// No description provided for @instantSync.
+  ///
+  /// In en, this message translates to:
+  /// **'Instant'**
+  String get instantSync;
+
+  /// No description provided for @offlineEngine.
+  ///
+  /// In en, this message translates to:
+  /// **'Offline-first engine • Zero lag'**
+  String get offlineEngine;
+
+  /// No description provided for @settingsPreferencesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'PREFERENCES'**
+  String get settingsPreferencesTitle;
+
+  /// No description provided for @settingsSystemCore.
+  ///
+  /// In en, this message translates to:
+  /// **'System Core'**
+  String get settingsSystemCore;
+
+  /// No description provided for @settingsLanguageSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Interface display and numerals'**
+  String get settingsLanguageSub;
+
+  /// No description provided for @settingsDefaultCurrency.
+  ///
+  /// In en, this message translates to:
+  /// **'Default Currency'**
+  String get settingsDefaultCurrency;
+
+  /// No description provided for @settingsNbcLiveRate.
+  ///
+  /// In en, this message translates to:
+  /// **'NBC Live Rate: '**
+  String get settingsNbcLiveRate;
+
+  /// No description provided for @settingsPrimary.
+  ///
+  /// In en, this message translates to:
+  /// **'Primary'**
+  String get settingsPrimary;
+
+  /// No description provided for @settingsAppearance.
+  ///
+  /// In en, this message translates to:
+  /// **'Appearance'**
+  String get settingsAppearance;
+
+  /// No description provided for @settingsAppearanceSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Display theme & contrast'**
+  String get settingsAppearanceSub;
+
+  /// No description provided for @settingsSystemTheme.
+  ///
+  /// In en, this message translates to:
+  /// **'System'**
+  String get settingsSystemTheme;
+
+  /// No description provided for @settingsMonthlyBudget.
+  ///
+  /// In en, this message translates to:
+  /// **'MONTHLY BUDGET'**
+  String get settingsMonthlyBudget;
+
+  /// No description provided for @settingsActiveCycle.
+  ///
+  /// In en, this message translates to:
+  /// **'Active Cycle'**
+  String get settingsActiveCycle;
+
+  /// No description provided for @settingsMonthlyBudgetLimit.
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly Budget Limit'**
+  String get settingsMonthlyBudgetLimit;
+
+  /// No description provided for @settingsSmartAlerts.
+  ///
+  /// In en, this message translates to:
+  /// **'Smart alerts at 80% threshold'**
+  String get settingsSmartAlerts;
+
+  /// No description provided for @settingsEdit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get settingsEdit;
+
+  /// No description provided for @settingsBudgetLeftDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'\$450 left for 14 days'**
+  String get settingsBudgetLeftDesc;
+
+  /// No description provided for @settingsBudgetUsed.
+  ///
+  /// In en, this message translates to:
+  /// **'62% Used'**
+  String get settingsBudgetUsed;
+
+  /// No description provided for @settingsDataStorageTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'DATA & STORAGE'**
+  String get settingsDataStorageTitle;
+
+  /// No description provided for @settingsLocalSqlite.
+  ///
+  /// In en, this message translates to:
+  /// **'Local SQLite Cache'**
+  String get settingsLocalSqlite;
+
+  /// No description provided for @settingsEncryptedDb.
+  ///
+  /// In en, this message translates to:
+  /// **'Encrypted Local Database'**
+  String get settingsEncryptedDb;
+
+  /// No description provided for @settingsDataUsed.
+  ///
+  /// In en, this message translates to:
+  /// **'48 Transactions • 2.4 MB Used'**
+  String get settingsDataUsed;
+
+  /// No description provided for @settingsAutoBacked.
+  ///
+  /// In en, this message translates to:
+  /// **'Auto-backed'**
+  String get settingsAutoBacked;
+
+  /// No description provided for @settingsClearAllData.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear All Data'**
+  String get settingsClearAllData;
+
+  /// No description provided for @settingsResetDataDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset transactions, custom limits, and cache'**
+  String get settingsResetDataDesc;
+
+  /// No description provided for @settingsDanger.
+  ///
+  /// In en, this message translates to:
+  /// **'DANGER'**
+  String get settingsDanger;
+
+  /// No description provided for @settingsVersion.
+  ///
+  /// In en, this message translates to:
+  /// **'Version 1.0.0 (Build 2026.1)'**
+  String get settingsVersion;
+
+  /// No description provided for @settingsMadeWithFlutter.
+  ///
+  /// In en, this message translates to:
+  /// **'Made with Flutter'**
+  String get settingsMadeWithFlutter;
+
+  /// No description provided for @settingsBuiltForCambodia.
+  ///
+  /// In en, this message translates to:
+  /// **'• Built for Cambodia'**
+  String get settingsBuiltForCambodia;
+
+  /// No description provided for @settingsPrivacyOffline.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy & Offline Guarantee'**
+  String get settingsPrivacyOffline;
+
+  /// No description provided for @settingsBudgetRenews.
+  ///
+  /// In en, this message translates to:
+  /// **'Renews automatically on 1st of month'**
+  String get settingsBudgetRenews;
+
+  /// No description provided for @settingsSafeMargin.
+  ///
+  /// In en, this message translates to:
+  /// **'Safe Margin'**
+  String get settingsSafeMargin;
 }
 
 class _AppLocalizationsDelegate

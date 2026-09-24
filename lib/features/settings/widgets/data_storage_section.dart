@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_theme.dart';
+import 'package:kh_expense/l10n/app_localizations.dart';
 
 class DataStorageSection extends StatelessWidget {
   const DataStorageSection({super.key});
@@ -15,8 +16,8 @@ class DataStorageSection extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('DATA & STORAGE', style: AppTheme.labelMd.copyWith(color: AppColors.outline, fontWeight: FontWeight.bold)),
-              Text('Local SQLite Cache', style: AppTheme.labelSm.copyWith(color: AppColors.outline)),
+              Text(AppLocalizations.of(context)?.settingsDataStorageTitle ?? 'DATA & STORAGE', style: AppTheme.labelMd.copyWith(color: AppColors.outline, fontWeight: FontWeight.bold)),
+              Text(AppLocalizations.of(context)?.settingsLocalSqlite ?? 'Local SQLite Cache', style: AppTheme.labelSm.copyWith(color: AppColors.outline)),
             ],
           ),
         ),
@@ -54,13 +55,13 @@ class DataStorageSection extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('Encrypted Local Database', style: AppTheme.headlineSm.copyWith(color: AppColors.onSurface)),
-                            Text('48 Transactions • 2.4 MB Used', style: AppTheme.bodySm.copyWith(color: AppColors.outline)),
+                            Text(AppLocalizations.of(context)?.settingsEncryptedDb ?? 'Encrypted Local Database', style: AppTheme.headlineSm.copyWith(color: AppColors.onSurface)),
+                            Text(AppLocalizations.of(context)?.settingsDataUsed ?? '48 Transactions • 2.4 MB Used', style: AppTheme.bodySm.copyWith(color: AppColors.outline)),
                           ],
                         ),
                       ],
                     ),
-                    Text('Auto-backed', style: AppTheme.labelMd.copyWith(color: AppColors.outline, fontWeight: FontWeight.w500)),
+                    Text(AppLocalizations.of(context)?.settingsAutoBacked ?? 'Auto-backed', style: AppTheme.labelMd.copyWith(color: AppColors.outline, fontWeight: FontWeight.w500)),
                   ],
                 ),
               ),
@@ -88,8 +89,8 @@ class DataStorageSection extends StatelessWidget {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Clear All Data', style: AppTheme.headlineSm.copyWith(color: AppColors.error, fontWeight: FontWeight.w600)),
-                              Text('Reset transactions, custom limits, and cache', style: AppTheme.bodySm.copyWith(color: AppColors.outline)),
+                              Text(AppLocalizations.of(context)?.settingsClearAllData ?? 'Clear All Data', style: AppTheme.headlineSm.copyWith(color: AppColors.error, fontWeight: FontWeight.w600)),
+                              Text(AppLocalizations.of(context)?.settingsResetDataDesc ?? 'Reset transactions, custom limits, and cache', style: AppTheme.bodySm.copyWith(color: AppColors.outline)),
                             ],
                           ),
                         ],
@@ -100,7 +101,7 @@ class DataStorageSection extends StatelessWidget {
                           color: AppColors.error.withOpacity(0.1),
                           borderRadius: BorderRadius.circular(6),
                         ),
-                        child: Text('Reset', style: AppTheme.labelMd.copyWith(color: AppColors.error, fontWeight: FontWeight.bold)),
+                        child: Text(AppLocalizations.of(context)?.settingsDanger ?? 'Reset', style: AppTheme.labelMd.copyWith(color: AppColors.error, fontWeight: FontWeight.bold)),
                       ),
                     ],
                   ),

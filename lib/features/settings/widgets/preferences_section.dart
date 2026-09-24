@@ -18,8 +18,8 @@ class PreferencesSection extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('PREFERENCES', style: AppTheme.labelMd.copyWith(color: AppColors.outline, fontWeight: FontWeight.bold)),
-              Text('System Core', style: AppTheme.labelSm.copyWith(color: AppColors.primary, fontWeight: FontWeight.w500)),
+              Text(AppLocalizations.of(context)?.settingsPreferencesTitle ?? 'PREFERENCES', style: AppTheme.labelMd.copyWith(color: AppColors.outline, fontWeight: FontWeight.bold)),
+              Text(AppLocalizations.of(context)?.settingsSystemCore ?? 'System Core', style: AppTheme.labelSm.copyWith(color: AppColors.primary, fontWeight: FontWeight.w500)),
             ],
           ),
         ),
@@ -40,7 +40,7 @@ class PreferencesSection extends StatelessWidget {
               _buildPreferenceItem(
                 icon: Icons.language,
                 title: AppLocalizations.of(context)?.settingsLanguage ?? 'Language',
-                subtitle: 'Interface display and numerals',
+                subtitle: AppLocalizations.of(context)?.settingsLanguageSub ?? 'Interface display and numerals',
                 onTap: () {
                   Provider.of<LocaleProvider>(context, listen: false).toggleLocale();
                 },
@@ -77,9 +77,9 @@ class PreferencesSection extends StatelessWidget {
               Divider(height: 1, color: AppColors.outlineVariant.withOpacity(0.2)),
               _buildPreferenceItem(
                 icon: Icons.currency_exchange,
-                title: 'Default Currency',
+                title: AppLocalizations.of(context)?.settingsDefaultCurrency ?? 'Default Currency',
                 subtitleRich: TextSpan(
-                  text: 'NBC Live Rate: ',
+                  text: AppLocalizations.of(context)?.settingsNbcLiveRate ?? 'NBC Live Rate: ',
                   style: AppTheme.bodySm.copyWith(color: AppColors.outline),
                   children: [
                     TextSpan(
@@ -95,7 +95,7 @@ class PreferencesSection extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text('USD (\$)', style: AppTheme.labelMd.copyWith(color: AppColors.primary, fontWeight: FontWeight.bold)),
-                        Text('Primary', style: AppTheme.labelSm.copyWith(color: AppColors.tertiary)),
+                        Text(AppLocalizations.of(context)?.settingsPrimary ?? 'Primary', style: AppTheme.labelSm.copyWith(color: AppColors.tertiary)),
                       ],
                     ),
                     const SizedBox(width: 4),
@@ -106,8 +106,8 @@ class PreferencesSection extends StatelessWidget {
               Divider(height: 1, color: AppColors.outlineVariant.withOpacity(0.2)),
               _buildPreferenceItem(
                 icon: Icons.palette,
-                title: 'Appearance',
-                subtitle: 'Display theme & contrast',
+                title: AppLocalizations.of(context)?.settingsAppearance ?? 'Appearance',
+                subtitle: AppLocalizations.of(context)?.settingsAppearanceSub ?? 'Display theme & contrast',
                 trailing: Row(
                   children: [
                     Container(
@@ -116,7 +116,7 @@ class PreferencesSection extends StatelessWidget {
                         color: AppColors.surfaceContainer,
                         borderRadius: BorderRadius.circular(6),
                       ),
-                      child: Text('System', style: AppTheme.labelMd.copyWith(color: AppColors.onSurfaceVariant, fontWeight: FontWeight.w500)),
+                      child: Text(AppLocalizations.of(context)?.settingsSystemTheme ?? 'System', style: AppTheme.labelMd.copyWith(color: AppColors.onSurfaceVariant, fontWeight: FontWeight.w500)),
                     ),
                     const SizedBox(width: 4),
                     const Icon(Icons.chevron_right, color: AppColors.outline, size: 20),

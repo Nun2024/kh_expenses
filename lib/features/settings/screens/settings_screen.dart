@@ -11,6 +11,7 @@ import '../widgets/budget_section.dart';
 import '../widgets/data_storage_section.dart';
 import '../widgets/about_section.dart';
 import '../../wallets/screens/wallets_screen.dart';
+import 'package:kh_expense/l10n/app_localizations.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -68,20 +69,20 @@ class SettingsScreen extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _buildNavItem(context, Icons.dashboard, 'Home', false, () {
+          _buildNavItem(context, Icons.dashboard, AppLocalizations.of(context)?.navHome ?? 'Home', false, () {
             Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const DashboardScreen()));
           }),
-          _buildNavItem(context, Icons.query_stats, 'Analytics', false, () {
+          _buildNavItem(context, Icons.query_stats, AppLocalizations.of(context)?.navAnalytics ?? 'Analytics', false, () {
             Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const StatisticsScreen()));
           }),
           const SizedBox(width: 48), // Space for FAB
-          _buildNavItem(context, Icons.account_balance_wallet, 'Wallets', false, () {
+          _buildNavItem(context, Icons.account_balance_wallet, AppLocalizations.of(context)?.navWallets ?? 'Wallets', false, () {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => const WalletsScreen()),
             );
           }),
-          _buildNavItem(context, Icons.settings, 'Settings', true, () {}),
+          _buildNavItem(context, Icons.settings, AppLocalizations.of(context)?.navSettings ?? 'Settings', true, () {}),
         ],
       ),
     );
