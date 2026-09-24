@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_theme.dart';
+import 'package:kh_expense/l10n/app_localizations.dart';
 
 class WalletListItem extends StatelessWidget {
   final String name;
@@ -18,6 +19,7 @@ class WalletListItem extends StatelessWidget {
   final String transactionCount;
   final bool isSelected;
   final bool isKhqr;
+  final String? imagePath;
 
   const WalletListItem({
     super.key,
@@ -36,6 +38,7 @@ class WalletListItem extends StatelessWidget {
     required this.transactionCount,
     this.isSelected = false,
     this.isKhqr = false,
+    this.imagePath,
   });
 
   @override
@@ -85,8 +88,9 @@ class WalletListItem extends StatelessWidget {
                           color: avatarColor,
                           borderRadius: BorderRadius.circular(12),
                           border: Border.all(color: avatarColor.withOpacity(0.2), width: 2),
+                          image: imagePath != null ? DecorationImage(image: AssetImage(imagePath!), fit: BoxFit.cover) : null,
                         ),
-                        child: Column(
+                        child: imagePath != null ? null : Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             if (icon != null) Icon(icon, color: avatarTextColor, size: 20),
@@ -173,7 +177,7 @@ class WalletListItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       if (isSelected)
-                        Text('Available Balance', style: AppTheme.labelSm.copyWith(color: AppColors.onSurfaceVariant, fontWeight: FontWeight.w500)),
+                        Text(AppLocalizations.of(context)?.availableBalance ?? 'Available Balance', style: AppTheme.labelSm.copyWith(color: AppColors.onSurfaceVariant, fontWeight: FontWeight.w500)),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.baseline,
                         textBaseline: TextBaseline.alphabetic,

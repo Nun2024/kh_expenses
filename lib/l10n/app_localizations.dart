@@ -667,6 +667,156 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Limits'**
   String get limitsBtn;
+
+  /// No description provided for @transferInfoMock.
+  ///
+  /// In en, this message translates to:
+  /// **'Transfer between wallets keeps your accounts balanced without inflating reports.'**
+  String get transferInfoMock;
+
+  /// No description provided for @abaToCashMock.
+  ///
+  /// In en, this message translates to:
+  /// **'ABA → Cash \$100'**
+  String get abaToCashMock;
+
+  /// No description provided for @accountsAndWallets.
+  ///
+  /// In en, this message translates to:
+  /// **'Accounts & Wallets'**
+  String get accountsAndWallets;
+
+  /// No description provided for @primaryBankingSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Primary banking & local cash reserves'**
+  String get primaryBankingSub;
+
+  /// No description provided for @manageBtn.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage'**
+  String get manageBtn;
+
+  /// No description provided for @bankAba.
+  ///
+  /// In en, this message translates to:
+  /// **'ABA Bank'**
+  String get bankAba;
+
+  /// No description provided for @savingsAccountSub.
+  ///
+  /// In en, this message translates to:
+  /// **'**** 4821 • Savings Account'**
+  String get savingsAccountSub;
+
+  /// No description provided for @tagPrimary.
+  ///
+  /// In en, this message translates to:
+  /// **'Primary'**
+  String get tagPrimary;
+
+  /// No description provided for @transactionsMonthMock.
+  ///
+  /// In en, this message translates to:
+  /// **'24 transactions this month'**
+  String get transactionsMonthMock;
+
+  /// No description provided for @bankAcleda.
+  ///
+  /// In en, this message translates to:
+  /// **'ACLEDA Bank'**
+  String get bankAcleda;
+
+  /// No description provided for @bankAccountSub.
+  ///
+  /// In en, this message translates to:
+  /// **'**** 2190 • Bank Account'**
+  String get bankAccountSub;
+
+  /// No description provided for @tagToanChet.
+  ///
+  /// In en, this message translates to:
+  /// **'ToanChet'**
+  String get tagToanChet;
+
+  /// No description provided for @transactions8Mock.
+  ///
+  /// In en, this message translates to:
+  /// **'8 transactions'**
+  String get transactions8Mock;
+
+  /// No description provided for @bankWing.
+  ///
+  /// In en, this message translates to:
+  /// **'Wing Bank / E-Wallet'**
+  String get bankWing;
+
+  /// No description provided for @mobileWalletSub.
+  ///
+  /// In en, this message translates to:
+  /// **'**** 9012 • Mobile Wallet'**
+  String get mobileWalletSub;
+
+  /// No description provided for @transactions6Mock.
+  ///
+  /// In en, this message translates to:
+  /// **'6 transactions'**
+  String get transactions6Mock;
+
+  /// No description provided for @cashWallet.
+  ///
+  /// In en, this message translates to:
+  /// **'Cash Wallet'**
+  String get cashWallet;
+
+  /// No description provided for @cashWalletSub.
+  ///
+  /// In en, this message translates to:
+  /// **'USD & Cambodian Riel in Hand'**
+  String get cashWalletSub;
+
+  /// No description provided for @tagPhysicalCash.
+  ///
+  /// In en, this message translates to:
+  /// **'Physical Cash'**
+  String get tagPhysicalCash;
+
+  /// No description provided for @transactions12Mock.
+  ///
+  /// In en, this message translates to:
+  /// **'12 entries logged'**
+  String get transactions12Mock;
+
+  /// No description provided for @emergencyReserve.
+  ///
+  /// In en, this message translates to:
+  /// **'Emergency Reserve'**
+  String get emergencyReserve;
+
+  /// No description provided for @emergencyReserveSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Savings • Fixed Deposit'**
+  String get emergencyReserveSub;
+
+  /// No description provided for @tagLockedVault.
+  ///
+  /// In en, this message translates to:
+  /// **'Locked Vault'**
+  String get tagLockedVault;
+
+  /// No description provided for @untouchedMonthMock.
+  ///
+  /// In en, this message translates to:
+  /// **'Untouched this month'**
+  String get untouchedMonthMock;
+
+  /// No description provided for @availableBalance.
+  ///
+  /// In en, this message translates to:
+  /// **'Available Balance'**
+  String get availableBalance;
 }
 
 class _AppLocalizationsDelegate

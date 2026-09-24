@@ -293,4 +293,80 @@ class AppLocalizationsKm extends AppLocalizations {
 
   @override
   String get limitsBtn => 'ដែនកំណត់';
+
+  @override
+  String get transferInfoMock =>
+      'ការផ្ទេរប្រាក់រវាងកាបូបជួយឱ្យគណនីមានតុល្យភាពដោយមិនប៉ះពាល់ដល់របាយការណ៍ចំណាយ។';
+
+  @override
+  String get abaToCashMock => 'ABA → Cash \$100';
+
+  @override
+  String get accountsAndWallets => 'គណនី និងកាបូបលុយ';
+
+  @override
+  String get primaryBankingSub => 'ធនាគារចម្បង និងសាច់ប្រាក់';
+
+  @override
+  String get manageBtn => 'គ្រប់គ្រង';
+
+  @override
+  String get bankAba => 'ធនាគារ ABA';
+
+  @override
+  String get savingsAccountSub => '**** 4821 • គណនីសន្សំ';
+
+  @override
+  String get tagPrimary => 'ចម្បង';
+
+  @override
+  String get transactionsMonthMock => '24 ប្រតិបត្តិការក្នុងខែនេះ';
+
+  @override
+  String get bankAcleda => 'ធនាគារ ACLEDA';
+
+  @override
+  String get bankAccountSub => '**** 2190 • គណនីធនាគារ';
+
+  @override
+  String get tagToanChet => 'ទាន់ចិត្ត';
+
+  @override
+  String get transactions8Mock => '8 ប្រតិបត្តិការ';
+
+  @override
+  String get bankWing => 'ធនាគារ Wing / កាបូបលុយ';
+
+  @override
+  String get mobileWalletSub => '**** 9012 • កាបូបតាមទូរស័ព្ទ';
+
+  @override
+  String get transactions6Mock => '6 ប្រតិបត្តិការ';
+
+  @override
+  String get cashWallet => 'កាបូបសាច់ប្រាក់';
+
+  @override
+  String get cashWalletSub => 'លុយដុល្លារ និងរៀលក្នុងដៃ';
+
+  @override
+  String get tagPhysicalCash => 'សាច់ប្រាក់';
+
+  @override
+  String get transactions12Mock => 'បានកត់ត្រា 12';
+
+  @override
+  String get emergencyReserve => 'ប្រាក់បម្រុង';
+
+  @override
+  String get emergencyReserveSub => 'សន្សំ • ប្រាក់បញ្ញើមានកាលកំណត់';
+
+  @override
+  String get tagLockedVault => 'កន្លែងសុវត្ថិភាព';
+
+  @override
+  String get untouchedMonthMock => 'មិនមានចរាចរណ៍ខែនេះ';
+
+  @override
+  String get availableBalance => 'សមតុល្យទឹកប្រាក់';
 }

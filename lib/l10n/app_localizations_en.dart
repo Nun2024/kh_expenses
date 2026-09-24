@@ -293,4 +293,80 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get limitsBtn => 'Limits';
+
+  @override
+  String get transferInfoMock =>
+      'Transfer between wallets keeps your accounts balanced without inflating reports.';
+
+  @override
+  String get abaToCashMock => 'ABA → Cash \$100';
+
+  @override
+  String get accountsAndWallets => 'Accounts & Wallets';
+
+  @override
+  String get primaryBankingSub => 'Primary banking & local cash reserves';
+
+  @override
+  String get manageBtn => 'Manage';
+
+  @override
+  String get bankAba => 'ABA Bank';
+
+  @override
+  String get savingsAccountSub => '**** 4821 • Savings Account';
+
+  @override
+  String get tagPrimary => 'Primary';
+
+  @override
+  String get transactionsMonthMock => '24 transactions this month';
+
+  @override
+  String get bankAcleda => 'ACLEDA Bank';
+
+  @override
+  String get bankAccountSub => '**** 2190 • Bank Account';
+
+  @override
+  String get tagToanChet => 'ToanChet';
+
+  @override
+  String get transactions8Mock => '8 transactions';
+
+  @override
+  String get bankWing => 'Wing Bank / E-Wallet';
+
+  @override
+  String get mobileWalletSub => '**** 9012 • Mobile Wallet';
+
+  @override
+  String get transactions6Mock => '6 transactions';
+
+  @override
+  String get cashWallet => 'Cash Wallet';
+
+  @override
+  String get cashWalletSub => 'USD & Cambodian Riel in Hand';
+
+  @override
+  String get tagPhysicalCash => 'Physical Cash';
+
+  @override
+  String get transactions12Mock => '12 entries logged';
+
+  @override
+  String get emergencyReserve => 'Emergency Reserve';
+
+  @override
+  String get emergencyReserveSub => 'Savings • Fixed Deposit';
+
+  @override
+  String get tagLockedVault => 'Locked Vault';
+
+  @override
+  String get untouchedMonthMock => 'Untouched this month';
+
+  @override
+  String get availableBalance => 'Available Balance';
 }

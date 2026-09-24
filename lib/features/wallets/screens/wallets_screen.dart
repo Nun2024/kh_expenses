@@ -10,6 +10,7 @@ import '../widgets/net_worth_hero_card.dart';
 import '../widgets/info_tooltip_banner.dart';
 import '../widgets/wallet_list_item.dart';
 import '../widgets/wallet_activity_sheet.dart';
+import 'package:kh_expense/l10n/app_localizations.dart';
 
 class WalletsScreen extends StatelessWidget {
   const WalletsScreen({super.key});
@@ -42,11 +43,11 @@ class WalletsScreen extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  'Wallets',
+                  AppLocalizations.of(context)?.navWallets ?? 'Wallets',
                   style: AppTheme.headlineMd.copyWith(color: AppColors.onSurface),
                 ),
                 Text(
-                  'NBC: \$1 = ៛4,085',
+                  AppLocalizations.of(context)?.nbcRateMock ?? 'NBC: \$1 = ៛4,085',
                   style: AppTheme.labelSm.copyWith(color: AppColors.outline),
                 ),
               ],
@@ -70,7 +71,7 @@ class WalletsScreen extends StatelessWidget {
                   decoration: const BoxDecoration(color: AppColors.secondary, shape: BoxShape.circle),
                 ),
                 const SizedBox(width: 6),
-                Text('USD \$ / ៛', style: AppTheme.labelSm.copyWith(color: AppColors.primary)),
+                Text(AppLocalizations.of(context)?.usdAndKhr ?? 'USD \$ / ៛', style: AppTheme.labelSm.copyWith(color: AppColors.primary)),
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 4),
                   child: Text('•', style: TextStyle(color: AppColors.outlineVariant, fontSize: 10)),
@@ -91,9 +92,9 @@ class WalletsScreen extends StatelessWidget {
           const SizedBox(height: 16),
           const NetWorthHeroCard(),
           const SizedBox(height: 16),
-          const InfoTooltipBanner(
-            message: 'Transfer between wallets (e.g., ABA → Cash \$100) keeps your accounts balanced without inflating your monthly expense reports.',
-            boldText: 'ABA → Cash \$100',
+          InfoTooltipBanner(
+            message: AppLocalizations.of(context)?.transferInfoMock ?? 'Transfer between wallets keeps your accounts balanced without inflating reports.',
+            boldText: AppLocalizations.of(context)?.abaToCashMock ?? 'ABA → Cash \$100',
           ),
           const SizedBox(height: 24),
           
@@ -103,13 +104,13 @@ class WalletsScreen extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Accounts & Wallets', style: AppTheme.headlineMd.copyWith(color: AppColors.onSurface, fontWeight: FontWeight.bold)),
-                  Text('Primary banking & local cash reserves', style: AppTheme.bodySm.copyWith(color: AppColors.onSurfaceVariant)),
+                  Text(AppLocalizations.of(context)?.accountsAndWallets ?? 'Accounts & Wallets', style: AppTheme.headlineMd.copyWith(color: AppColors.onSurface, fontWeight: FontWeight.bold)),
+                  Text(AppLocalizations.of(context)?.primaryBankingSub ?? 'Primary banking & local cash reserves', style: AppTheme.bodySm.copyWith(color: AppColors.onSurfaceVariant)),
                 ],
               ),
               Row(
                 children: [
-                  Text('Manage', style: AppTheme.labelMd.copyWith(color: AppColors.primary, fontWeight: FontWeight.bold)),
+                  Text(AppLocalizations.of(context)?.manageBtn ?? 'Manage', style: AppTheme.labelMd.copyWith(color: AppColors.primary, fontWeight: FontWeight.bold)),
                   const SizedBox(width: 4),
                   const Icon(Icons.tune, size: 16, color: AppColors.primary),
                 ],
@@ -119,18 +120,19 @@ class WalletsScreen extends StatelessWidget {
           const SizedBox(height: 16),
           
           WalletListItem(
-            name: 'ABA Bank',
-            subtitle: '**** 4821 • Savings Account',
-            tagText: 'Primary',
+            name: AppLocalizations.of(context)?.bankAba ?? 'ABA Bank',
+            subtitle: AppLocalizations.of(context)?.savingsAccountSub ?? '**** 4821 • Savings Account',
+            tagText: AppLocalizations.of(context)?.tagPrimary ?? 'Primary',
             tagColor: AppColors.primary,
             tagBgColor: const Color(0xFF00685F).withOpacity(0.1),
             initials: 'ABA',
+            imagePath: 'assets/bank_logo/aba.png',
             smallText: 'BANK',
             avatarColor: const Color(0xFF003755),
             avatarTextColor: Colors.white,
             usdBalance: '\$850.00',
             khrBalance: '៛3,472,250',
-            transactionCount: '24 transactions this month',
+            transactionCount: AppLocalizations.of(context)?.transactionsMonthMock ?? '24 transactions this month',
             isSelected: true,
             isKhqr: true,
           ),
@@ -138,37 +140,39 @@ class WalletsScreen extends StatelessWidget {
           const WalletActivitySheet(),
           const SizedBox(height: 12),
           
-          const WalletListItem(
-            name: 'ACLEDA Bank',
-            subtitle: '**** 2190 • Bank Account',
-            tagText: 'ToanChet',
+          WalletListItem(
+            name: AppLocalizations.of(context)?.bankAcleda ?? 'ACLEDA Bank',
+            subtitle: AppLocalizations.of(context)?.bankAccountSub ?? '**** 2190 • Bank Account',
+            tagText: AppLocalizations.of(context)?.tagToanChet ?? 'ToanChet',
             icon: Icons.shield,
             initials: 'ACLEDA',
-            avatarColor: Color(0xFF004785),
+            imagePath: 'assets/bank_logo/acleda.png',
+            avatarColor: const Color(0xFF004785),
             avatarTextColor: Colors.amber,
             usdBalance: '\$430.00',
             khrBalance: '៛1,756,550',
-            transactionCount: '8 transactions',
+            transactionCount: AppLocalizations.of(context)?.transactions8Mock ?? '8 transactions',
           ),
           
-          const WalletListItem(
-            name: 'Wing Bank / E-Wallet',
-            subtitle: '**** 9012 • Mobile Wallet',
+          WalletListItem(
+            name: AppLocalizations.of(context)?.bankWing ?? 'Wing Bank / E-Wallet',
+            subtitle: AppLocalizations.of(context)?.mobileWalletSub ?? '**** 9012 • Mobile Wallet',
             tagText: '',
             tagBgColor: Colors.transparent,
             icon: Icons.phone_android,
             initials: 'WING',
-            avatarColor: Color(0xFF71B02F),
+            imagePath: 'assets/bank_logo/wing.png',
+            avatarColor: const Color(0xFF71B02F),
             avatarTextColor: Colors.white,
             usdBalance: '\$250.00',
             khrBalance: '៛1,021,250',
-            transactionCount: '6 transactions',
+            transactionCount: AppLocalizations.of(context)?.transactions6Mock ?? '6 transactions',
           ),
           
           WalletListItem(
-            name: 'Cash Wallet',
-            subtitle: 'USD & Cambodian Riel in Hand',
-            tagText: 'Physical Cash',
+            name: AppLocalizations.of(context)?.cashWallet ?? 'Cash Wallet',
+            subtitle: AppLocalizations.of(context)?.cashWalletSub ?? 'USD & Cambodian Riel in Hand',
+            tagText: AppLocalizations.of(context)?.tagPhysicalCash ?? 'Physical Cash',
             tagColor: AppColors.tertiary,
             tagBgColor: const Color(0xFFFFDCC3).withOpacity(0.6),
             icon: Icons.payments,
@@ -176,19 +180,19 @@ class WalletsScreen extends StatelessWidget {
             avatarTextColor: AppColors.onTertiary,
             usdBalance: '\$120.00',
             khrBalance: '៛490,200',
-            transactionCount: '12 entries logged',
+            transactionCount: AppLocalizations.of(context)?.transactions12Mock ?? '12 entries logged',
           ),
           
-          const WalletListItem(
-            name: 'Emergency Reserve',
-            subtitle: 'Savings • Fixed Deposit',
-            tagText: 'Locked Vault',
+          WalletListItem(
+            name: AppLocalizations.of(context)?.emergencyReserve ?? 'Emergency Reserve',
+            subtitle: AppLocalizations.of(context)?.emergencyReserveSub ?? 'Savings • Fixed Deposit',
+            tagText: AppLocalizations.of(context)?.tagLockedVault ?? 'Locked Vault',
             icon: Icons.lock,
             avatarColor: AppColors.surfaceContainerHigh,
             avatarTextColor: AppColors.primary,
             usdBalance: '\$200.00',
             khrBalance: '៛817,000',
-            transactionCount: 'Untouched this month',
+            transactionCount: AppLocalizations.of(context)?.untouchedMonthMock ?? 'Untouched this month',
           ),
           
           const SizedBox(height: 80),
@@ -224,15 +228,15 @@ class WalletsScreen extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _buildNavItem(context, Icons.dashboard, 'Home', false, () {
+          _buildNavItem(context, Icons.dashboard, AppLocalizations.of(context)?.navHome ?? 'Home', false, () {
             Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const DashboardScreen()));
           }),
-          _buildNavItem(context, Icons.query_stats, 'Analytics', false, () {
+          _buildNavItem(context, Icons.query_stats, AppLocalizations.of(context)?.navAnalytics ?? 'Analytics', false, () {
             Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const StatisticsScreen()));
           }),
           const SizedBox(width: 48), // Space for FAB
-          _buildNavItem(context, Icons.account_balance_wallet, 'Wallets', true, () {}),
-          _buildNavItem(context, Icons.settings, 'Settings', false, () {
+          _buildNavItem(context, Icons.account_balance_wallet, AppLocalizations.of(context)?.navWallets ?? 'Wallets', true, () {}),
+          _buildNavItem(context, Icons.settings, AppLocalizations.of(context)?.navSettings ?? 'Settings', false, () {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => const SettingsScreen()),
