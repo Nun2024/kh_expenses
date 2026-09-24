@@ -236,4 +236,61 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get fastLabel => 'FAST';
+
+  @override
+  String get expenseOverview => 'Expense overview & insights';
+
+  @override
+  String get periodWeek => 'Week';
+
+  @override
+  String get periodMonth => 'Month';
+
+  @override
+  String get periodYear => 'Year';
+
+  @override
+  String get cycle30Days => '30 Days Cycle';
+
+  @override
+  String get totalOutflow => 'TOTAL OUTFLOW';
+
+  @override
+  String get dailyPace => 'Daily Pace';
+
+  @override
+  String get avgDailyPaceMockUsd => 'Avg \$10.90 / day';
+
+  @override
+  String get avgDailyPaceMockKhr => 'Avg ៛44.5K / day';
+
+  @override
+  String get categoryBreakdown => 'Category Breakdown';
+
+  @override
+  String get activeCategoriesMock => '4 Active categories recorded';
+
+  @override
+  String get spendingTrajectory => 'Spending Trajectory';
+
+  @override
+  String get dailyFluctuations => 'Daily fluctuations';
+
+  @override
+  String get peak => 'PEAK';
+
+  @override
+  String get topCategorySpotlight => 'Top Category Spotlight';
+
+  @override
+  String get recordedTransactionsMock => '24 recorded transactions';
+
+  @override
+  String get budgetHealth => 'Budget Health';
+
+  @override
+  String get budgetRemainingMock => '68% of monthly limit remaining';
+
+  @override
+  String get limitsBtn => 'Limits';
 }

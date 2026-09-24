@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_theme.dart';
 import 'dart:math';
+import 'package:kh_expense/l10n/app_localizations.dart';
 
 class CategoryBreakdownChart extends StatelessWidget {
-  const CategoryBreakdownChart({super.key});
+  final String activePeriod;
+  final bool isKhrFirst;
+  const CategoryBreakdownChart({super.key, this.activePeriod = 'Month', this.isKhrFirst = false});
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +33,8 @@ class CategoryBreakdownChart extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Category Breakdown', style: AppTheme.headlineSm.copyWith(color: AppColors.onSurface)),
-                  Text('4 Active categories recorded', style: AppTheme.bodySm.copyWith(color: AppColors.onSurfaceVariant)),
+                  Text(AppLocalizations.of(context)?.categoryBreakdown ?? 'Category Breakdown', style: AppTheme.headlineSm.copyWith(color: AppColors.onSurface)),
+                  Text(AppLocalizations.of(context)?.activeCategoriesMock ?? '4 Active categories recorded', style: AppTheme.bodySm.copyWith(color: AppColors.onSurfaceVariant)),
                 ],
               ),
               Container(
@@ -71,19 +74,19 @@ class CategoryBreakdownChart extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           // Ledger
-          _buildCategoryItem('🍜', 'Food & Dining', '37%', '\$120.00', '៛490,200', AppColors.primary, 0.37),
+          _buildCategoryItem('🍜', AppLocalizations.of(context)?.categoryFoodDining ?? 'Food & Dining', '37%', isKhrFirst ? '៛490,200' : '\$120.00', isKhrFirst ? '\$120.00' : '៛490,200', AppColors.primary, 0.37),
           const SizedBox(height: 8),
-          _buildCategoryItem('🛍', 'Shopping', '25%', '\$82.00', '៛334,970', AppColors.tertiary, 0.25),
+          _buildCategoryItem('🛍', AppLocalizations.of(context)?.categoryShopping ?? 'Shopping', '25%', isKhrFirst ? '៛334,970' : '\$82.00', isKhrFirst ? '\$82.00' : '៛334,970', AppColors.tertiary, 0.25),
           const SizedBox(height: 8),
-          _buildCategoryItem('🚕', 'Transport', '20%', '\$65.00', '៛265,525', AppColors.secondary, 0.20),
+          _buildCategoryItem('🚕', AppLocalizations.of(context)?.categoryTransport ?? 'Transport', '20%', isKhrFirst ? '៛265,525' : '\$65.00', isKhrFirst ? '\$65.00' : '៛265,525', AppColors.secondary, 0.20),
           const SizedBox(height: 8),
-          _buildCategoryItem('💡', 'Utilities', '18%', '\$60.00', '៛245,100', AppColors.outline, 0.18),
+          _buildCategoryItem('💡', AppLocalizations.of(context)?.categoryUtilities ?? 'Utilities', '18%', isKhrFirst ? '៛245,100' : '\$60.00', isKhrFirst ? '\$60.00' : '៛245,100', AppColors.outline, 0.18),
         ],
       ),
     );
   }
 
-  Widget _buildCategoryItem(String emoji, String title, String percentage, String amountUsd, String amountKhr, Color color, double fraction) {
+  Widget _buildCategoryItem(String emoji, String title, String percentage, String primaryAmount, String secondaryAmount, Color color, double fraction) {
     return Container(
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
@@ -114,8 +117,8 @@ class CategoryBreakdownChart extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Text(amountUsd, style: AppTheme.headlineSm.copyWith(color: AppColors.onSurface, fontWeight: FontWeight.bold)),
-                  Text(amountKhr, style: AppTheme.bodySm.copyWith(color: AppColors.onSurfaceVariant)),
+                  Text(primaryAmount, style: AppTheme.headlineSm.copyWith(color: AppColors.onSurface, fontWeight: FontWeight.bold)),
+                  Text(secondaryAmount, style: AppTheme.bodySm.copyWith(color: AppColors.onSurfaceVariant)),
                 ],
               ),
             ],

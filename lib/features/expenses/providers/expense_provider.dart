@@ -68,10 +68,12 @@ class ExpenseProvider extends ChangeNotifier {
     return _expenses.where((e) {
       if (period == 'Today') {
         return e.date.year == now.year && e.date.month == now.month && e.date.day == now.day;
-      } else if (period == 'This Week') {
+      } else if (period == 'This Week' || period == 'Week') {
         final startOfWeek = now.subtract(Duration(days: now.weekday - 1));
         final startDate = DateTime(startOfWeek.year, startOfWeek.month, startOfWeek.day);
         return e.date.isAfter(startDate.subtract(const Duration(milliseconds: 1)));
+      } else if (period == 'Year') {
+        return e.date.year == now.year;
       } else {
         return e.date.year == now.year && e.date.month == now.month;
       }

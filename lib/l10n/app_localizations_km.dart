@@ -236,4 +236,61 @@ class AppLocalizationsKm extends AppLocalizations {
 
   @override
   String get fastLabel => 'រហ័ស';
+
+  @override
+  String get expenseOverview => 'ទិដ្ឋភាពទូទៅ និងការវិភាគ';
+
+  @override
+  String get periodWeek => 'សប្តាហ៍';
+
+  @override
+  String get periodMonth => 'ខែ';
+
+  @override
+  String get periodYear => 'ឆ្នាំ';
+
+  @override
+  String get cycle30Days => 'វដ្ត 30 ថ្ងៃ';
+
+  @override
+  String get totalOutflow => 'ចំណាយចេញសរុប';
+
+  @override
+  String get dailyPace => 'ល្បឿនចំណាយប្រចាំថ្ងៃ';
+
+  @override
+  String get avgDailyPaceMockUsd => 'ជាមធ្យម \$10.90 / ថ្ងៃ';
+
+  @override
+  String get avgDailyPaceMockKhr => 'ជាមធ្យម ៛44.5K / ថ្ងៃ';
+
+  @override
+  String get categoryBreakdown => 'ការបែងចែកចំណាត់ថ្នាក់';
+
+  @override
+  String get activeCategoriesMock => 'កត់ត្រា 4 ប្រភេទសកម្ម';
+
+  @override
+  String get spendingTrajectory => 'គន្លងចំណាយ';
+
+  @override
+  String get dailyFluctuations => 'ការប្រែប្រួលប្រចាំថ្ងៃ';
+
+  @override
+  String get peak => 'ខ្ពស់បំផុត';
+
+  @override
+  String get topCategorySpotlight => 'ចំណាត់ថ្នាក់ចំណាយខ្ពស់បំផុត';
+
+  @override
+  String get recordedTransactionsMock => 'មាន 24 ប្រតិបត្តិការ';
+
+  @override
+  String get budgetHealth => 'ស្ថានភាពកញ្ចប់ថវិកា';
+
+  @override
+  String get budgetRemainingMock => 'នៅសល់ 68% នៃដែនកំណត់ប្រចាំខែ';
+
+  @override
+  String get limitsBtn => 'ដែនកំណត់';
 }

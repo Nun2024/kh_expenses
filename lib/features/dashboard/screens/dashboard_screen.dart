@@ -63,7 +63,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     const Icon(Icons.location_on, size: 12, color: AppColors.outline),
                     const SizedBox(width: 4),
                     Text(
-                      'Phnom Penh • Synced',
+                      'Kravanh Pursat • Synced',
                       style: AppTheme.labelSm.copyWith(color: AppColors.onSurfaceVariant),
                     ),
                   ],

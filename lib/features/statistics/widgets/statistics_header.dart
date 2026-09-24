@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_theme.dart';
+import 'package:kh_expense/l10n/app_localizations.dart';
 
 class StatisticsHeader extends StatelessWidget {
   final String activePeriod;
@@ -24,11 +25,11 @@ class StatisticsHeader extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Analytics',
+                  AppLocalizations.of(context)?.navAnalytics ?? 'Analytics',
                   style: AppTheme.headlineLg.copyWith(color: AppColors.onSurface, fontSize: 28),
                 ),
                 Text(
-                  'Expense overview & insights',
+                  AppLocalizations.of(context)?.expenseOverview ?? 'Expense overview & insights',
                   style: AppTheme.bodySm.copyWith(color: AppColors.onSurfaceVariant),
                 ),
               ],
@@ -59,9 +60,9 @@ class StatisticsHeader extends StatelessWidget {
           ),
           child: Row(
             children: [
-              Expanded(child: _buildSegmentButton('Week', activePeriod == 'Week')),
-              Expanded(child: _buildSegmentButton('Month', activePeriod == 'Month')),
-              Expanded(child: _buildSegmentButton('Year', activePeriod == 'Year')),
+              Expanded(child: _buildSegmentButton(context, 'Week', AppLocalizations.of(context)?.periodWeek ?? 'Week', activePeriod == 'Week')),
+              Expanded(child: _buildSegmentButton(context, 'Month', AppLocalizations.of(context)?.periodMonth ?? 'Month', activePeriod == 'Month')),
+              Expanded(child: _buildSegmentButton(context, 'Year', AppLocalizations.of(context)?.periodYear ?? 'Year', activePeriod == 'Year')),
             ],
           ),
         ),
@@ -86,7 +87,7 @@ class StatisticsHeader extends StatelessWidget {
                   borderRadius: BorderRadius.circular(4),
                 ),
                 child: Text(
-                  '30 Days Cycle',
+                  AppLocalizations.of(context)?.cycle30Days ?? '30 Days Cycle',
                   style: AppTheme.labelSm.copyWith(color: AppColors.onPrimaryFixedVariant, fontWeight: FontWeight.w500),
                 ),
               ),
@@ -97,9 +98,9 @@ class StatisticsHeader extends StatelessWidget {
     );
   }
 
-  Widget _buildSegmentButton(String text, bool isSelected) {
+  Widget _buildSegmentButton(BuildContext context, String value, String label, bool isSelected) {
     return GestureDetector(
-      onTap: () => onPeriodChanged(text),
+      onTap: () => onPeriodChanged(value),
       behavior: HitTestBehavior.opaque,
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 6),
@@ -116,7 +117,7 @@ class StatisticsHeader extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              text,
+              label,
               style: AppTheme.labelMd.copyWith(
                 color: isSelected ? AppColors.primary : AppColors.onSurfaceVariant,
                 fontWeight: isSelected ? FontWeight.w700 : null,

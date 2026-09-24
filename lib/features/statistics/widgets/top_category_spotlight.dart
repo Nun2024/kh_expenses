@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_theme.dart';
+import 'package:kh_expense/l10n/app_localizations.dart';
 
 class TopCategorySpotlight extends StatelessWidget {
-  const TopCategorySpotlight({super.key});
+  final String activePeriod;
+  final bool isKhrFirst;
+  const TopCategorySpotlight({super.key, this.activePeriod = 'Month', this.isKhrFirst = false});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +39,7 @@ class TopCategorySpotlight extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 8),
-                  Text('Top Category Spotlight', style: AppTheme.headlineSm.copyWith(color: AppColors.onSurface)),
+                  Text(AppLocalizations.of(context)?.topCategorySpotlight ?? 'Top Category Spotlight', style: AppTheme.headlineSm.copyWith(color: AppColors.onSurface)),
                 ],
               ),
               Container(
@@ -71,8 +74,8 @@ class TopCategorySpotlight extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Food & Dining', style: AppTheme.headlineMd.copyWith(fontWeight: FontWeight.bold, color: AppColors.onSurface)),
-                      Text('24 recorded transactions', style: AppTheme.bodySm.copyWith(color: AppColors.onSurfaceVariant)),
+                      Text(AppLocalizations.of(context)?.categoryFoodDining ?? 'Food & Dining', style: AppTheme.headlineMd.copyWith(fontWeight: FontWeight.bold, color: AppColors.onSurface)),
+                      Text(AppLocalizations.of(context)?.recordedTransactionsMock ?? '24 recorded transactions', style: AppTheme.bodySm.copyWith(color: AppColors.onSurfaceVariant)),
                     ],
                   ),
                 ],
@@ -80,8 +83,8 @@ class TopCategorySpotlight extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Text('\$120.00', style: AppTheme.headlineMd.copyWith(color: AppColors.primary, fontWeight: FontWeight.w800)),
-                  Text('≈ ៛490,200', style: AppTheme.bodySm.copyWith(color: AppColors.outline, fontWeight: FontWeight.w500)),
+                  Text(isKhrFirst ? '៛490,200' : '\$120.00', style: AppTheme.headlineMd.copyWith(color: AppColors.primary, fontWeight: FontWeight.w800)),
+                  Text(isKhrFirst ? '≈ \$120.00' : '≈ ៛490,200', style: AppTheme.bodySm.copyWith(color: AppColors.outline, fontWeight: FontWeight.w500)),
                 ],
               ),
             ],

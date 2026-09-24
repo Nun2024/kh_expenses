@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_theme.dart';
+import 'package:kh_expense/l10n/app_localizations.dart';
 
 class BudgetHealthCard extends StatelessWidget {
-  const BudgetHealthCard({super.key});
+  final String activePeriod;
+  final bool isKhrFirst;
+  const BudgetHealthCard({super.key, this.activePeriod = 'Month', this.isKhrFirst = false});
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +35,8 @@ class BudgetHealthCard extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Budget Health', style: AppTheme.headlineSm.copyWith(color: AppColors.onSurface)),
-                  Text('68% of monthly limit remaining', style: AppTheme.bodySm.copyWith(color: AppColors.onSurfaceVariant)),
+                  Text(AppLocalizations.of(context)?.budgetHealth ?? 'Budget Health', style: AppTheme.headlineSm.copyWith(color: AppColors.onSurface)),
+                  Text(AppLocalizations.of(context)?.budgetRemainingMock ?? '68% of monthly limit remaining', style: AppTheme.bodySm.copyWith(color: AppColors.onSurfaceVariant)),
                 ],
               ),
             ],
@@ -47,7 +50,7 @@ class BudgetHealthCard extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
             ),
-            child: const Text('Limits'),
+            child: Text(AppLocalizations.of(context)?.limitsBtn ?? 'Limits'),
           ),
         ],
       ),

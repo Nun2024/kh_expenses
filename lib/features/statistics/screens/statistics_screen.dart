@@ -11,6 +11,7 @@ import '../widgets/top_category_spotlight.dart';
 import '../widgets/budget_health_card.dart';
 import '../../settings/screens/settings_screen.dart';
 import '../../wallets/screens/wallets_screen.dart';
+import 'package:kh_expense/l10n/app_localizations.dart';
 
 class StatisticsScreen extends StatefulWidget {
   const StatisticsScreen({super.key});
@@ -21,6 +22,7 @@ class StatisticsScreen extends StatefulWidget {
 
 class _StatisticsScreenState extends State<StatisticsScreen> {
   String _activePeriod = 'Month';
+  bool _isKhrFirst = false;
 
   @override
   Widget build(BuildContext context) {
@@ -50,11 +52,11 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  'KH Expense',
+                  AppLocalizations.of(context)?.appTitle ?? 'KH Expense',
                   style: AppTheme.headlineMd.copyWith(color: AppColors.onSurface),
                 ),
                 Text(
-                  'Smart Ledger',
+                  AppLocalizations.of(context)?.smartLedger ?? 'Smart Ledger',
                   style: AppTheme.labelSm.copyWith(color: AppColors.outline),
                 ),
               ],
@@ -62,29 +64,54 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
           ],
         ),
         actions: [
-          Container(
-            margin: const EdgeInsets.only(right: 16),
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-            decoration: BoxDecoration(
-              color: AppColors.surfaceContainerLowest,
-              borderRadius: BorderRadius.circular(16),
-              border: Border.all(color: AppColors.outlineVariant.withOpacity(0.4)),
-            ),
-            child: Row(
-              children: [
-                Container(
-                  width: 8,
-                  height: 8,
-                  decoration: const BoxDecoration(color: AppColors.secondary, shape: BoxShape.circle),
+          Padding(
+            padding: const EdgeInsets.only(right: 16.0),
+            child: GestureDetector(
+              onTap: () {
+                setState(() {
+                  _isKhrFirst = !_isKhrFirst;
+                });
+              },
+              child: Container(
+                height: 32,
+                decoration: BoxDecoration(
+                  color: AppColors.surfaceContainer,
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(color: AppColors.outlineVariant.withOpacity(0.3)),
                 ),
-                const SizedBox(width: 6),
-                Text('USD \$ / ៛', style: AppTheme.labelSm.copyWith(color: AppColors.primary)),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 4),
-                  child: Text('•', style: TextStyle(color: AppColors.outlineVariant, fontSize: 10)),
+                child: Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                      decoration: !_isKhrFirst ? BoxDecoration(
+                        color: AppColors.surfaceContainerLowest,
+                        borderRadius: BorderRadius.circular(16),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.05),
+                            blurRadius: 2,
+                          ),
+                        ],
+                      ) : null,
+                      child: Text(AppLocalizations.of(context)?.currencyUsd ?? 'USD \$', style: AppTheme.labelMd.copyWith(color: !_isKhrFirst ? AppColors.primary : AppColors.onSurfaceVariant)),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                      decoration: _isKhrFirst ? BoxDecoration(
+                        color: AppColors.surfaceContainerLowest,
+                        borderRadius: BorderRadius.circular(16),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.05),
+                            blurRadius: 2,
+                          ),
+                        ],
+                      ) : null,
+                      child: Text(AppLocalizations.of(context)?.currencyKhr ?? 'KHR ៛', style: AppTheme.labelMd.copyWith(color: _isKhrFirst ? AppColors.primary : AppColors.onSurfaceVariant)),
+                    ),
+                  ],
                 ),
-                Text('៛4,085', style: AppTheme.labelSm.copyWith(color: AppColors.onSurfaceVariant, fontWeight: FontWeight.w500)),
-              ],
+              ),
             ),
           ),
         ],
@@ -100,15 +127,15 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                 onPeriodChanged: (period) => setState(() => _activePeriod = period),
               ),
               const SizedBox(height: 16),
-              const TotalSpendingSummary(),
+              TotalSpendingSummary(activePeriod: _activePeriod, isKhrFirst: _isKhrFirst),
               const SizedBox(height: 16),
-              const CategoryBreakdownChart(),
+              CategoryBreakdownChart(activePeriod: _activePeriod, isKhrFirst: _isKhrFirst),
               const SizedBox(height: 16),
-              const SpendingTrendChart(),
+              SpendingTrendChart(activePeriod: _activePeriod, isKhrFirst: _isKhrFirst),
               const SizedBox(height: 16),
-              const TopCategorySpotlight(),
+              TopCategorySpotlight(activePeriod: _activePeriod, isKhrFirst: _isKhrFirst),
               const SizedBox(height: 16),
-              const BudgetHealthCard(),
+              BudgetHealthCard(activePeriod: _activePeriod, isKhrFirst: _isKhrFirst),
               const SizedBox(height: 40),
             ],
           ),
@@ -142,18 +169,18 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _buildNavItem(context, Icons.dashboard, 'Home', false, () {
+          _buildNavItem(context, Icons.dashboard, AppLocalizations.of(context)?.navHome ?? 'Home', false, () {
             Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const DashboardScreen()));
           }),
-          _buildNavItem(context, Icons.query_stats, 'Analytics', true, () {}),
+          _buildNavItem(context, Icons.query_stats, AppLocalizations.of(context)?.navAnalytics ?? 'Analytics', true, () {}),
           const SizedBox(width: 48), // Space for FAB
-          _buildNavItem(context, Icons.account_balance_wallet, 'Wallets', false, () {
+          _buildNavItem(context, Icons.account_balance_wallet, AppLocalizations.of(context)?.navWallets ?? 'Wallets', false, () {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => const WalletsScreen()),
             );
           }),
-          _buildNavItem(context, Icons.settings, 'Settings', false, () {
+          _buildNavItem(context, Icons.settings, AppLocalizations.of(context)?.navSettings ?? 'Settings', false, () {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => const SettingsScreen()),

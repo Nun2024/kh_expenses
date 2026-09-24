@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_theme.dart';
+import 'package:kh_expense/l10n/app_localizations.dart';
 
 class SpendingTrendChart extends StatelessWidget {
-  const SpendingTrendChart({super.key});
+  final String activePeriod;
+  final bool isKhrFirst;
+  const SpendingTrendChart({super.key, this.activePeriod = 'Month', this.isKhrFirst = false});
 
   @override
   Widget build(BuildContext context) {
@@ -29,15 +32,15 @@ class SpendingTrendChart extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Spending Trajectory', style: AppTheme.headlineSm.copyWith(color: AppColors.onSurface)),
-                  Text('Daily fluctuations', style: AppTheme.bodySm.copyWith(color: AppColors.onSurfaceVariant)),
+                  Text(AppLocalizations.of(context)?.spendingTrajectory ?? 'Spending Trajectory', style: AppTheme.headlineSm.copyWith(color: AppColors.onSurface)),
+                  Text(AppLocalizations.of(context)?.dailyFluctuations ?? 'Daily fluctuations', style: AppTheme.bodySm.copyWith(color: AppColors.onSurfaceVariant)),
                 ],
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Text('PEAK', style: AppTheme.labelSm.copyWith(color: AppColors.onSurfaceVariant)),
-                  Text('\$34.50', style: AppTheme.bodySm.copyWith(fontWeight: FontWeight.bold, color: AppColors.error)),
+                  Text(AppLocalizations.of(context)?.peak ?? 'PEAK', style: AppTheme.labelSm.copyWith(color: AppColors.onSurfaceVariant)),
+                  Text(isKhrFirst ? '៛140.9K' : '\$34.50', style: AppTheme.bodySm.copyWith(fontWeight: FontWeight.bold, color: AppColors.error)),
                 ],
               ),
             ],

@@ -553,6 +553,120 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'FAST'**
   String get fastLabel;
+
+  /// No description provided for @expenseOverview.
+  ///
+  /// In en, this message translates to:
+  /// **'Expense overview & insights'**
+  String get expenseOverview;
+
+  /// No description provided for @periodWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'Week'**
+  String get periodWeek;
+
+  /// No description provided for @periodMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'Month'**
+  String get periodMonth;
+
+  /// No description provided for @periodYear.
+  ///
+  /// In en, this message translates to:
+  /// **'Year'**
+  String get periodYear;
+
+  /// No description provided for @cycle30Days.
+  ///
+  /// In en, this message translates to:
+  /// **'30 Days Cycle'**
+  String get cycle30Days;
+
+  /// No description provided for @totalOutflow.
+  ///
+  /// In en, this message translates to:
+  /// **'TOTAL OUTFLOW'**
+  String get totalOutflow;
+
+  /// No description provided for @dailyPace.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily Pace'**
+  String get dailyPace;
+
+  /// No description provided for @avgDailyPaceMockUsd.
+  ///
+  /// In en, this message translates to:
+  /// **'Avg \$10.90 / day'**
+  String get avgDailyPaceMockUsd;
+
+  /// No description provided for @avgDailyPaceMockKhr.
+  ///
+  /// In en, this message translates to:
+  /// **'Avg ៛44.5K / day'**
+  String get avgDailyPaceMockKhr;
+
+  /// No description provided for @categoryBreakdown.
+  ///
+  /// In en, this message translates to:
+  /// **'Category Breakdown'**
+  String get categoryBreakdown;
+
+  /// No description provided for @activeCategoriesMock.
+  ///
+  /// In en, this message translates to:
+  /// **'4 Active categories recorded'**
+  String get activeCategoriesMock;
+
+  /// No description provided for @spendingTrajectory.
+  ///
+  /// In en, this message translates to:
+  /// **'Spending Trajectory'**
+  String get spendingTrajectory;
+
+  /// No description provided for @dailyFluctuations.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily fluctuations'**
+  String get dailyFluctuations;
+
+  /// No description provided for @peak.
+  ///
+  /// In en, this message translates to:
+  /// **'PEAK'**
+  String get peak;
+
+  /// No description provided for @topCategorySpotlight.
+  ///
+  /// In en, this message translates to:
+  /// **'Top Category Spotlight'**
+  String get topCategorySpotlight;
+
+  /// No description provided for @recordedTransactionsMock.
+  ///
+  /// In en, this message translates to:
+  /// **'24 recorded transactions'**
+  String get recordedTransactionsMock;
+
+  /// No description provided for @budgetHealth.
+  ///
+  /// In en, this message translates to:
+  /// **'Budget Health'**
+  String get budgetHealth;
+
+  /// No description provided for @budgetRemainingMock.
+  ///
+  /// In en, this message translates to:
+  /// **'68% of monthly limit remaining'**
+  String get budgetRemainingMock;
+
+  /// No description provided for @limitsBtn.
+  ///
+  /// In en, this message translates to:
+  /// **'Limits'**
+  String get limitsBtn;
 }
 
 class _AppLocalizationsDelegate
