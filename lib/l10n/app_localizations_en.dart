@@ -369,4 +369,53 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get availableBalance => 'Available Balance';
+
+  @override
+  String get proUpgradeTitle => 'Unlock Unlimited Freedom';
+
+  @override
+  String get proUpgradeDesc =>
+      'Smart financial insights, auto-receipt scanning, unlimited custom categories, and encrypted cloud backup.';
+
+  @override
+  String get proFeature1 => 'Unlimited KHQR & Receipt OCR Scanning';
+
+  @override
+  String get proFeature2 => 'Private Encrypted Cloud Sync';
+
+  @override
+  String get proFeature3 => 'Advanced Tax & Expense Export';
+
+  @override
+  String get proFeature4 => 'Unlimited Custom Categories & Multi-wallets';
+
+  @override
+  String get proFeature5 => 'Custom Live NBC & Market Exchange Rates';
+
+  @override
+  String get proPlanMonthly => 'KH Pro Monthly';
+
+  @override
+  String get proPlanYearly => 'KH Pro Annual';
+
+  @override
+  String get proPlanMonthShort => '/ mo';
+
+  @override
+  String get proPlanYearShort => '/ year';
+
+  @override
+  String get proSaveTag => 'BEST VALUE • SAVE 35%';
+
+  @override
+  String get proStartTrialBtn => 'Pay with Bakong KHQR';
+
+  @override
+  String get proMaybeLaterBtn => 'Maybe Later';
+
+  @override
+  String get proStarterFree => 'Starter Free';
+
+  @override
+  String get proStarterFreeDesc => 'Basic offline logs (up to 40 txns/mo)';
 }

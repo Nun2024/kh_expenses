@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_theme.dart';
+import 'package:kh_expense/l10n/app_localizations.dart';
 
 class PricingModal extends StatefulWidget {
   const PricingModal({super.key});
@@ -73,12 +74,12 @@ class _PricingModalState extends State<PricingModal> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Unlock Unlimited Freedom',
+                    AppLocalizations.of(context)?.proUpgradeTitle ?? 'Unlock Unlimited Freedom',
                     style: AppTheme.headlineLg.copyWith(color: AppColors.onSurface, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    'Smart financial insights, auto-receipt scanning, unlimited custom categories, and encrypted cloud backup.',
+                    AppLocalizations.of(context)?.proUpgradeDesc ?? 'Smart financial insights, auto-receipt scanning, unlimited custom categories, and encrypted cloud backup.',
                     style: AppTheme.bodyMd.copyWith(color: AppColors.onSurfaceVariant),
                   ),
                   const SizedBox(height: 16),
@@ -132,23 +133,23 @@ class _PricingModalState extends State<PricingModal> {
                     id: 'annual',
                     title: 'KH Pro Annual',
                     subtitle: 'Full access • 7-day free trial',
-                    priceUsd: '\$19.99',
-                    period: '/ year',
-                    priceKhr: '≈ ៛81,600 KHR',
-                    priceDesc: '(\$1.66 / mo)',
-                    badge: 'BEST VALUE • SAVE 35%',
+                    priceUsd: '\$11M',
+                    period: AppLocalizations.of(context)?.proPlanYearShort ?? '/ year',
+                    priceKhr: '≈ ៛44,935M KHR',
+                    priceDesc: '(\$1M / mo)',
+                    badge: AppLocalizations.of(context)?.proSaveTag ?? 'BEST VALUE • SAVE 35%',
                   ),
                   const SizedBox(height: 12),
                   _buildPlanCard(
                     id: 'monthly',
                     title: 'KH Pro Monthly',
                     subtitle: 'Flexible monthly billing',
-                    priceUsd: '\$2.49',
-                    period: '/ mo',
-                    priceKhr: '≈ ៛10,170 KHR',
+                    priceUsd: '\$1M',
+                    period: AppLocalizations.of(context)?.proPlanMonthShort ?? '/ mo',
+                    priceKhr: '≈ ៛4,085M KHR',
                   ),
                   const SizedBox(height: 12),
-                  _buildFreePlanCard(),
+                  _buildFreePlanCard(context),
                   
                   const SizedBox(height: 24),
                   
@@ -165,10 +166,10 @@ class _PricingModalState extends State<PricingModal> {
                       children: [
                         Text('EVERYTHING INCLUDED IN PRO:', style: AppTheme.labelMd.copyWith(color: AppColors.onSurfaceVariant, fontWeight: FontWeight.bold)),
                         const SizedBox(height: 16),
-                        _buildFeatureRow('Unlimited KHQR & Receipt OCR Scanning', 'Instant auto-logging from ABA, ACLEDA, and Bakong transaction slips'),
-                        _buildFeatureRow('Private Encrypted Cloud Sync', 'Seamless multi-device backup keeping your financial records safe offline & online'),
-                        _buildFeatureRow('Advanced Tax & Expense Export', 'Generate Cambodia tax-ready PDF reports and raw CSV spreadsheets'),
-                        _buildFeatureRow('Unlimited Custom Categories & Multi-wallets', 'Manage dual USD/KHR cash drawers, bank accounts, and business vaults'),
+                        _buildFeatureRow(AppLocalizations.of(context)?.proFeature1 ?? 'Unlimited KHQR & Receipt OCR Scanning', 'Instant auto-logging from ABA, ACLEDA, and Bakong transaction slips'),
+                        _buildFeatureRow(AppLocalizations.of(context)?.proFeature4 ?? 'Private Encrypted Cloud Sync', 'Seamless multi-device backup keeping your financial records safe offline & online'),
+                        _buildFeatureRow(AppLocalizations.of(context)?.proFeature2 ?? 'Advanced Tax & Expense Export', 'Generate Cambodia tax-ready PDF reports and raw CSV spreadsheets'),
+                        _buildFeatureRow(AppLocalizations.of(context)?.proFeature3 ?? 'Unlimited Custom Categories & Multi-wallets', 'Manage dual USD/KHR cash drawers, bank accounts, and business vaults'),
                         _buildFeatureRow('Custom Live NBC & Market Exchange Rates', 'Override rates for real local market cash conversions'),
                       ],
                     ),
@@ -226,7 +227,7 @@ class _PricingModalState extends State<PricingModal> {
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
                       elevation: 4,
                     ),
-                    child: _buildCtaContent(),
+                    child: _buildCtaContent(context),
                   ),
                 ),
                 const SizedBox(height: 16),
@@ -426,7 +427,7 @@ class _PricingModalState extends State<PricingModal> {
     );
   }
 
-  Widget _buildFreePlanCard() {
+  Widget _buildFreePlanCard(BuildContext context) {
     final isSelected = _selectedPlan == 'free';
     return GestureDetector(
       onTap: () => setState(() => _selectedPlan = 'free'),
@@ -445,8 +446,8 @@ class _PricingModalState extends State<PricingModal> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Starter Free', style: AppTheme.headlineSm.copyWith(color: AppColors.onSurface, fontWeight: FontWeight.w500)),
-                Text('Basic offline logs (up to 40 txns/mo)', style: AppTheme.bodySm.copyWith(color: AppColors.onSurfaceVariant)),
+                Text(AppLocalizations.of(context)?.proStarterFree ?? 'Starter Free', style: AppTheme.headlineSm.copyWith(color: AppColors.onSurface, fontWeight: FontWeight.w500)),
+                Text(AppLocalizations.of(context)?.proStarterFreeDesc ?? 'Basic offline logs (up to 40 txns/mo)', style: AppTheme.bodySm.copyWith(color: AppColors.onSurfaceVariant)),
               ],
             ),
             Text('\$0 / free', style: AppTheme.headlineSm.copyWith(color: AppColors.onSurfaceVariant, fontWeight: FontWeight.bold)),
@@ -517,14 +518,14 @@ class _PricingModalState extends State<PricingModal> {
     );
   }
   
-  Widget _buildCtaContent() {
+  Widget _buildCtaContent(BuildContext context) {
     if (_selectedPlan == 'annual') {
       return Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Icon(Icons.qr_code_scanner, size: 20),
           const SizedBox(width: 8),
-          const Text('Pay with Bakong KHQR • \$19.99 / yr'),
+          Text('${AppLocalizations.of(context)?.proStartTrialBtn ?? 'Pay with Bakong KHQR'} • \$11M / yr'),
         ],
       );
     } else if (_selectedPlan == 'monthly') {
@@ -533,7 +534,7 @@ class _PricingModalState extends State<PricingModal> {
         children: [
           const Icon(Icons.qr_code_scanner, size: 20),
           const SizedBox(width: 8),
-          const Text('Pay with Bakong KHQR • \$2.49 / mo'),
+          Text('${AppLocalizations.of(context)?.proStartTrialBtn ?? 'Pay with Bakong KHQR'} • \$1M / mo'),
         ],
       );
     } else {

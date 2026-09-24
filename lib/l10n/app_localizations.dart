@@ -817,6 +817,102 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Available Balance'**
   String get availableBalance;
+
+  /// No description provided for @proUpgradeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Unlock Unlimited Freedom'**
+  String get proUpgradeTitle;
+
+  /// No description provided for @proUpgradeDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Smart financial insights, auto-receipt scanning, unlimited custom categories, and encrypted cloud backup.'**
+  String get proUpgradeDesc;
+
+  /// No description provided for @proFeature1.
+  ///
+  /// In en, this message translates to:
+  /// **'Unlimited KHQR & Receipt OCR Scanning'**
+  String get proFeature1;
+
+  /// No description provided for @proFeature2.
+  ///
+  /// In en, this message translates to:
+  /// **'Private Encrypted Cloud Sync'**
+  String get proFeature2;
+
+  /// No description provided for @proFeature3.
+  ///
+  /// In en, this message translates to:
+  /// **'Advanced Tax & Expense Export'**
+  String get proFeature3;
+
+  /// No description provided for @proFeature4.
+  ///
+  /// In en, this message translates to:
+  /// **'Unlimited Custom Categories & Multi-wallets'**
+  String get proFeature4;
+
+  /// No description provided for @proFeature5.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom Live NBC & Market Exchange Rates'**
+  String get proFeature5;
+
+  /// No description provided for @proPlanMonthly.
+  ///
+  /// In en, this message translates to:
+  /// **'KH Pro Monthly'**
+  String get proPlanMonthly;
+
+  /// No description provided for @proPlanYearly.
+  ///
+  /// In en, this message translates to:
+  /// **'KH Pro Annual'**
+  String get proPlanYearly;
+
+  /// No description provided for @proPlanMonthShort.
+  ///
+  /// In en, this message translates to:
+  /// **'/ mo'**
+  String get proPlanMonthShort;
+
+  /// No description provided for @proPlanYearShort.
+  ///
+  /// In en, this message translates to:
+  /// **'/ year'**
+  String get proPlanYearShort;
+
+  /// No description provided for @proSaveTag.
+  ///
+  /// In en, this message translates to:
+  /// **'BEST VALUE • SAVE 35%'**
+  String get proSaveTag;
+
+  /// No description provided for @proStartTrialBtn.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay with Bakong KHQR'**
+  String get proStartTrialBtn;
+
+  /// No description provided for @proMaybeLaterBtn.
+  ///
+  /// In en, this message translates to:
+  /// **'Maybe Later'**
+  String get proMaybeLaterBtn;
+
+  /// No description provided for @proStarterFree.
+  ///
+  /// In en, this message translates to:
+  /// **'Starter Free'**
+  String get proStarterFree;
+
+  /// No description provided for @proStarterFreeDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Basic offline logs (up to 40 txns/mo)'**
+  String get proStarterFreeDesc;
 }
 
 class _AppLocalizationsDelegate

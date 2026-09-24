@@ -122,5 +122,21 @@
   "emergencyReserveSub": "Savings • Fixed Deposit",
   "tagLockedVault": "Locked Vault",
   "untouchedMonthMock": "Untouched this month",
-  "availableBalance": "Available Balance"
+  "availableBalance": "Available Balance",
+  "proUpgradeTitle": "Unlock Unlimited Freedom",
+  "proUpgradeDesc": "Smart financial insights, auto-receipt scanning, unlimited custom categories, and encrypted cloud backup.",
+  "proFeature1": "Unlimited KHQR & Receipt OCR Scanning",
+  "proFeature2": "Private Encrypted Cloud Sync",
+  "proFeature3": "Advanced Tax & Expense Export",
+  "proFeature4": "Unlimited Custom Categories & Multi-wallets",
+  "proFeature5": "Custom Live NBC & Market Exchange Rates",
+  "proPlanMonthly": "KH Pro Monthly",
+  "proPlanYearly": "KH Pro Annual",
+  "proPlanMonthShort": "/ mo",
+  "proPlanYearShort": "/ year",
+  "proSaveTag": "BEST VALUE • SAVE 35%",
+  "proStartTrialBtn": "Pay with Bakong KHQR",
+  "proMaybeLaterBtn": "Maybe Later",
+  "proStarterFree": "Starter Free",
+  "proStarterFreeDesc": "Basic offline logs (up to 40 txns/mo)"
 }

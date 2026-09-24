@@ -179,20 +179,12 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
           children: [
             ElevatedButton(
               onPressed: () {
-                final double amount = double.tryParse(_currentAmountStr) ?? 0;
-                final expense = Expense(
-                  id: DateTime.now().millisecondsSinceEpoch.toString(),
-                  amount: amount,
-                  currency: _currentCurrency,
-                  usdAmount: _currentCurrency == 'USD' ? amount : amount / _fxRate,
-                  khrAmount: _currentCurrency == 'KHR' ? amount : amount * _fxRate,
-                  category: _activeCategory,
-                  paymentMethod: _activePayment,
-                  date: DateTime.now(),
-                  notes: _notesController.text.trim().isEmpty ? null : _notesController.text.trim(),
+                showModalBottomSheet(
+                  context: context,
+                  isScrollControlled: true,
+                  backgroundColor: Colors.transparent,
+                  builder: (context) => const PricingModal(),
                 );
-                context.read<ExpenseProvider>().addExpense(expense);
-                Navigator.pop(context);
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.primary,

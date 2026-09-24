@@ -369,4 +369,54 @@ class AppLocalizationsKm extends AppLocalizations {
 
   @override
   String get availableBalance => 'សមតុល្យទឹកប្រាក់';
+
+  @override
+  String get proUpgradeTitle => 'ដោះសោភាពគ្មានដែនកំណត់';
+
+  @override
+  String get proUpgradeDesc =>
+      'របាយការណ៍ហិរញ្ញវត្ថុឆ្លាតវៃ ការស្កេនវិក្កយបត្រ ការបង្កើតប្រភេទចំណាយមិនកំណត់ និងការបម្រុងទុកលើ Cloud។';
+
+  @override
+  String get proFeature1 => 'ស្កេន KHQR និងវិក្កយបត្រមិនកំណត់';
+
+  @override
+  String get proFeature2 => 'រក្សាទុកដោយសុវត្ថិភាពលើ Cloud ឯកជន';
+
+  @override
+  String get proFeature3 => 'នាំចេញរបាយការណ៍ពន្ធ និងចំណាយកម្រិតខ្ពស់';
+
+  @override
+  String get proFeature4 => 'បង្កើតកាបូបលុយ និងប្រភេទចំណាយមិនកំណត់';
+
+  @override
+  String get proFeature5 => 'អត្រាប្តូរប្រាក់ NBC និងទីផ្សារផ្ទាល់ខ្លួន';
+
+  @override
+  String get proPlanMonthly => 'KH Pro ប្រចាំខែ';
+
+  @override
+  String get proPlanYearly => 'KH Pro ប្រចាំឆ្នាំ';
+
+  @override
+  String get proPlanMonthShort => '/ ខែ';
+
+  @override
+  String get proPlanYearShort => '/ ឆ្នាំ';
+
+  @override
+  String get proSaveTag => 'ចំណេញ 35%';
+
+  @override
+  String get proStartTrialBtn => 'បង់ប្រាក់ជាមួយ Bakong KHQR';
+
+  @override
+  String get proMaybeLaterBtn => 'ប្រហែលជាពេលក្រោយ';
+
+  @override
+  String get proStarterFree => 'គម្រោងឥតគិតថ្លៃ';
+
+  @override
+  String get proStarterFreeDesc =>
+      'កត់ត្រាដោយគ្មានអ៊ីនធឺណិត (រហូតដល់ 40 ប្រតិបត្តិការ/ខែ)';
 }

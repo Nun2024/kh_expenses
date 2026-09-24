@@ -119,5 +119,21 @@
   "emergencyReserveSub": "សន្សំ • ប្រាក់បញ្ញើមានកាលកំណត់",
   "tagLockedVault": "កន្លែងសុវត្ថិភាព",
   "untouchedMonthMock": "មិនមានចរាចរណ៍ខែនេះ",
-  "availableBalance": "សមតុល្យទឹកប្រាក់"
+  "availableBalance": "សមតុល្យទឹកប្រាក់",
+  "proUpgradeTitle": "ដោះសោភាពគ្មានដែនកំណត់",
+  "proUpgradeDesc": "របាយការណ៍ហិរញ្ញវត្ថុឆ្លាតវៃ ការស្កេនវិក្កយបត្រ ការបង្កើតប្រភេទចំណាយមិនកំណត់ និងការបម្រុងទុកលើ Cloud។",
+  "proFeature1": "ស្កេន KHQR និងវិក្កយបត្រមិនកំណត់",
+  "proFeature2": "រក្សាទុកដោយសុវត្ថិភាពលើ Cloud ឯកជន",
+  "proFeature3": "នាំចេញរបាយការណ៍ពន្ធ និងចំណាយកម្រិតខ្ពស់",
+  "proFeature4": "បង្កើតកាបូបលុយ និងប្រភេទចំណាយមិនកំណត់",
+  "proFeature5": "អត្រាប្តូរប្រាក់ NBC និងទីផ្សារផ្ទាល់ខ្លួន",
+  "proPlanMonthly": "KH Pro ប្រចាំខែ",
+  "proPlanYearly": "KH Pro ប្រចាំឆ្នាំ",
+  "proPlanMonthShort": "/ ខែ",
+  "proPlanYearShort": "/ ឆ្នាំ",
+  "proSaveTag": "ចំណេញ 35%",
+  "proStartTrialBtn": "បង់ប្រាក់ជាមួយ Bakong KHQR",
+  "proMaybeLaterBtn": "ប្រហែលជាពេលក្រោយ",
+  "proStarterFree": "គម្រោងឥតគិតថ្លៃ",
+  "proStarterFreeDesc": "កត់ត្រាដោយគ្មានអ៊ីនធឺណិត (រហូតដល់ 40 ប្រតិបត្តិការ/ខែ)"
 }
