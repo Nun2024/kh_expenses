@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kh_expense/features/transactions/widgets/transaction_details_sheet.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_theme.dart';
 import 'transaction_list_item.dart';
@@ -7,15 +8,17 @@ import '../../expenses/providers/expense_provider.dart';
 import 'package:intl/intl.dart';
 
 class TransactionGroupList extends StatelessWidget {
-  final VoidCallback onTransactionTap;
+  final bool isKhrFirst;
+  final List<dynamic> expenses;
   
-  const TransactionGroupList({super.key, required this.onTransactionTap});
+  const TransactionGroupList({
+    super.key, 
+    required this.isKhrFirst,
+    required this.expenses,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final provider = context.watch<ExpenseProvider>();
-    final expenses = provider.recentExpenses;
-
     if (expenses.isEmpty) {
       return Padding(
         padding: const EdgeInsets.symmetric(vertical: 40),
@@ -49,7 +52,10 @@ class TransactionGroupList extends StatelessWidget {
           totalKhr += e.khrAmount;
         }
         
-        final totalStr = '-\$${totalUsd.toStringAsFixed(2)} • ៛${NumberFormat('#,###').format(totalKhr.round())}';
+        
+        final totalStr = isKhrFirst
+            ? '៛${NumberFormat('#,###').format(totalKhr.round())} • -\$${totalUsd.toStringAsFixed(2)}'
+            : '-\$${totalUsd.toStringAsFixed(2)} • ៛${NumberFormat('#,###').format(totalKhr.round())}';
         
         return _buildDateGroup(
           dateLabel,
@@ -88,15 +94,19 @@ class TransactionGroupList extends StatelessWidget {
                 title: expense.notes ?? expense.category,
                 subtitle: expense.category,
                 time: DateFormat('h:mm a').format(expense.date),
-                amountStr: '-\$${expense.usdAmount.toStringAsFixed(2)}',
-                amountKhr: '៛${NumberFormat('#,###').format(expense.khrAmount.round())}',
+                amountStr: isKhrFirst 
+                  ? '៛${NumberFormat('#,###').format(expense.khrAmount.round())}'
+                  : '-\$${expense.usdAmount.toStringAsFixed(2)}',
+                amountKhr: isKhrFirst
+                  ? '-\$${expense.usdAmount.toStringAsFixed(2)}'
+                  : '៛${NumberFormat('#,###').format(expense.khrAmount.round())}',
                 emoji: emoji,
                 iconBgColor: iconBgColor,
                 paymentMethod: expense.paymentMethod,
                 paymentIcon: Icons.payment,
                 paymentBgColor: mBgColor,
                 paymentTextColor: mColor,
-                onTap: onTransactionTap,
+                onTap: () => TransactionDetailsSheet.show(context, expense),
               ),
             );
           }).toList(),

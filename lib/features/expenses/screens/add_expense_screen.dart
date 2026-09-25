@@ -11,9 +11,12 @@ import 'package:kh_expense/l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import '../providers/expense_provider.dart';
 import '../models/expense.dart';
+import '../../../core/widgets/custom_toast.dart';
 
 class AddExpenseScreen extends StatefulWidget {
-  const AddExpenseScreen({super.key});
+  final Expense? expenseToEdit;
+  
+  const AddExpenseScreen({super.key, this.expenseToEdit});
 
   @override
   State<AddExpenseScreen> createState() => _AddExpenseScreenState();
@@ -21,11 +24,26 @@ class AddExpenseScreen extends StatefulWidget {
 
 class _AddExpenseScreenState extends State<AddExpenseScreen> {
   String _currentCurrency = 'USD';
-  String _currentAmountStr = '5.50';
+  String _currentAmountStr = '0';
   String _activeCategory = 'Food';
   String _activePayment = 'Bakong KHQR';
   final double _fxRate = 4085;
   final TextEditingController _notesController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.expenseToEdit != null) {
+      final e = widget.expenseToEdit!;
+      _currentCurrency = e.currency;
+      _currentAmountStr = e.currency == 'USD' 
+          ? e.usdAmount.toStringAsFixed(2) 
+          : e.khrAmount.round().toString();
+      _activeCategory = e.category;
+      _activePayment = e.paymentMethod;
+      _notesController.text = e.notes ?? '';
+    }
+  }
 
   @override
   void dispose() {
@@ -115,7 +133,7 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
           icon: const Icon(Icons.arrow_back, color: AppColors.onSurface),
           onPressed: () => Navigator.pop(context),
         ),
-        title: Text(AppLocalizations.of(context)?.addExpense ?? 'Add Expense', style: AppTheme.headlineMd.copyWith(color: AppColors.onSurface)),
+        title: Text(widget.expenseToEdit != null ? 'Edit Expense' : (AppLocalizations.of(context)?.addExpense ?? 'Add Expense'), style: AppTheme.headlineMd.copyWith(color: AppColors.onSurface)),
         actions: [
           TextButton(
             onPressed: _onClear,
@@ -179,12 +197,38 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
           children: [
             ElevatedButton(
               onPressed: () {
-                showModalBottomSheet(
-                  context: context,
-                  isScrollControlled: true,
-                  backgroundColor: Colors.transparent,
-                  builder: (context) => const PricingModal(),
+                final usdAmount = _currentCurrency == 'USD' ? num : num / _fxRate;
+                final khrAmount = _currentCurrency == 'KHR' ? num : num * _fxRate;
+                
+                final expense = Expense(
+                  id: widget.expenseToEdit?.id ?? DateTime.now().millisecondsSinceEpoch.toString(),
+                  amount: num,
+                  currency: _currentCurrency,
+                  usdAmount: usdAmount,
+                  khrAmount: khrAmount,
+                  category: _activeCategory,
+                  paymentMethod: _activePayment,
+                  date: widget.expenseToEdit?.date ?? DateTime.now(),
+                  notes: _notesController.text.isEmpty ? null : _notesController.text,
                 );
+
+                if (widget.expenseToEdit != null) {
+                  context.read<ExpenseProvider>().updateExpense(expense);
+                  CustomToast.show(context: context, message: 'Expense updated successfully');
+                  Navigator.pop(context); // Go back after update
+                } else {
+                  context.read<ExpenseProvider>().addExpense(expense);
+                  CustomToast.show(context: context, message: 'Expense saved successfully');
+                  Navigator.pop(context); // Go back after saving
+                  
+                  // Show Pricing Modal only for new expense as requested previously
+                  // showModalBottomSheet(
+                  //   context: context,
+                  //   isScrollControlled: true,
+                  //   backgroundColor: Colors.transparent,
+                  //   builder: (context) => const PricingModal(),
+                  // );
+                }
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.primary,

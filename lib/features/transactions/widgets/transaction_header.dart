@@ -3,7 +3,8 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_theme.dart';
 
 class TransactionHeader extends StatelessWidget {
-  const TransactionHeader({super.key});
+  final int totalCount;
+  const TransactionHeader({super.key, required this.totalCount});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class TransactionHeader extends StatelessWidget {
                   const Icon(Icons.receipt_long, size: 14, color: AppColors.primary),
                   const SizedBox(width: 4),
                   Text(
-                    '34 expenses logged this month',
+                    '$totalCount expenses logged this month',
                     style: AppTheme.bodySm.copyWith(color: AppColors.onSurfaceVariant),
                   ),
                 ],

@@ -2,15 +2,24 @@ import 'package:flutter/material.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_theme.dart';
 
-class TransactionDetailsSheet extends StatelessWidget {
-  const TransactionDetailsSheet({super.key});
+import '../../expenses/models/expense.dart';
+import '../../expenses/providers/expense_provider.dart';
+import 'package:provider/provider.dart';
+import 'package:intl/intl.dart';
+import '../../expenses/screens/add_expense_screen.dart';
+import '../../../core/widgets/custom_toast.dart';
 
-  static void show(BuildContext context) {
+class TransactionDetailsSheet extends StatelessWidget {
+  final Expense expense;
+
+  const TransactionDetailsSheet({super.key, required this.expense});
+
+  static void show(BuildContext context, Expense expense) {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
-      builder: (context) => const TransactionDetailsSheet(),
+      builder: (context) => TransactionDetailsSheet(expense: expense),
     );
   }
 
@@ -76,32 +85,34 @@ class TransactionDetailsSheet extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.baseline,
             textBaseline: TextBaseline.alphabetic,
             children: [
-              Text('-\$5.50', style: AppTheme.displayHeroMobile),
+              Text('-\$${expense.usdAmount.toStringAsFixed(2)}', style: AppTheme.displayHeroMobile),
               const SizedBox(width: 4),
               Text('USD', style: AppTheme.headlineSm.copyWith(color: AppColors.onSurfaceVariant)),
             ],
           ),
           const SizedBox(height: 4),
           Text(
-            '≈ ៛22,468 KHR',
+            '≈ ៛${NumberFormat('#,###').format(expense.khrAmount.round())} KHR',
             style: AppTheme.currencySecondary.copyWith(color: AppColors.primary, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 16),
           const Divider(height: 24),
           // Details
-          _buildDetailRow('Category', '🍜 Food & Dining'),
+          _buildDetailRow('Category', expense.category),
           const SizedBox(height: 8),
           _buildDetailRow(
             'Payment Method',
-            'Bakong KHQR',
+            expense.paymentMethod,
             valueColor: AppColors.primary,
             icon: Icons.check_circle,
           ),
           const SizedBox(height: 8),
-          _buildDetailRow('Date & Time', 'Sep 21, 2026 • 12:30 PM'),
+          _buildDetailRow('Date & Time', DateFormat('MMM d, yyyy • h:mm a').format(expense.date)),
           const SizedBox(height: 8),
-          _buildDetailRow('Note', 'Lunch with friends at Toul Tompoung'),
-          const SizedBox(height: 8),
+          if (expense.notes != null && expense.notes!.isNotEmpty) ...[
+            _buildDetailRow('Note', expense.notes!),
+            const SizedBox(height: 8),
+          ],
           _buildDetailRow(
             'Exchange Rate',
             '\$1.00 = ៛4,085 (NBC)',
@@ -114,7 +125,10 @@ class TransactionDetailsSheet extends StatelessWidget {
             children: [
               Expanded(
                 child: OutlinedButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context); // Close sheet
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => AddExpenseScreen(expenseToEdit: expense)));
+                  },
                   icon: const Icon(Icons.edit, size: 18),
                   label: const Text('Edit Expense'),
                   style: OutlinedButton.styleFrom(
@@ -128,7 +142,11 @@ class TransactionDetailsSheet extends StatelessWidget {
               const SizedBox(width: 12),
               Expanded(
                 child: ElevatedButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                    context.read<ExpenseProvider>().removeExpense(expense.id);
+                    Navigator.pop(context);
+                    CustomToast.show(context: context, message: 'Expense deleted');
+                  },
                   icon: const Icon(Icons.delete, size: 18),
                   label: const Text('Delete'),
                   style: ElevatedButton.styleFrom(
